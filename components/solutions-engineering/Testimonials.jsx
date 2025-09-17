@@ -33,11 +33,11 @@ function Testimonials() {
           <div className="col-lg-4">
             <div className="sec-head">
               <h6 className="sub-title main-color mb-15">Testimonials</h6>
-              <h3 className="fw-600 d-rotate wow">
+              <h2 className="fw-600 d-rotate wow">
                 <span className="rotate-text">
                   What People <span className="fw-200">Say?</span>
                 </span>
-              </h3>
+              </h2>
             </div>
           </div>
           <div className="col-lg-8 position-re">

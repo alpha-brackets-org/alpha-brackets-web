@@ -6,16 +6,11 @@ function Footer() {
       <div className="container pb-40 pt-140 ontop">
         <div className="row justify-content-between">
           <div className="col-lg-4">
-          <a href="/" className="mb-30 md-mb80">
-          <div className="logo d-flex align-items-center">
-            <div className="icon-img-70 mr-10">
-              <img src="/assets/imgs/logo-light.png" alt="logo" />
-            </div>
-            <h5 className="fw-800 fz-40 text-white">
-              alpha<span className="fw-100">brackets</span>
-            </h5>
-          </div>
-        </a>
+            <a href="/" className="mb-30 md-mb80">
+              <div className="logo icon-img-100 md-mb80">
+                <img src="/assets/imgs/logo-light.png" alt="" />
+              </div>
+            </a>
 
             <div className="column md-mb50">
               <h6 className="p-color fw-400">

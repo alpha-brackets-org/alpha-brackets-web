@@ -8,11 +8,11 @@ function Services() {
           <div className="d-flex align-items-center">
             <div>
               <span className="sub-title main-color mb-5">Our Specialize</span>
-              <h3 className="fw-600 fz-50 text-u d-rotate wow">
+              <h2 className="fw-600 d-rotate wow">
                 <span className="rotate-text">
                   Featured <span className="fw-200">Services.</span>
                 </span>
-              </h3>
+              </h2>
             </div>
             <div className="ml-auto vi-more">
               <a

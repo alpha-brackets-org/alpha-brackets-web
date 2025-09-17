@@ -37,11 +37,11 @@ function Testimonials() {
           <div className="d-flex align-items-center">
             <div>
               <span className="sub-title main-color mb-5">Testimonials</span>
-              <h3 className="fw-600 fz-50 text-u d-rotate wow">
+              <h2 className="fw-600 d-rotate wow">
                 <span className="rotate-text">
                   Trusted <span className="fw-200">by Clients.</span>
                 </span>
-              </h3>
+              </h2>
             </div>
             <div className="ml-auto">
               <div className="swiper-arrow-control">

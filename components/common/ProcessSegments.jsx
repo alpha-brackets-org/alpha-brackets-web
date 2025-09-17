@@ -46,11 +46,11 @@ export default function ProcessSegments({
           <div className="d-flex align-items-center">
             <div>
               <span className="sub-title main-color mb-5">Our Process</span>
-              <h3 className="fw-600 fz-50 d-rotate wow">
+              <h2 className="fw-600 d-rotate wow">
                 <span className="rotate-text">
                   {bTitle} <span className="fw-200">{sTitle}.</span>
                 </span>
-              </h3>
+              </h2>
               <p className="mt-10 mb-40 w-75">{desc}</p>
             </div>
             <div className="ml-auto">

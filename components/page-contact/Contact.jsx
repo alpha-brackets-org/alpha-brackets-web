@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Head from 'next/head';
+import { createContact } from '@/lib/database';
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      await createContact(formData);
+      setSubmitMessage('Thank you! Your message has been sent successfully.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      console.error('Contact form error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section className="contact section-padding">
+    <>
+      <Head>
+        <link rel="stylesheet" href="/assets/css/admin.css" />
+      </Head>
+      
+      <section className="contact section-padding">
       <div className="container">
         <div className="row">
           <div className="col-lg-4 valign">
@@ -46,10 +92,15 @@ function Contact() {
               <form
                 id="contact-form"
                 className="form2"
-                method="post"
-                action="contact.php"
+                onSubmit={handleSubmit}
               >
-                <div className="messages"></div>
+                <div className="messages">
+                  {submitMessage && (
+                    <div className={`alert ${submitMessage.includes('Thank you') ? 'alert-success' : 'alert-danger'}`}>
+                      {submitMessage}
+                    </div>
+                  )}
+                </div>
 
                 <div className="controls row">
                   <div className="col-lg-6">
@@ -59,6 +110,8 @@ function Contact() {
                         type="text"
                         name="name"
                         placeholder="Name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         required="required"
                       />
                     </div>
@@ -71,6 +124,8 @@ function Contact() {
                         type="email"
                         name="email"
                         placeholder="Email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         required="required"
                       />
                     </div>
@@ -81,8 +136,10 @@ function Contact() {
                       <input
                         id="form_subject"
                         type="text"
-                        name="subject"
-                        placeholder="Subject"
+                        name="phone"
+                        placeholder="Phone (Optional)"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                       />
                     </div>
                   </div>
@@ -94,6 +151,8 @@ function Contact() {
                         name="message"
                         placeholder="Message"
                         rows="4"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         required="required"
                       ></textarea>
                     </div>
@@ -101,8 +160,11 @@ function Contact() {
                       <button
                         type="submit"
                         className="butn butn-full butn-bord radius-30"
+                        disabled={isSubmitting}
                       >
-                        <span className="text">Let&lsquo;s Talk</span>
+                        <span className="text">
+                          {isSubmitting ? 'Sending...' : "Let's Talk"}
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -113,6 +175,7 @@ function Contact() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

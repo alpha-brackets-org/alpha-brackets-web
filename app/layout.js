@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 
 import Lines from "@/components/common/Lines";
 import ProgressScroll from "@/components/common/ProgressScroll";
@@ -13,7 +13,7 @@ export const metadata = {
   icons: {
     icon: "/assets/imgs/favicon.ico",
     shortcut: "/assets/imgs/favicon.ico",
-  },
+  }
 };
 
 export default function RootLayout({ children }) {

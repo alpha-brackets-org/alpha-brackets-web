@@ -43,15 +43,8 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bord blur">
       <div className="container o-hidden">
-        <a href="/">
-          <div className="logo d-flex align-items-end">
-            <div className="icon-img-50 mr-10">
-              <img src="/assets/imgs/logo-light.png" alt="logo" />
-            </div>
-            <h6 className="fw-700 text-white" style={{fontSize: '36px'}}>
-              alpha{""}<span className="fw-100">brackets</span>.
-            </h6>
-          </div>
+      <a className="logo icon-img-100" href="/">
+          <img src="/assets/imgs/logo-light.png" alt="logo" />
         </a>
 
         <button
@@ -203,17 +196,17 @@ function Navbar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="/page-about">
+                  <a className="dropdown-item" href="/about">
                     About
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/page-about">
+                  <a className="dropdown-item" href="/contact">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/page-about">
+                  <a className="dropdown-item" href="#">
                     Careers
                   </a>
                 </li>

@@ -7,9 +7,10 @@
     h2{
         
         span{
-            background: -webkit-linear-gradient(#fff, #222);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            // background: -webkit-linear-gradient(#fff, #222);
+            //-webkit-background-clip: text;
+            //-webkit-text-fill-color: transparent;
+            color: inherit;
         }
     }
 
