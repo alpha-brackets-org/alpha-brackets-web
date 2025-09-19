@@ -37,7 +37,7 @@ export default function ServiceHeader({
             <div className="caption">
               <div className="row">
                 <div className="col-lg-9 d-flex flex-column justify-content-center">
-                  <h2 className="">{title}</h2>
+                  <h1 className="">{title}</h1>
                   <div className="row">
                     <div className="col-lg-10 mt-20">
                       <p className="fz-16">{description}</p>

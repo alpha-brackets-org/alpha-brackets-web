@@ -16,7 +16,7 @@ function SubServices({ subServices, noBottomPadding }) {
                 <div className="icon mb-40 opacity-5">
                   <img src={item.img} alt="" />
                 </div>
-                <h6 className="mb-20">{item.title}</h6>
+                <h5 className="mb-20">{item.title}</h5>
                 <p>{item.desc}</p>
                 {item.link && (
                   <a href={item.link} className="rmore mt-30">

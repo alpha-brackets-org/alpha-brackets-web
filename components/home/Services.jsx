@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 
 export const servicesData = [
@@ -9,10 +9,16 @@ export const servicesData = [
     "link": "/user-experience-design"
   },
   {
-    "title": "Custom Software Engineering",
+    "title": "Solution Engineering",
     "img": "/assets/imgs/serv-icons/2.png",
-    "desc": "Design and build tailored web, mobile, and cross-platform solutions using agile, scalable development practices.",
-    "link": "/software-engineering",
+    "desc": "End-to-end software engineering solutions from discovery to deployment. Custom app development, cloud-native solutions, DevOps, and QA automation.",
+    "link": "/solution-engineering"
+  },
+  {
+    "title": "Data Services",
+    "img": "/assets/imgs/serv-icons/4.png",
+    "desc": "Transform your data into actionable insights with comprehensive data services. From strategy and engineering to cloud solutions and security.",
+    "link": "/data-services"
   },
   {
     "title": "Workflow and Process Automation",
@@ -21,27 +27,22 @@ export const servicesData = [
     "link": "/workflow-process-automation"
   },
   {
-    "title": "Data, AI and ML",
-    "img": "/assets/imgs/serv-icons/4.png",
-    "desc": "Leverage AI, ML, and data insights to drive innovation, personalization, and smarter decision-making.  ",
-    "link": "/data-ai-ml"
-  },
-  {
     "title": "Rapid App Development",
     "img": "/assets/imgs/serv-icons/5.png",
     "desc": "Accelerate MVPs and prototypes using no-code/low-code platforms for fast, iterative product delivery.",
     "link": "/rapid-app-development"
-  },{
+  },
+  {
     "title": "Cloud and Infrastructure",
     "img": "/assets/imgs/serv-icons/5.png",
     "desc": "Deploy secure, scalable cloud environments that optimize performance, reliability, and cost-efficiency.",
     "link": "/cloud-and-infrastructure"
   },
   {
-    "title": "Integration and Interoperability",
+    "title": "System Integration",
     "img": "/assets/imgs/serv-icons/1.png",
-    "desc": "Connect systems, platforms, and data sources to create seamless, scalable, and intelligent digital ecosystems.",
-    "link": "/integration-interoperability"
+    "desc": "Connect disparate systems and applications to create seamless, integrated workflows and improved operational efficiency.",
+    "link": "/system-integration"
   },
   {
     "title": "Digital Transformation",
@@ -49,7 +50,18 @@ export const servicesData = [
     "desc": "Modernize legacy systems and processes to unlock scalability, compliance, and future-ready digital capabilities.",
     "link": "/digital-transformation"
   },
-
+  {
+    "title": "Teams as a Service",
+    "img": "/assets/imgs/serv-icons/2.png",
+    "desc": "Dedicated development teams with specialized skills and expertise for your projects. Flexible scaling options.",
+    "link": "/teams-as-a-service"
+  },
+  {
+    "title": "Fixed Cost Project",
+    "img": "/assets/imgs/serv-icons/3.png",
+    "desc": "Projects with fixed scope, timeline, and pricing for predictable costs and clear deliverables.",
+    "link": "/fixed-cost-project"
+  }
 ]
 
 function Services() {
@@ -76,7 +88,7 @@ function Services() {
                 <div className="icon mb-40 opacity-5">
                   <img src={item.img} alt="" />
                 </div>
-                <h5 className="mb-15">{item.title}</h5>
+                <h4 className="mb-15">{item.title}</h4>
                 <p>{item.desc}</p>
                 <a href={item.link} className="rmore mt-30">
                   <span className="sub-title">Read More</span>

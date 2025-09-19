@@ -29,7 +29,7 @@ export default function ClientStoriesBook() {
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-10">
             <div className="sec-head text-center mb-20">
-              <h3 className="mb-20"> Client Success Stories</h3>
+              <h2 className="mb-20"> Client Success Stories</h2>
               <p>
                 Explore how our Solutions Engineering services have transformed
                 industries, driving innovation and improving business outcomes.

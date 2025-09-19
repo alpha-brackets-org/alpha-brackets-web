@@ -13,26 +13,31 @@ const subServices = [
     img: "/assets/imgs/serv-icons/2.png",
     title: "Custom Solutions Development",
     desc: "We deliver custom software solutions, built from scratch, ensuring high performance and seamless scalability for you.",
+    link: "/custom-solutions-development",
   },
   {
     img: "/assets/imgs/serv-icons/3.png",
     title: "Data-Driven Solutions",
     desc: "Transform your data into actionable insights by collecting, analyzing, and visualizing information to drive business growth.",
+    link: "/data-driven-solutions",
   },
   {
     img: "/assets/imgs/serv-icons/3.png",
     title: "Cloud-Native Development",
     desc: "Build secure, scalable cloud environments that improve reliability, performance, and cost efficiency for your business.",
+    link: "/cloud-native-development",
   },
   {
     img: "/assets/imgs/serv-icons/3.png",
     title: "DevOps & CI/CD",
     desc: "Automate development and deployment processes to increase efficiency, reduce downtime, and accelerate delivery.",
+    link: "/devops-ci-cd",
   },
   {
     img: "/assets/imgs/serv-icons/3.png",
     title: "QA Automation & Testing",
     desc: "Ensure your software is reliable and secure using advanced testing tools and techniques tailored to your business needs.",
+    link: "/qa-automation-testing",
   },
 ];
 

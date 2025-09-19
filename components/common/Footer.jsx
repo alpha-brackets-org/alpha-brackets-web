@@ -1,11 +1,12 @@
 import React from "react";
+import { servicesData } from "../home/Services";
 
 function Footer() {
   return (
     <footer className="clean-footer crev">
       <div className="container pb-40 pt-140 ontop">
         <div className="row justify-content-between">
-          <div className="col-lg-4">
+          <div className="col-lg-3">
             <a href="/" className="mb-30 md-mb80">
               <div className="logo icon-img-100 md-mb80">
                 <img src="/assets/imgs/logo-light.png" alt="" />
@@ -25,25 +26,15 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-3">
             <div className="column md-mb50">
               <h6 className="sub-title mb-30">Services</h6>
               <ul className="rest fz-14 opacity-7">
-                <li className="mb-15">
-                  <a href="/page-about">Software Development</a>
+              {servicesData.map((item, i) => (
+                <li className="mb-15" key={i}>
+                  <a href={item.link}>{item.title}</a>
                 </li>
-                <li className="mb-15">
-                  <a href="/page-services">Digital Marketing</a>
-                </li>
-                <li className="mb-15">
-                  <a href="/blog-grid-sidebar">IT Consulting</a>
-                </li>
-                <li className="mb-15">
-                  <a href="/page-contact">IT Outsourcing</a>
-                </li>
-                <li className="mb-15">
-                  <a href="/page-about">Cloud Computing</a>
-                </li>
+              ))}
               </ul>
             </div>
           </div>
@@ -72,13 +63,13 @@ function Footer() {
               <h6 className="sub-title mb-30">Company</h6>
               <ul className="rest fz-14 opacity-7">
                 <li className="mb-15">
-                  <a href="/page-about">About Us</a>
+                  <a href="/about">About</a>
                 </li>
                 <li className="mb-15">
-                  <a href="/page-services">Careers</a>
+                  <a href="/careers">Careers</a>
                 </li>
                 <li className="mb-15">
-                  <a href="/blog-grid-sidebar">Contact Us</a>
+                  <a href="/contact">Contact</a>
                 </li>
               </ul>
             </div>
