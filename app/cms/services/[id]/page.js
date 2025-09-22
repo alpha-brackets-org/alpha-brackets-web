@@ -457,47 +457,54 @@ export default function EditServicePage() {
                   <label htmlFor="bg_image" className="form-label">
                     Background Image *
                   </label>
-                  <select
-                    className={`form-select ${
-                      errors.bg_image ? "is-invalid" : ""
-                    }`}
-                    id="bg_image"
-                    value={formData.bg_image}
-                    onChange={(e) =>
-                      handleInputChange("bg_image", e.target.value)
-                    }
-                  >
-                    <option value="">Select a background image</option>
-                    <optgroup label="Background Images">
-                      {imageOptions.backgroundImages.map((img) => (
-                        <option key={img.value} value={img.value}>
-                          {img.label}
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Pattern Images">
-                      {imageOptions.patternImages.map((img) => (
-                        <option key={img.value} value={img.value}>
-                          {img.label}
-                        </option>
-                      ))}
-                    </optgroup>
-                  </select>
-                  {errors.bg_image && (
-                    <div className="invalid-feedback">{errors.bg_image}</div>
-                  )}
-                  {formData.bg_image && (
-                    <div className="mt-2">
-                      <Image
-                        src={formData.bg_image}
-                        alt="Preview"
-                        className="img-fluid rounded"
-                        style={{ width: "350px" }}
-                        width={350}
-                        height={350}
-                      />
+                  <div className="row">
+                    <div className="col-md-6">
+                      <select
+                        className={`form-select ${
+                          errors.bg_image ? "is-invalid" : ""
+                        }`}
+                        id="bg_image"
+                        value={formData.bg_image}
+                        onChange={(e) =>
+                          handleInputChange("bg_image", e.target.value)
+                        }
+                      >
+                        <option value="">Select a background image</option>
+                        <optgroup label="Background Images">
+                          {imageOptions.backgroundImages.map((img) => (
+                            <option key={img.value} value={img.value}>
+                              {img.label}
+                            </option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="Pattern Images">
+                          {imageOptions.patternImages.map((img) => (
+                            <option key={img.value} value={img.value}>
+                              {img.label}
+                            </option>
+                          ))}
+                        </optgroup>
+                      </select>
+                      {errors.bg_image && (
+                        <div className="invalid-feedback">
+                          {errors.bg_image}
+                        </div>
+                      )}
                     </div>
-                  )}
+                    <div className="col-md-6">
+                      {formData.bg_image && (
+                        <div className="mt-2">
+                          <label className="form-label">Image Preview</label>
+                          <img
+                            src={formData.bg_image}
+                            alt="Preview"
+                            className="img-fluid rounded"
+                            style={{ maxWidth: "100%", height: "auto" }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mb-3">
@@ -608,21 +615,51 @@ export default function EditServicePage() {
                   <label htmlFor="card_icon" className="form-label">
                     Card Icon *
                   </label>
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      errors.card_icon ? "is-invalid" : ""
-                    }`}
-                    id="card_icon"
-                    value={formData.card.icon}
-                    onChange={(e) =>
-                      handleInputChange("card.icon", e.target.value)
-                    }
-                    placeholder="Icon class or URL"
-                  />
-                  {errors.card_icon && (
-                    <div className="invalid-feedback">{errors.card_icon}</div>
-                  )}
+                  <div className="row">
+                    <div className="col-md-6">
+                      <textarea
+                        className={`form-control ${
+                          errors.card_icon ? "is-invalid" : ""
+                        }`}
+                        id="card_icon"
+                        rows="4"
+                        value={formData.card.icon}
+                        onChange={(e) =>
+                          handleInputChange("card.icon", e.target.value)
+                        }
+                        placeholder="Enter SVG code or icon HTML"
+                      />
+                      {errors.card_icon && (
+                        <div className="invalid-feedback">
+                          {errors.card_icon}
+                        </div>
+                      )}
+                    </div>
+                    <div className="col-md-6">
+                      {formData.card.icon && (
+                        <div className="mt-2">
+                          <label className="form-label">Icon Preview</label>
+                          <div
+                            className="border rounded p-3 d-flex align-items-center justify-content-center"
+                            style={{
+                              backgroundColor: "#212121",
+                              borderRadius: "100%",
+                              height: "120px",
+                              width: "120px",
+                              margin: "0 auto",
+                            }}
+                          >
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: formData.card.icon,
+                              }}
+                              style={{ color: "white", fontSize: "24px" }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mb-3">
@@ -730,16 +767,16 @@ export default function EditServicePage() {
                   <div className="col-md-6 mb-3">
                     {formData.process.bg_image && (
                       <div className="mt-2">
-                        <Image
+                        <label className="form-label">Image Preview</label>
+                        <img
                           src={formData.process.bg_image}
                           alt="Preview"
                           className="img-fluid rounded"
                           style={{
-                            width: "350px",
+                            maxWidth: "100%",
+                            height: "auto",
                             backgroundColor: "black",
                           }}
-                          width={350}
-                          height={350}
                         />
                       </div>
                     )}

@@ -207,11 +207,45 @@ export default function ServiceDetailsPage() {
               </p>
 
               <h6>Card Icon</h6>
-              <p>
-                {service.card?.icon || (
-                  <span className="text-muted">Not provided</span>
-                )}
-              </p>
+              <div className="row">
+                <div className="col-md-6">
+                  <p>
+                    {service.card?.icon ? (
+                      <code
+                        style={{ fontSize: "12px", wordBreak: "break-all" }}
+                      >
+                        {service.card.icon}
+                      </code>
+                    ) : (
+                      <span className="text-muted">Not provided</span>
+                    )}
+                  </p>
+                </div>
+                <div className="col-md-6">
+                  {service.card?.icon && (
+                    <div className="mt-2">
+                      <label className="form-label">Icon Preview</label>
+                      <div
+                        className="border rounded p-3 d-flex align-items-center justify-content-center"
+                        style={{
+                          backgroundColor: "#212121",
+                          borderRadius: "100%",
+                          height: "120px",
+                          width: "120px",
+                          margin: "0 auto",
+                        }}
+                      >
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: service.card.icon,
+                          }}
+                          style={{ color: "white", fontSize: "24px" }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <h6>Read More Link</h6>
               <p>

@@ -6,6 +6,7 @@ import WhyCooseUs from "@/components/common/WhyChooseUs";
 import { notFound } from "next/navigation";
 import ServiceIntro from "@/components/common/ServiceIntro";
 import { getServiceByPragmaLinkCached } from "@/lib/cached/services";
+import { getSubServicesByParentIdCached } from "@/lib/cached/services";
 
 export async function generateMetadata({ params }) {
   const service = await getServiceByPragmaLinkCached(params.id);
@@ -29,7 +30,7 @@ export default async function ServicePage({ params }) {
     console.log("Service not found");
     notFound();
   }
-  const subServices = [];
+  const subServices = await getSubServicesByParentIdCached(service._id);
   return (
     <>
       <ServiceHeader
