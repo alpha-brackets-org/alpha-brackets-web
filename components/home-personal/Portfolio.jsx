@@ -1,39 +1,41 @@
-'use client';
-import React, { useEffect } from 'react';
+"use client";
+import React, { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Portfolio() {
   function Playing() {
     gsap.registerPlugin(ScrollTrigger);
 
-    const cards = document.querySelectorAll('.cards .card-item');
+    const cards = document.querySelectorAll(".cards .card-item");
     let stickDistance = 0;
 
     const firstCardST = ScrollTrigger.create({
       trigger: cards[0],
-      start: 'center center',
+      start: "center center",
     });
 
     const lastCardST = ScrollTrigger.create({
       trigger: cards[cards.length - 1],
-      start: 'bottom bottom',
+      start: "bottom bottom",
     });
 
     cards.forEach((card, index) => {
       const scale = 1 - (cards.length - index) * 0.025;
       const scaleDown = gsap.to(card, {
         scale: scale,
-        transformOrigin: '50% ' + (lastCardST.start + stickDistance),
+        transformOrigin: "50% " + (lastCardST.start + stickDistance),
       });
 
       ScrollTrigger.create({
         trigger: card,
-        start: 'center center',
+        start: "center center",
         end: () => lastCardST.start + stickDistance,
         pin: true,
         pinSpacing: false,
-        ease: 'none',
+        ease: "none",
         animation: scaleDown,
-        toggleActions: 'restart none none reverse',
+        toggleActions: "restart none none reverse",
       });
     });
   }

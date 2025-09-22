@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { getImageOptions } from "@/lib/imageOptions";
+import Image from "next/image";
 
 export default function EditServicePage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function EditServicePage() {
     explore_link: "",
     card: {
       intro: "",
-      icon: "",get
+      icon: "",
       read_more: "",
     },
     cta: {
@@ -487,11 +488,13 @@ export default function EditServicePage() {
                   )}
                   {formData.bg_image && (
                     <div className="mt-2">
-                      <img
+                      <Image
                         src={formData.bg_image}
                         alt="Preview"
                         className="img-fluid rounded"
-                        style={{ maxHeight: "100px" }}
+                        style={{ width: "350px" }}
+                        width={350}
+                        height={350}
                       />
                     </div>
                   )}
@@ -723,13 +726,20 @@ export default function EditServicePage() {
                         {errors.process_bg_image}
                       </div>
                     )}
+                  </div>
+                  <div className="col-md-6 mb-3">
                     {formData.process.bg_image && (
                       <div className="mt-2">
-                        <img
+                        <Image
                           src={formData.process.bg_image}
                           alt="Preview"
                           className="img-fluid rounded"
-                          style={{ maxHeight: "100px" }}
+                          style={{
+                            width: "350px",
+                            backgroundColor: "black",
+                          }}
+                          width={350}
+                          height={350}
                         />
                       </div>
                     )}

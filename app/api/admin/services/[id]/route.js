@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
-import { getServiceById, updateService, deleteService } from "@/lib/database";
-import connectDB from "@/lib/mongodb";
+import {
+  getServiceById,
+  updateService,
+  deleteService,
+} from "@/lib/repos/service-repo";
 
 export async function GET(request, { params }) {
   try {

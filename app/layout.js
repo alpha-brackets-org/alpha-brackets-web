@@ -1,4 +1,4 @@
-import LayoutComponent from "@/components/common/Layout";
+import WebLayout from "@/components/common/WebLayout";
 import { headers } from "next/headers";
 
 export const metadata = {
@@ -17,9 +17,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body>
-        {isCms ? children : <LayoutComponent>{children}</LayoutComponent>}
-      </body>
+      <body>{isCms ? children : <WebLayout>{children}</WebLayout>}</body>
     </html>
   );
 }

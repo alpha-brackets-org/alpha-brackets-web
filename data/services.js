@@ -1,4 +1,4 @@
-export default [
+const services = [
   {
     _id: "507f1f77bcf86cd799439011",
     pragma_link: "user-experience-design",
@@ -14,7 +14,7 @@ export default [
       "usability",
       "research",
     ],
-    explore_link: "/services/user-experience-design",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Design experiences that users love",
       icon: "fas fa-palette",
@@ -86,7 +86,7 @@ export default [
       "architecture",
       "integration",
     ],
-    explore_link: "/services/solution-engineering",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build solutions that drive business success",
       icon: "fas fa-cogs",
@@ -159,7 +159,7 @@ export default [
       "big data",
       "machine learning",
     ],
-    explore_link: "/services/data-services",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Transform raw data into actionable insights",
       icon: "fas fa-chart-bar",
@@ -232,7 +232,7 @@ export default [
       "RPA",
       "optimization",
     ],
-    explore_link: "/services/workflow-process-automation",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Automate processes for maximum efficiency",
       icon: "fas fa-robot",
@@ -305,7 +305,7 @@ export default [
       "mobile apps",
       "web apps",
     ],
-    explore_link: "/services/rapid-app-development",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build apps faster than ever",
       icon: "fas fa-mobile-alt",
@@ -378,7 +378,7 @@ export default [
       "DevOps",
       "scalability",
     ],
-    explore_link: "/services/cloud-and-infrastructure",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Transform your infrastructure with our cloud solutions",
       icon: "fas fa-cloud",
@@ -450,7 +450,7 @@ export default [
       "connectivity",
       "automation",
     ],
-    explore_link: "/services/system-integration",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Connect your systems seamlessly",
       icon: "fas fa-link",
@@ -522,7 +522,7 @@ export default [
       "strategy",
       "technology",
     ],
-    explore_link: "/services/digital-transformation",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Embrace the future with digital innovation",
       icon: "fas fa-rocket",
@@ -595,7 +595,7 @@ export default [
       "scalability",
       "resources",
     ],
-    explore_link: "/services/teams-as-a-service",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Scale your team instantly",
       icon: "fas fa-users",
@@ -667,7 +667,7 @@ export default [
       "predictable",
       "delivery",
     ],
-    explore_link: "/services/fixed-cost-project",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Predictable costs, guaranteed results",
       icon: "fas fa-dollar-sign",
@@ -740,7 +740,7 @@ export default [
       "stakeholder alignment",
       "product strategy",
     ],
-    explore_link: "/services/solution-engineering/discovery-workshop",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "De-risk delivery through structured discovery",
       icon: "fas fa-lightbulb",
@@ -816,7 +816,7 @@ export default [
       "analytics",
       "business intelligence",
     ],
-    explore_link: "/services/data-services/data-strategy",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Transform data into strategic advantage",
       icon: "fas fa-chart-line",
@@ -888,7 +888,7 @@ export default [
       "data infrastructure",
       "big data",
     ],
-    explore_link: "/services/data-services/data-engineering",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build robust data infrastructure",
       icon: "fas fa-database",
@@ -961,7 +961,7 @@ export default [
       "data lake",
       "data warehouse",
     ],
-    explore_link: "/services/data-services/cloud-data-services",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Scale your data with cloud solutions",
       icon: "fas fa-cloud-upload-alt",
@@ -1034,7 +1034,7 @@ export default [
       "data protection",
       "governance",
     ],
-    explore_link: "/services/data-services/data-privacy-and-security-services",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Protect your data with enterprise security",
       icon: "fas fa-shield-alt",
@@ -1107,7 +1107,7 @@ export default [
       "test automation",
       "software testing",
     ],
-    explore_link: "/services/solution-engineering/qa-automation-and-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Deliver quality software with confidence",
       icon: "fas fa-bug",
@@ -1183,7 +1183,7 @@ export default [
       "backend development",
       "full-stack",
     ],
-    explore_link: "/services/solution-engineering/custom-app-development",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build apps that fit your business perfectly",
       icon: "fas fa-code",
@@ -1256,8 +1256,7 @@ export default [
       "Vue",
       "Angular",
     ],
-    explore_link:
-      "/services/solution-engineering/custom-app-development/web-development",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build modern web applications",
       icon: "fas fa-globe",
@@ -1330,8 +1329,7 @@ export default [
       "Flutter",
       "native development",
     ],
-    explore_link:
-      "/services/solution-engineering/custom-app-development/mobile-app-development",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build mobile apps for iOS and Android",
       icon: "fas fa-mobile-alt",
@@ -1404,8 +1402,7 @@ export default [
       "Python",
       "Java",
     ],
-    explore_link:
-      "/services/solution-engineering/custom-app-development/backend-development",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Build powerful backend systems",
       icon: "fas fa-server",
@@ -1478,7 +1475,7 @@ export default [
       "infrastructure",
       "monitoring",
     ],
-    explore_link: "/services/solution-engineering/devops",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Automate and streamline your development",
       icon: "fas fa-tools",
@@ -1551,8 +1548,7 @@ export default [
       "Jest",
       "testing frameworks",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/automated-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Automate your testing for faster delivery",
       icon: "fas fa-robot",
@@ -1624,8 +1620,7 @@ export default [
       "regression testing",
       "smoke testing",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/functional-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Ensure your app works as expected",
       icon: "fas fa-check-circle",
@@ -1697,8 +1692,7 @@ export default [
       "JMeter",
       "performance optimization",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/performance-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Optimize your app's performance",
       icon: "fas fa-tachometer-alt",
@@ -1770,8 +1764,7 @@ export default [
       "OWASP",
       "security audit",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/security-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Secure your applications",
       icon: "fas fa-shield-alt",
@@ -1843,8 +1836,7 @@ export default [
       "device testing",
       "mobile QA",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/mobile-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Test mobile apps across all devices",
       icon: "fas fa-mobile-alt",
@@ -1916,8 +1908,7 @@ export default [
       "Postman",
       "API automation",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/api-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Test APIs for reliability",
       icon: "fas fa-plug",
@@ -1989,8 +1980,7 @@ export default [
       "compatibility testing",
       "web QA",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/web-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Test web apps across all browsers",
       icon: "fas fa-globe",
@@ -2062,8 +2052,7 @@ export default [
       "user research",
       "usability",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/usability-testing",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Ensure intuitive user experiences",
       icon: "fas fa-user-check",
@@ -2135,8 +2124,7 @@ export default [
       "QA strategy",
       "testing methodology",
     ],
-    explore_link:
-      "/services/solution-engineering/qa-automation-testing/qa-consulting",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Optimize your QA processes",
       icon: "fas fa-chart-line",
@@ -2208,7 +2196,7 @@ export default [
       "workflow automation",
       "business process automation",
     ],
-    explore_link: "/services/solution-engineering/qa-automation-testing/rpa",
+    explore_link: "https://youtu.be/AzwC6umvd1s",
     card: {
       intro: "Automate repetitive processes with RPA",
       icon: "fas fa-cogs",
@@ -2267,3 +2255,5 @@ export default [
     active: true,
   },
 ];
+
+export default services;

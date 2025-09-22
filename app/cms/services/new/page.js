@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getImageOptions } from "@/lib/imageOptions";
+import Image from "next/image";
 
 export default function NewServicePage() {
   const router = useRouter();
@@ -379,7 +380,7 @@ export default function NewServicePage() {
                   )}
                   {formData.bg_image && (
                     <div className="mt-2">
-                      <img
+                      <Image
                         src={formData.bg_image}
                         alt="Preview"
                         className="img-fluid rounded"
@@ -625,13 +626,20 @@ export default function NewServicePage() {
                         {errors.process_bg_image}
                       </div>
                     )}
+                  </div>
+                  <div className="col-md-6 mb-3">
                     {formData.process.bg_image && (
                       <div className="mt-2">
-                        <img
+                        <Image
                           src={formData.process.bg_image}
                           alt="Preview"
                           className="img-fluid rounded"
-                          style={{ maxWidth: "300px" }}
+                          style={{
+                            maxHeight: "350px",
+                            backgroundColor: "black",
+                          }}
+                          width={500}
+                          height={350}
                         />
                       </div>
                     )}

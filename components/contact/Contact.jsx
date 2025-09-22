@@ -1,59 +1,64 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import axios from 'axios';
-import { contactSchema } from '@/lib/schemas/contact';
+import React, { useState } from "react";
+import axios from "axios";
+import { contactSchema } from "@/lib/models/Contact";
 
 function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitMessage('');
+    setSubmitMessage("");
 
     try {
       const parsed = contactSchema.safeParse(formData);
       if (!parsed.success) {
         const flat = parsed.error.flatten();
-        const firstError = Object.values(flat.fieldErrors).flat()[0] || 'Invalid input';
+        const firstError =
+          Object.values(flat.fieldErrors).flat()[0] || "Invalid input";
         throw new Error(firstError);
       }
 
-      await axios.post('/api/contact', parsed.data);
-      setSubmitMessage('Thank you! Your message has been sent successfully.');
+      await axios.post("/api/contact", parsed.data);
+      setSubmitMessage("Thank you! Your message has been sent successfully.");
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
       });
     } catch (error) {
-      const msg = error?.response?.data?.error || error?.message || 'Request failed';
+      const msg =
+        error?.response?.data?.error || error?.message || "Request failed";
       setSubmitMessage(`Sorry, there was an error: ${msg}`);
-      console.error('Contact form error:', error);
+      console.error("Contact form error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="contact section-padding" style={{marginTop: '-240px'}}>
+    <section
+      className="contact section-padding"
+      style={{ marginTop: "-240px" }}
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-4 valign">
@@ -86,7 +91,10 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div className="col-lg-7 offset-lg-1 valign" style={{zIndex: '1000'}}>
+          <div
+            className="col-lg-7 offset-lg-1 valign"
+            style={{ zIndex: "1000" }}
+          >
             <div className="full-width">
               <div className="sec-head mb-50">
                 <h6 className="sub-title main-color mb-15">Let&lsquo;s Chat</h6>
@@ -94,14 +102,16 @@ function Contact() {
                   Send a <span className="fw-200">message.</span>
                 </h2>
               </div>
-              <form
-                id="contact-form"
-                className="form2"
-                onSubmit={handleSubmit}
-              >
+              <form id="contact-form" className="form2" onSubmit={handleSubmit}>
                 <div className="messages">
                   {submitMessage && (
-                    <div className={`alert ${submitMessage.includes('Thank you') ? 'alert-success' : 'alert-danger'}`}>
+                    <div
+                      className={`alert ${
+                        submitMessage.includes("Thank you")
+                          ? "alert-success"
+                          : "alert-danger"
+                      }`}
+                    >
                       {submitMessage}
                     </div>
                   )}
@@ -168,7 +178,7 @@ function Contact() {
                         disabled={isSubmitting}
                       >
                         <span className="text">
-                          {isSubmitting ? 'Sending...' : "Let's Talk"}
+                          {isSubmitting ? "Sending..." : "Let's Talk"}
                         </span>
                       </button>
                     </div>

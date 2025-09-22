@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
-import { getServices, createService } from "@/lib/database";
+import { getServices, createService } from "@/lib/repos/service-repo";
 
 export async function GET() {
   try {
-    const services = await getServices(); // Get all services, including inactive
+    // For CMS, fetch all services (active and inactive)
+    const services = await getServices(false);
     return NextResponse.json(services);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

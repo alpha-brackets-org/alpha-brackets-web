@@ -169,7 +169,7 @@ export default function ServiceDetailsPage() {
                         src={service.bg_image}
                         alt="Background"
                         className="img-fluid rounded"
-                        style={{ maxHeight: "200px" }}
+                        style={{ maxWidth: "300px" }}
                       />
                       <div className="mt-2">
                         <small className="text-muted">
@@ -284,7 +284,7 @@ export default function ServiceDetailsPage() {
                         src={service.process.bg_image}
                         alt="Process Background"
                         className="img-fluid rounded"
-                        style={{ maxHeight: "200px" }}
+                        style={{ maxHeight: "350px", backgroundColor: "black" }}
                       />
                       <div className="mt-2">
                         <small className="text-muted">

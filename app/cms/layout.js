@@ -4,8 +4,13 @@ import Script from "next/script";
 import Link from "next/link";
 
 export default function CmsLayout({ children }) {
-  const handleLogout = () => {
-    alert("Logout functionality to be implemented");
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      window.location.href = "/cms/login";
+    } catch (e) {
+      alert("Failed to logout");
+    }
   };
 
   return (
@@ -25,11 +30,6 @@ export default function CmsLayout({ children }) {
       {/* CMS Navigation Bar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <Link className="navbar-brand" href="/cms">
-            <i className="bi bi-gear-fill me-2"></i>
-            CMS Dashboard
-          </Link>
-
           <button
             className="navbar-toggler"
             type="button"
@@ -46,90 +46,13 @@ export default function CmsLayout({ children }) {
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <Link className="nav-link" href="/cms">
-                  <i className="bi bi-house me-1"></i>
                   Dashboard
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="bi bi-briefcase me-1"></i>
+              <li className="nav-item">
+                <Link className="nav-link" href="/cms/services">
                   Services
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" href="/cms/services">
-                      <i className="bi bi-list me-2"></i>
-                      All Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" href="/cms/services/new">
-                      <i className="bi bi-plus-circle me-2"></i>
-                      New Service
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" href="/services">
-                      <i className="bi bi-eye me-2"></i>
-                      View Public Services
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="bi bi-envelope me-1"></i>
-                  Contacts
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" href="/cms/contacts">
-                      <i className="bi bi-inbox me-2"></i>
-                      View Contacts
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="bi bi-file-text me-1"></i>
-                  Content
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" href="/cms/blogs">
-                      <i className="bi bi-newspaper me-2"></i>
-                      Blogs
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" href="/cms/projects">
-                      <i className="bi bi-folder me-2"></i>
-                      Projects
-                    </Link>
-                  </li>
-                </ul>
+                </Link>
               </li>
             </ul>
 
@@ -140,43 +63,20 @@ export default function CmsLayout({ children }) {
                   View Website
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+              <li className="nav-item">
+                <button
+                  className="nav-link"
+                  onClick={handleLogout}
+                  style={{
+                    border: "none",
+                    background: "none",
+                    width: "100%",
+                    textAlign: "left",
+                  }}
                 >
-                  <i className="bi bi-person-circle me-1"></i>
-                  Admin
-                </a>
-                <ul className="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <Link className="dropdown-item" href="/cms/settings">
-                      <i className="bi bi-gear me-2"></i>
-                      Settings
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <button
-                      className="dropdown-item"
-                      onClick={handleLogout}
-                      style={{
-                        border: "none",
-                        background: "none",
-                        width: "100%",
-                        textAlign: "left",
-                      }}
-                    >
-                      <i className="bi bi-box-arrow-right me-2"></i>
-                      Logout
-                    </button>
-                  </li>
-                </ul>
+                  <i className="bi bi-box-arrow-right me-2"></i>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>

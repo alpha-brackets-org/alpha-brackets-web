@@ -3,10 +3,8 @@ import React from "react";
 function SubServices({ subServices, noBottomPadding }) {
   return (
     <section
-    style={{marginTop: "-70px"}}
-      className={`services-crev ${
-        noBottomPadding ? "pb-0" : "pb-140"
-      }`}
+      style={{ marginTop: "-70px" }}
+      className={`services-crev ${noBottomPadding ? "pb-0" : "pb-140"}`}
     >
       <div className="container">
         <div className="row sm-marg">
@@ -19,7 +17,7 @@ function SubServices({ subServices, noBottomPadding }) {
                 <h5 className="mb-20">{item.title}</h5>
                 <p>{item.desc}</p>
                 {item.link && (
-                  <a href={item.link} className="rmore mt-30">
+                  <a href={item.pragma_link} className="rmore mt-30">
                     <span className="sub-title">Read More</span>
                     <img
                       src="/assets/imgs/arrow-right.png"

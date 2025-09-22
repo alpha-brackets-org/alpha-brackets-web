@@ -1,7 +1,6 @@
 import React from "react";
-import { servicesData } from "../home/Services";
 
-function Footer() {
+function Footer({ services }) {
   return (
     <footer className="clean-footer crev">
       <div className="container pb-40 pt-140 ontop">
@@ -30,11 +29,11 @@ function Footer() {
             <div className="column md-mb50">
               <h6 className="sub-title mb-30">Services</h6>
               <ul className="rest fz-14 opacity-7">
-              {servicesData.map((item, i) => (
-                <li className="mb-15" key={i}>
-                  <a href={item.link}>{item.title}</a>
-                </li>
-              ))}
+                {services.map((item, i) => (
+                  <li className="mb-15" key={i}>
+                    <a href={`/services/${item.pragma_link}`}>{item.title}</a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

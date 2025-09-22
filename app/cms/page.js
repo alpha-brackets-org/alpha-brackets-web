@@ -11,7 +11,7 @@ export default function CmsDashboardPage() {
         <div className="col-md-6">
           <div className="card h-100">
             <div className="card-body d-flex flex-column">
-              <h5 className="card-title">
+              <h5 className="card-title d-flex align-items-center">
                 <i className="bi bi-briefcase me-2"></i>
                 Services
               </h5>

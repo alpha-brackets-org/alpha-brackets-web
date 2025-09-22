@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import { servicesData } from "../home/Services";
 
-function Navbar() {
+function Navbar({ services }) {
   function handleScroll() {
     const bodyScroll = window.scrollY;
     const navbar = document.querySelector(".navbar");
@@ -83,9 +82,12 @@ function Navbar() {
                 <span className="rolling-text">Services</span>
               </a>
               <ul className="dropdown-menu">
-                {servicesData.map((item, i) => (
+                {services.map((item, i) => (
                   <li key={i}>
-                    <a className="dropdown-item" href={item.link}>
+                    <a
+                      className="dropdown-item"
+                      href={`/services/${item.pragma_link}`}
+                    >
                       {item.title}
                     </a>
                   </li>

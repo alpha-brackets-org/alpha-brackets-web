@@ -5,16 +5,10 @@ import ProcessTimeline from "@/components/common/ProcessTimeline";
 import WhyCooseUs from "@/components/common/WhyChooseUs";
 import { notFound } from "next/navigation";
 import ServiceIntro from "@/components/common/ServiceIntro";
-import { getServiceByPragmaLink } from "@/lib/database";
-import { cache } from "react";
-
-// Cache the service data to avoid duplicate database calls
-const getCachedService = cache(async (pragmaLink) => {
-  return await getServiceByPragmaLink(pragmaLink);
-});
+import { getServiceByPragmaLinkCached } from "@/lib/cached/services";
 
 export async function generateMetadata({ params }) {
-  const service = await getCachedService(params.id);
+  const service = await getServiceByPragmaLinkCached(params.id);
 
   if (!service) {
     return {
@@ -29,30 +23,23 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ServicePage({ params }) {
-  const service = await getCachedService(params.id);
+  const service = await getServiceByPragmaLinkCached(params.id);
 
   if (!service) {
     console.log("Service not found");
     notFound();
   }
-  // const subServices = await getSubServicesByParentId(service._id);
   const subServices = [];
   return (
     <>
       <ServiceHeader
         title={service.title}
         description={service.description}
-        videoLink={service.videoLink || "https://youtu.be/AzwC6umvd1s"}
-        bgImage={
-          service.bg_image
-            ? `${service.bg_image}`
-            : "/assets/imgs/background/b1.jpg"
-        }
+        videoLink={service.videoLink}
+        bgImage={service.bg_image}
         overlayDark="9"
       />
-
       {subServices.length > 0 && <SubServices subServices={subServices} />}
-
       <ServiceIntro />
       {service.process && (
         <ProcessTimeline
@@ -60,17 +47,11 @@ export default async function ServicePage({ params }) {
           sTitle={service.process.title_second}
           desc={service.process.desc}
           items={service.process.steps}
-          bgImage={
-            service.process.bg_image
-              ? `/assets/imgs/${service.process.bg_image}`
-              : "/assets/imgs/background/b2.jpg"
-          }
+          bgImage={service.process.bg_image}
           overlayDark="9"
         />
       )}
-
       <ClientStoriesBook />
-
       {service.why_choose_us && (
         <WhyCooseUs
           title={service.why_choose_us.title}
