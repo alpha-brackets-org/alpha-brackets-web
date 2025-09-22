@@ -1,7 +1,47 @@
 import ServiceHeader from "@/components/common/ServiceHeader";
+import SubServices from "@/components/common/SubServices";
 import ClientStoriesBook from "@/components/common/ClientStoriesBook";
 import ProcessTimeline from "@/components/common/ProcessTimeline";
 import WhyCooseUs from "@/components/common/WhyChooseUs";
+
+const subServices = [
+  {
+    img: "/assets/imgs/serv-icons/1.png",
+    title: "Custom App Development",
+    desc: "Build tailored web, mobile, and cross-platform applications using modern development practices.",
+    link: "/solution-engineering/custom-app-development",
+  },
+  {
+    img: "/assets/imgs/serv-icons/2.png",
+    title: "Backend Development",
+    desc: "Create robust backend systems, APIs, and microservices to power your custom software solutions.",
+    link: "/solution-engineering/custom-app-development/backend-development",
+  },
+  {
+    img: "/assets/imgs/serv-icons/3.png",
+    title: "Web Development",
+    desc: "Build responsive, scalable web applications using modern frameworks and best practices.",
+    link: "/solution-engineering/custom-app-development/web-development",
+  },
+  {
+    img: "/assets/imgs/serv-icons/4.png",
+    title: "Mobile App Development",
+    desc: "Develop native and cross-platform mobile applications for iOS and Android platforms.",
+    link: "/solution-engineering/custom-app-development/mobile-app-development",
+  },
+  {
+    img: "/assets/imgs/serv-icons/5.png",
+    title: "Cloud-Native Development",
+    desc: "Develop scalable, resilient applications using cloud-native technologies and microservices architecture.",
+    link: "/solution-engineering/cloud-native-development",
+  },
+  {
+    img: "/assets/imgs/serv-icons/6.png",
+    title: "System Integration",
+    desc: "Connect disparate systems and applications to create seamless, integrated workflows.",
+    link: "/system-integration",
+  },
+];
 
 const diffrentials = [
   {
@@ -55,6 +95,7 @@ export default function CustomSoftwareDevelopment() {
         bgImage="/assets/imgs/background/b1.jpg"
         overlayDark="9"
       />
+      <SubServices subServices={subServices} />
       <ProcessTimeline
         bTitle="From Requirements"
         sTitle="to Software"
