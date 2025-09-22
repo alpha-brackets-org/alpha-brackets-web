@@ -2,7 +2,7 @@
 const path = require('path');
 
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Commented out to allow dynamic routes with database
 
   reactStrictMode: false,
   sassOptions: {

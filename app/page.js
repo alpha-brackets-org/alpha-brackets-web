@@ -5,7 +5,6 @@ import Services from "@/components/home/Services";
 import Testimonials from "@/components/solutions-engineering/Testimonials";
 import Blog from "@/components/home-digital-agency/Blog";
 
-
 export default function Home() {
   return (
     <>

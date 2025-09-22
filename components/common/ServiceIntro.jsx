@@ -1,24 +1,22 @@
-import React from 'react';
+import React from "react";
 
-function Intro() {
+function ServiceIntro() {
   return (
-    <section className="intro section-padding">
+    <section
+      className="intro py-4"
+      style={{
+        marginTop: "-140px",
+        position: "relative",
+        paddingBottom: "140px!important",
+      }}
+    >
       <div className="container">
         <div className="row lg-marg">
           <div className="col-lg-8">
             <div className="row lg-marg">
               <div className="col-md-6">
                 <div>
-                  <h6 className="sub-title main-color mb-15">Description</h6>
-                  <h3 className="mb-30">
-                    We believe in the power of{' '}
-                    <span className="fw-300">individual</span>{' '}
-                    <span className="fw-300">contribution.</span>
-                  </h3>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="text">
+                  {/* <h6 className="sub-title main-color mb-15">Description</h6> */}
                   <p className="mb-15">
                     We back the founders of new forms of network, digital
                     organisations that harness the talents of individuals for
@@ -28,16 +26,17 @@ function Intro() {
                     Taken possession of my entire soul, like these sweet
                     mornings of spring which i enjoy with my whole.
                   </p>
-
-                  <div className="mt-30">
-                    <ul className="rest dot-list">
-                      <li className="mb-10">Product Design</li>
-                      <li className="mb-10">Brand Design</li>
-                      <li className="mb-10">Web & Mobile Development</li>
-                      <li className="mb-10">Graphic & Print Design</li>
-                      <li>UI/UX Design</li>
-                    </ul>
-                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text">
+                  <ul className="rest dot-list">
+                    <li className="mb-10">Product Design</li>
+                    <li className="mb-10">Brand Design</li>
+                    <li className="mb-10">Web & Mobile Development</li>
+                    <li className="mb-10">Graphic & Print Design</li>
+                    <li>UI/UX Design</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -85,4 +84,4 @@ function Intro() {
   );
 }
 
-export default Intro;
+export default ServiceIntro;

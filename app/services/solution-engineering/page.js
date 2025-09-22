@@ -99,7 +99,7 @@ export default function SolutionEngineering() {
         bgImage="/assets/imgs/background/b1.jpg"
         overlayDark="9"
       />
-      <SubServices subServices={subServices} />
+      <SubServices subServices={subServices} noBottomPadding={true} />
       <ProcessTimeline
         bTitle="From Concept"
         sTitle="to Production"
