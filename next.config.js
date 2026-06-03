@@ -1,20 +1,22 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
-const path = require('path');
 
 const nextConfig = {
-  // output: 'export', // Commented out to allow dynamic routes with database
-
   reactStrictMode: false,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'css')],
-  },
-  trailingSlash: true,
+  trailingSlash: false,
   devIndicators: {
     buildActivity: false,
   },
-  eslint: {
-    ignoreDuringBuilds: false,
+  turbopack: {
+    root: path.resolve(".."),
+  },
+
+  async redirects() {
+    return [
+      // Renamed slugs → new slugs
+    ];
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

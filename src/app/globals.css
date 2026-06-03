@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 12 98% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 75 100% 60%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 12 98% 61%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl;
+  }
+
+  h2 {
+    @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 lg:text-5xl;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight lg:text-4xl;
+  }
+
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight lg:text-3xl;
+  }
+
+  h5 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight lg:text-2xl;
+  }
+
+  h6 {
+    @apply scroll-m-20 text-base font-semibold tracking-tight lg:text-xl;
+  }
+
+  p {
+    @apply leading-7;
+  }
+
+  small {
+    @apply text-sm font-medium leading-none;
+  }
+
+  blockquote {
+    @apply mt-6 border-l-2 pl-6 italic;
+  }
+}
+
+@layer components {
+
+  /* Legacy SCSS Porter */
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  .main-bg {
+    @apply bg-background;
+  }
+
+  .sub-bg {
+    @apply bg-muted/50;
+  }
+
+  .main-color,
+  .p-color {
+    @apply text-primary;
+  }
+
+  .sub-title {
+    @apply text-sm uppercase tracking-widest font-semibold text-primary mb-4 block;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Custom Alpha Brackets Styles */
+  .full-bleed-wrapper {
+    @apply relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] flex justify-center z-[1];
+  }
+
+  .full-bleed-line {
+    @apply w-screen border-t-2 border-[#222];
+  }
+
+  .step-badge {
+    @apply bg-[#121212] text-white w-[50px] h-[50px] flex items-center justify-center p-10 rounded-full border-2 border-[#222] z-10 relative;
+  }
+
+  .logo {
+    font-family: var(--font-zain), "Zain", sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 80s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 80s linear infinite;
+}
+
+/* Remove all shadows globally */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+  filter: none !important;
+}
