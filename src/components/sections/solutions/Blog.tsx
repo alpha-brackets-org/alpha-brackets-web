@@ -20,10 +20,7 @@ function Blog({ blogs = [] }: { blogs?: CmsBlog[] }) {
               </span>
             </h2>
             <div className="ml-auto vi-more flex items-center">
-              <Link
-                href="/blogs"
-                className="butn butn-sm butn-bord radius-30"
-              >
+              <Link href="/blogs" className="butn butn-sm butn-bord radius-30">
                 <span>View All</span>
               </Link>
               <ArrowUpRight className="w-5 h-5 ml-4" />
@@ -40,7 +37,10 @@ function Blog({ blogs = [] }: { blogs?: CmsBlog[] }) {
               <div className="item md-mb50">
                 <div className="img relative aspect-[16/10] overflow-hidden rounded-[32px]">
                   <Image
-                    src={article.seo?.ogImage || `/assets/imgs/blog/${(idx % 3) + 1}.jpg`}
+                    src={
+                      article.seo?.ogImage ||
+                      `/assets/imgs/blog/${(idx % 3) + 1}.jpg`
+                    }
                     alt={article.title}
                     fill
                     className="object-cover"
@@ -49,7 +49,9 @@ function Blog({ blogs = [] }: { blogs?: CmsBlog[] }) {
                 <div className="cont pt-40">
                   <div className="info sub-title p-color d-flex align-items-center mb-15">
                     <div>
-                      <Link href={`/blogs/${article.slug}`}>By : {article.author?.name || "Alpha Brackets"}</Link>
+                      <Link href={`/blogs/${article.slug}`}>
+                        By : {article.author?.name || "Alpha Brackets"}
+                      </Link>
                     </div>
                     <div className="ml-30">
                       <Link href={`/blogs/${article.slug}`}>

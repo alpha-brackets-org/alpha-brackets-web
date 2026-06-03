@@ -45,19 +45,32 @@ function Team() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="info absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <span className="fz-12 text-primary font-bold uppercase tracking-widest">{item.subName}</span>
-                    <h6 className="fz-18 text-white font-black uppercase italic tracking-tighter">{item.name}</h6>
+                    <span className="fz-12 text-primary font-bold uppercase tracking-widest">
+                      {item.subName}
+                    </span>
+                    <h6 className="fz-18 text-white font-black uppercase italic tracking-tighter">
+                      {item.name}
+                    </h6>
                   </div>
                 </div>
                 <div className="social">
                   <div className="links">
-                    <Link href="#0" className="hover:text-primary transition-colors">
+                    <Link
+                      href="#0"
+                      className="hover:text-primary transition-colors"
+                    >
                       <Facebook className="w-4 h-4" />
                     </Link>
-                    <Link href="#0" className="hover:text-primary transition-colors">
+                    <Link
+                      href="#0"
+                      className="hover:text-primary transition-colors"
+                    >
                       <Behance className="w-4 h-4" />
                     </Link>
-                    <Link href="#0" className="hover:text-primary transition-colors">
+                    <Link
+                      href="#0"
+                      className="hover:text-primary transition-colors"
+                    >
                       <Instagram className="w-4 h-4" />
                     </Link>
                   </div>

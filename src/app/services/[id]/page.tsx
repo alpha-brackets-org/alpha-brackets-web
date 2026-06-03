@@ -87,7 +87,9 @@ export default async function ServicePage({ params }: PageProps) {
       {/* 4. Featured Case Studies — service-relevant case studies */}
       <FeaturedCaseStudies
         caseStudies={caseStudies}
-        highlight={relatedProjects.map((cs) => cs.projectTitle || cs.slug || "")}
+        highlight={relatedProjects.map(
+          (cs) => cs.projectTitle || cs.slug || ""
+        )}
         heading="Built by Alpha Brackets"
       />
 

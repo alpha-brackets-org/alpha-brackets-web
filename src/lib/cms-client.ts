@@ -1,14 +1,14 @@
-import { 
-  Blog, 
-  CaseStudy, 
-  Faq, 
-  PortfolioConfig, 
-  Testimonial, 
+import {
+  Blog,
+  CaseStudy,
+  Faq,
+  PortfolioConfig,
+  Testimonial,
   Project,
   SubscribeResponse,
   UnsubscribeResponse,
   AnalyticsCollectResponse,
-  SubmitLeadResponse
+  SubmitLeadResponse,
 } from "@/types/cms";
 
 import { headers } from "next/headers";
@@ -30,7 +30,7 @@ async function getCurrentDomain(): Promise<string | null> {
         return domain;
       }
     }
-  } catch (error) {
+  } catch {
     // headers() might throw in environments without request context (e.g. static generation)
   }
 
@@ -44,9 +44,12 @@ export async function getPortfolioConfig(): Promise<PortfolioConfig | null> {
   const domain = await getCurrentDomain();
   if (!CMS_URL || !domain) return null;
 
-  const res = await fetch(`${CMS_URL}/portfolios/config?domain=${encodeURIComponent(domain)}`, {
-    next: { revalidate: 3600, tags: [`portfolio-config-${domain}`] }
-  });
+  const res = await fetch(
+    `${CMS_URL}/portfolios/config?domain=${encodeURIComponent(domain)}`,
+    {
+      next: { revalidate: 3600, tags: [`portfolio-config-${domain}`] },
+    }
+  );
 
   if (!res.ok) return null;
   return await res.json();
@@ -87,13 +90,23 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 
 import { SubmitLeadPayload } from "@/app/actions";
 
-export async function submitLead(leadData: SubmitLeadPayload): Promise<{ success: boolean; message: string; downloadUrl: SubmitLeadResponse }> {
+export async function submitLead(
+  leadData: SubmitLeadPayload
+): Promise<{
+  success: boolean;
+  message: string;
+  downloadUrl: SubmitLeadResponse;
+}> {
   const portfolioId = await getPortfolioId();
   if (!portfolioId) throw new Error("Portfolio ID missing");
 
-  return await api.post<{ success: boolean; message: string; downloadUrl: SubmitLeadResponse }>(`/portfolios/${portfolioId}/leads`, {
+  return await api.post<{
+    success: boolean;
+    message: string;
+    downloadUrl: SubmitLeadResponse;
+  }>(`/portfolios/${portfolioId}/leads`, {
     ...leadData,
-    portfolio: portfolioId
+    portfolio: portfolioId,
   });
 }
 
@@ -101,22 +114,29 @@ export async function getProjects(): Promise<Project[]> {
   return api.get<Project[]>("/projects");
 }
 
-export async function subscribeToNewsletter(email: string): Promise<SubscribeResponse> {
+export async function subscribeToNewsletter(
+  email: string
+): Promise<SubscribeResponse> {
   const portfolioId = await getPortfolioId();
   if (!portfolioId) throw new Error("Portfolio ID missing");
 
-  return await api.post<SubscribeResponse>(`/portfolios/${portfolioId}/subscribe`, {
-    email
-  });
+  return await api.post<SubscribeResponse>(
+    `/portfolios/${portfolioId}/subscribe`,
+    {
+      email,
+    }
+  );
 }
 
-export async function unsubscribeFromNewsletter(email: string): Promise<UnsubscribeResponse> {
+export async function unsubscribeFromNewsletter(
+  email: string
+): Promise<UnsubscribeResponse> {
   const portfolioId = await getPortfolioId();
   if (!portfolioId) throw new Error("Portfolio ID missing");
 
   return await api.post<UnsubscribeResponse>("/subscribers/unsubscribe", {
     email,
-    portfolioId
+    portfolioId,
   });
 }
 
@@ -137,6 +157,6 @@ export async function collectAnalytics(eventData: {
 
   return await api.post<AnalyticsCollectResponse>("/analytics/collect", {
     ...eventData,
-    portfolio: portfolioId
+    portfolio: portfolioId,
   });
 }

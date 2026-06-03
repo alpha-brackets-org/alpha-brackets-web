@@ -41,14 +41,14 @@ export default function ProcessSegments({
   return (
     <section
       className="services section-padding relative overflow-hidden flex items-center min-h-[60vh]"
-      style={{ 
+      style={{
         backgroundImage: `url(${bgImage ?? "/assets/imgs/background/b2.jpg"})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className={`absolute inset-0 bg-black/${overlayDark}0 z-0`} />
-      
+
       <div className="container relative z-10">
         <div className="sec-head mb-80">
           <div className="d-flex align-items-center">
@@ -73,40 +73,50 @@ export default function ProcessSegments({
             </div>
           </div>
         </div>
-        <div
-          className="serv-swiper"
-        >
+        <div className="serv-swiper">
           <Swiper
             {...swiperOptions}
             id="content-carousel-container-unq-serv"
             className="swiper-container"
           >
-            {items.map((item: { title?: string; desc?: string; link?: string }, i: number) => (
-              <SwiperSlide key={i}>
-                <div className="item-box p-10 rounded-[32px] bg-white/5 border border-white/10 backdrop-blur-sm group hover:border-primary/50 transition-all duration-500">
-                  <h6 className="mb-15 text-xl font-bold">
-                    <span className="main-color font-black">
-                      {(i + 1).toString().padStart(2, "0")}.
-                    </span>{" "}
-                    {item.title}
-                  </h6>
-                  <p className="text-sm opacity-60 leading-relaxed">{item.desc}</p>
-                  {item.link && (
-                    <Link href={item.link} className="rmore mt-30 inline-flex items-center gap-2 group/link">
-                      <span className="sub-title text-xs font-black uppercase tracking-widest text-primary">Read More</span>
-                      <div className="w-5 h-5 relative transition-transform group-hover/link:translate-x-1">
-                        <Image
-                          src="/assets/icons/general/arrow-right.png"
-                          alt="Arrow Right"
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </SwiperSlide>
-            ))}
+            {items.map(
+              (
+                item: { title?: string; desc?: string; link?: string },
+                i: number
+              ) => (
+                <SwiperSlide key={i}>
+                  <div className="item-box p-10 rounded-[32px] bg-white/5 border border-white/10 backdrop-blur-sm group hover:border-primary/50 transition-all duration-500">
+                    <h6 className="mb-15 text-xl font-bold">
+                      <span className="main-color font-black">
+                        {(i + 1).toString().padStart(2, "0")}.
+                      </span>{" "}
+                      {item.title}
+                    </h6>
+                    <p className="text-sm opacity-60 leading-relaxed">
+                      {item.desc}
+                    </p>
+                    {item.link && (
+                      <Link
+                        href={item.link}
+                        className="rmore mt-30 inline-flex items-center gap-2 group/link"
+                      >
+                        <span className="sub-title text-xs font-black uppercase tracking-widest text-primary">
+                          Read More
+                        </span>
+                        <div className="w-5 h-5 relative transition-transform group-hover/link:translate-x-1">
+                          <Image
+                            src="/assets/icons/general/arrow-right.png"
+                            alt="Arrow Right"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </SwiperSlide>
+              )
+            )}
           </Swiper>
         </div>
       </div>

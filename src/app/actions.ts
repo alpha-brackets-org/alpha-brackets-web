@@ -1,11 +1,29 @@
 "use server";
 
-import { submitLead as submitLeadToCms, subscribeToNewsletter } from "@/lib/cms-client";
+import {
+  submitLead as submitLeadToCms,
+  subscribeToNewsletter,
+} from "@/lib/cms-client";
 import { Lead, SubmitLeadResponse } from "@/types/cms";
 
-export type SubmitLeadPayload = Omit<Lead, "portfolio" | "_id" | "createdAt" | "updatedAt" | "downloadedItems" | "status" | "notes"> & { notes?: Lead["notes"] };
+export type SubmitLeadPayload = Omit<
+  Lead,
+  | "portfolio"
+  | "_id"
+  | "createdAt"
+  | "updatedAt"
+  | "downloadedItems"
+  | "status"
+  | "notes"
+> & { notes?: Lead["notes"] };
 
-export async function submitLeadAction(payload: SubmitLeadPayload): Promise<{ success: boolean; message: string; downloadUrl: SubmitLeadResponse }> {
+export async function submitLeadAction(
+  payload: SubmitLeadPayload
+): Promise<{
+  success: boolean;
+  message: string;
+  downloadUrl: SubmitLeadResponse;
+}> {
   return submitLeadToCms(payload);
 }
 
@@ -14,7 +32,9 @@ export interface NewsletterActionResult {
   message: string;
 }
 
-export async function subscribeToNewsletterAction(email: string): Promise<NewsletterActionResult> {
+export async function subscribeToNewsletterAction(
+  email: string
+): Promise<NewsletterActionResult> {
   try {
     const res = await subscribeToNewsletter(email);
     return {
@@ -23,7 +43,9 @@ export async function subscribeToNewsletterAction(email: string): Promise<Newsle
     };
   } catch (error: unknown) {
     const message =
-      error instanceof Error ? error.message : "An error occurred during subscription";
+      error instanceof Error
+        ? error.message
+        : "An error occurred during subscription";
     return { success: false, message };
   }
 }

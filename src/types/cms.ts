@@ -4,3003 +4,3015 @@
  */
 
 export interface paths {
-    "/stats": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * System Health Overview
-         * @description Global system overview and asset counts across all portfolios
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Live system metrics */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Stats"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  "/stats": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/portfolios": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    /**
+     * System Health Overview
+     * @description Global system overview and asset counts across all portfolios
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Live system metrics */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Stats"];
+          };
         };
-        /**
-         * List Portfolios
-         * @description List all active portfolios and their configurations
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of portfolios */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Portfolio"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Portfolio */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Portfolio"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/portfolios/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete Portfolio */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Portfolio */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Portfolio"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/portfolios": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/portfolios/config": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    /**
+     * List Portfolios
+     * @description List all active portfolios and their configurations
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of portfolios */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Portfolio"][];
+          };
         };
-        /**
-         * Get Public Portfolio Config
-         * @description Public endpoint to fetch portfolio configuration for external sites
-         */
-        get: {
-            parameters: {
-                query?: {
-                    id?: string;
-                    domain?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Public configuration data */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            _id: string;
-                            name: string;
-                            domain: string;
-                            active: boolean;
-                            maintenanceMode: boolean;
-                            newsletterConfig: components["schemas"]["PortfolioConfig"];
-                            customScripts: {
-                                head: string;
-                                footer: string;
-                            };
-                            socialLinks: {
-                                platform: string;
-                                url: string;
-                            }[];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/users": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    put?: never;
+    /** Create Portfolio */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Portfolio"];
         };
-        /**
-         * List Users
-         * @description List authorized personnel with administrative access
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of administrative users */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["User"][];
-                    };
-                };
-            };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
         };
-        put?: never;
-        /** Authorize New User */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
-            responses: {
-                /** @description Authorized */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/users/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete User */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update User Credentials */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["User"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/portfolios/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/auth/login": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete Portfolio */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
         };
-        get?: never;
-        put?: never;
-        /**
-         * User Login
-         * @description Authenticate user and set secure cookie
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["LoginRequest"];
-                };
-            };
-            responses: {
-                /** @description Successfully authenticated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            success: boolean;
-                            user: components["schemas"]["LoginResponse"];
-                        };
-                    };
-                };
-                /** @description Invalid credentials */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
         };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/auth/forgot-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    options?: never;
+    head?: never;
+    /** Update Portfolio */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
         };
-        get?: never;
-        put?: never;
-        /**
-         * Forgot Password
-         * @description Request password reset link
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["ForgotPasswordRequest"];
-                };
-            };
-            responses: {
-                /** @description Reset link sent if email exists */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ForgotPasswordResponse"];
-                    };
-                };
-            };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Portfolio"];
         };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
     };
-    "/auth/reset-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Reset Password
-         * @description Reset password using token
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["ResetPasswordRequest"];
-                };
-            };
-            responses: {
-                /** @description Password restored successfully */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ResetPasswordResponse"];
-                    };
-                };
-                /** @description Invalid token or missing fields */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    trace?: never;
+  };
+  "/portfolios/config": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/auth/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Current User Session
-         * @description Get current logged in user session
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Current user data or null */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            user: components["schemas"]["AuthMeResponse"];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/auth/change-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Change Password
-         * @description Change password for logged in user
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["ChangePasswordRequest"];
-                };
-            };
-            responses: {
-                /** @description Password updated successfully */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ChangePasswordResponse"];
-                    };
-                };
-                /** @description Incorrect current password or missing fields */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Unauthorized */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/auth/logout": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * User Logout
-         * @description Clear authentication cookie and terminate session
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successfully logged out */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["LogoutResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/portfolios/{id}/leads": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Gated Content Lead
-         * @description Submit gated content lead. Triggers automated delivery.
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description Portfolio ID */
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Lead"];
-                };
-            };
-            responses: {
-                /** @description Lead registered and email sent */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            success: boolean;
-                            message: string;
-                            downloadUrl: components["schemas"]["SubmitLeadResponse"];
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/portfolios/{id}/subscribe": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Newsletter Opt-in
-         * @description Subscribe to a specific portfolio newsletter
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description Portfolio ID */
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        /** Format: email */
-                        email: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Subscription confirmed */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["SubscribeResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/subscribers/unsubscribe": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Newsletter Unsubscribe
-         * @description Public endpoint to unsubscribe from a portfolio newsletter
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["SubscribeRequest"];
-                };
-            };
-            responses: {
-                /** @description Successfully unsubscribed */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnsubscribeResponse"];
-                    };
-                };
-                /** @description Subscriber not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/analytics/collect": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Collect Analytics Event
-         * @description Submit an analytics event from a portfolio site
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Analytics"];
-                };
-            };
-            responses: {
-                /** @description Event tracked successfully */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["AnalyticsCollectResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/subscribers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Subscriber Directory
-         * @description Retrieve paginated list of subscribers across portfolios
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    source?: components["schemas"]["SubscriberSource"];
-                    status?: components["schemas"]["SubscriberStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Paginated subscribers */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Subscriber"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/subscribers/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete Subscriber */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Subscriber */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Subscriber"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/leads": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Leads Directory
-         * @description Retrieve paginated list of B2B Leads
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Paginated leads */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Lead"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/leads/export": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Export Leads
-         * @description Export leads as CSV file
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description CSV file download */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/csv": string;
-                    };
-                };
-                /** @description No leads found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/leads/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Lead */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The lead document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Lead"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Lead */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Lead Status/Notes */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Lead"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/campaigns": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** List Campaigns */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of newsletter campaigns */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Campaign"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Campaign */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Campaign"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/campaigns/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Campaign */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The campaign document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Campaign"];
-                    };
-                };
-                /** @description Campaign not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Campaign */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/blogs": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Blogs
-         * @description Retrieve blog posts with multi-portfolio filtering
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    /** @description Filter by Category ID or "default-uncategorized" */
-                    category?: string;
-                    status?: components["schemas"]["PublishStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Paginated blog posts */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedBlog"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Blog Post */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Blog"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/blogs/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Blog Post */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The blog post document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedBlog"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Blog Post */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Blog Post */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Blog"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/case-studies": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Case Studies
-         * @description Retrieve project case studies filtered by portfolio
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    /** @description Filter by Category ID or "default-uncategorized" */
-                    category?: string;
-                    status?: components["schemas"]["PublishStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of case studies */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedCaseStudy"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Case Study */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["CaseStudy"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/case-studies/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Case Study */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The case study document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedCaseStudy"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Case Study */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Case Study */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["CaseStudy"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/projects": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Projects
-         * @description Retrieve technical projects filtered by portfolio
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    status?: components["schemas"]["PublishStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of projects */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedProject"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Project */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Project"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/projects/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Project */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The project document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedProject"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Project */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Project */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Project"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/faqs": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List FAQs
-         * @description Retrieve FAQs with multi-portfolio filtering
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    status?: components["schemas"]["PublishStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Paginated FAQs */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Faq"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create FAQ */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Faq"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/faqs/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single FAQ */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The FAQ document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Faq"];
-                    };
-                };
-                /** @description FAQ not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete FAQ */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update FAQ */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Faq"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/testimonials": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Testimonials
-         * @description Retrieve testimonials with multi-portfolio filtering
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    status?: components["schemas"]["TestimonialStatus"];
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Paginated testimonials */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedTestimonial"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Testimonial */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Testimonial"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            id: string;
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testimonials/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Single Testimonial */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description The testimonial document */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["PopulatedTestimonial"];
-                    };
-                };
-                /** @description Testimonial not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        /** Delete Testimonial */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            success: boolean;
-                        };
-                    };
-                };
-                /** @description Testimonial not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Testimonial */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": {
-                        name?: string;
-                        role?: string | null;
-                        company?: string | null;
-                        avatar?: string | null;
-                        content?: string;
-                        /** @default 5 */
-                        rating?: number;
-                        status?: components["schemas"]["TestimonialStatus"];
-                        /** @default false */
-                        featured?: boolean;
-                        /** @default 0 */
-                        order?: number;
-                        sourceUrl?: string | null;
-                        platform?: string | null;
-                        portfolio?: string;
-                        _id?: string;
-                        createdAt?: string;
-                        updatedAt?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            success: boolean;
-                        };
-                    };
-                };
-                /** @description Testimonial not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/media/auth": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * ImageKit Auth Params
-         * @description Generate authentication parameters for client-side ImageKit uploads
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Authentication parameters */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["MediaAuthResponse"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/media/upload": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Upload & Register Media
-         * @description Industrial proxy for ImageKit uploads with automatic DB registration
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "multipart/form-data": {
-                        file?: components["schemas"]["MediaUploadRequest"];
-                        portfolio: string;
-                        virtualFolder?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Uploaded */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/media/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete Media Asset */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Media Metadata */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Media"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/categories": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Categories
-         * @description Manage categories and tagging structures
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of categories */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Category"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create Category */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Category"];
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/categories/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete Category */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Deleted */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        /** Update Category */
-        patch: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["Category"];
-                };
-            };
-            responses: {
-                /** @description Updated */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        trace?: never;
-    };
-    "/media": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Media Library
-         * @description Retrieve and filter centralized media assets
-         */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description Page number */
-                    page?: string;
-                    /** @description Items per page */
-                    limit?: string;
-                    /** @description Filter by Portfolio ID for data isolation */
-                    portfolio?: string;
-                    /** @description Global text search (Titles, Slugs, Excerpts) */
-                    search?: string;
-                    mimeType?: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description List of media files */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["Media"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-}
-export type webhooks = Record<string, never>;
-export interface components {
-    schemas: {
-        Blog: {
-            title: string;
-            slug: string;
-            content?: string | null;
-            excerpt?: string | null;
-            author?: {
-                name: string;
-                image?: string | null;
-            } | null;
-            category?: string | null;
-            tags?: {
-                tag: string;
-                id?: string | null;
-            }[] | null;
-            status?: components["schemas"]["PublishStatus"];
-            publishedAt?: string | null;
-            /** @default false */
-            featured: boolean;
-            readTime?: string | null;
-            seo?: {
-                metaTitle?: string | null;
-                metaDescription?: string | null;
-                keywords?: string | null;
-                ogImage?: string | null;
-            } | null;
-            portfolio: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
-        };
-        /**
-         * @default draft
-         * @enum {string}
-         */
-        PublishStatus: PublishStatus;
-        PopulatedBlog: components["schemas"]["Blog"] & {
-            category?: {
-                _id: string;
-                name: string;
-                slug: string;
-            } | null;
-            portfolio?: {
-                _id: string;
-                name: string;
-                domain?: string;
-            } | null;
-        };
-        CaseStudy: {
-            projectTitle: string;
-            slug: string;
-            client?: string | null;
-            industry?: string | null;
-            /** @default [] */
-            services: string[];
-            year?: string | null;
-            category?: string | null;
-            content: string;
-            excerpt?: string | null;
-            readTime?: string | null;
-            coverImage?: string | null;
-            tags?: {
-                tag: string;
-                id?: string | null;
-            }[] | null;
-            status?: components["schemas"]["PublishStatus"];
-            /** @default false */
-            featured: boolean;
-            pdfUrl?: string | null;
-            seo?: {
-                metaTitle?: string | null;
-                metaDescription?: string | null;
-                keywords?: string | null;
-                ogImage?: string | null;
-            } | null;
-            portfolio: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
-        };
-        PopulatedCaseStudy: components["schemas"]["CaseStudy"] & {
-            category?: {
-                _id: string;
-                name: string;
-                slug: string;
-            } | null;
-            portfolio?: {
-                _id: string;
-                name: string;
-                domain?: string;
-            } | null;
-        };
-        Project: {
-            title: string;
-            slug: string;
-            excerpt?: string | null;
-            description?: string | null;
-            /** @default [] */
-            techStack: string[];
-            projectType?: string | null;
-            /** Format: uri */
-            liveUrl?: string | null;
-            /** Format: uri */
-            repoUrl?: string | null;
-            thumbnail?: string | null;
-            /** @default [] */
-            gallery: string[];
-            status?: components["schemas"]["PublishStatus"];
-            /** @default false */
-            featured: boolean;
-            category?: string | null;
-            seo?: {
-                metaTitle?: string | null;
-                metaDescription?: string | null;
-                keywords?: string | null;
-                ogImage?: string | null;
-            } | null;
-            portfolio: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
-        };
-        PopulatedProject: components["schemas"]["Project"] & {
-            category?: {
-                _id: string;
-                name: string;
-                slug: string;
-            } | null;
-            portfolio?: {
-                _id: string;
-                name: string;
-                domain?: string;
-            } | null;
-        };
-        Media: {
-            filename: string;
-            imageKitUrl: string;
-            imageKitFileId: string;
-            mimeType: string;
-            filesize: number;
-            width?: number;
-            height?: number;
-            altText?: string;
-            folder?: components["schemas"]["MediaFolder"];
-            /** @default [] */
-            tags: string[];
-            portfolio: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
-        };
-        /**
-         * @default unorganized
-         * @enum {string}
-         */
-        MediaFolder: MediaFolder;
-        Portfolio: {
-            name: string;
-            domain: string;
-            /** @default true */
-            active: boolean;
-            newsletterConfig?: {
-                senderName?: string | null;
-                senderEmail?: string | null;
-                replyTo?: string | null;
-                accentColor?: string | null;
-                logoUrl?: string | null;
-                footerText?: string | null;
-            } | null;
-            smtpConfig?: {
-                host?: string | null;
-                port?: number | null;
-                user?: string | null;
-                pass?: string | null;
-                /** @default false */
-                secure: boolean;
-            } | null;
-            customScripts?: {
-                head?: string | null;
-                footer?: string | null;
-            } | null;
-            /** @default [] */
-            socialLinks: {
+    /**
+     * Get Public Portfolio Config
+     * @description Public endpoint to fetch portfolio configuration for external sites
+     */
+    get: {
+      parameters: {
+        query?: {
+          id?: string;
+          domain?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Public configuration data */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              _id: string;
+              name: string;
+              domain: string;
+              active: boolean;
+              maintenanceMode: boolean;
+              newsletterConfig: components["schemas"]["PortfolioConfig"];
+              customScripts: {
+                head: string;
+                footer: string;
+              };
+              socialLinks: {
                 platform: string;
                 url: string;
-            }[];
-            /** @default false */
-            maintenanceMode: boolean;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+              }[];
+            };
+          };
         };
-        User: {
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/users": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Users
+     * @description List authorized personnel with administrative access
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of administrative users */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["User"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Authorize New User */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["User"];
+        };
+      };
+      responses: {
+        /** @description Authorized */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/users/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete User */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update User Credentials */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["User"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/auth/login": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * User Login
+     * @description Authenticate user and set secure cookie
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["LoginRequest"];
+        };
+      };
+      responses: {
+        /** @description Successfully authenticated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              success: boolean;
+              user: components["schemas"]["LoginResponse"];
+            };
+          };
+        };
+        /** @description Invalid credentials */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/auth/forgot-password": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Forgot Password
+     * @description Request password reset link
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["ForgotPasswordRequest"];
+        };
+      };
+      responses: {
+        /** @description Reset link sent if email exists */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["ForgotPasswordResponse"];
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/auth/reset-password": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Reset Password
+     * @description Reset password using token
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["ResetPasswordRequest"];
+        };
+      };
+      responses: {
+        /** @description Password restored successfully */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["ResetPasswordResponse"];
+          };
+        };
+        /** @description Invalid token or missing fields */
+        400: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/auth/me": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Current User Session
+     * @description Get current logged in user session
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Current user data or null */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              user: components["schemas"]["AuthMeResponse"];
+            };
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/auth/change-password": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Change Password
+     * @description Change password for logged in user
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["ChangePasswordRequest"];
+        };
+      };
+      responses: {
+        /** @description Password updated successfully */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["ChangePasswordResponse"];
+          };
+        };
+        /** @description Incorrect current password or missing fields */
+        400: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+        /** @description Unauthorized */
+        401: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/auth/logout": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * User Logout
+     * @description Clear authentication cookie and terminate session
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Successfully logged out */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["LogoutResponse"];
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/portfolios/{id}/leads": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Gated Content Lead
+     * @description Submit gated content lead. Triggers automated delivery.
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description Portfolio ID */
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Lead"];
+        };
+      };
+      responses: {
+        /** @description Lead registered and email sent */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              success: boolean;
+              message: string;
+              downloadUrl: components["schemas"]["SubmitLeadResponse"];
+            };
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/portfolios/{id}/subscribe": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Newsletter Opt-in
+     * @description Subscribe to a specific portfolio newsletter
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description Portfolio ID */
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": {
             /** Format: email */
             email: string;
-            role?: components["schemas"]["UserRole"];
-            /** @default [] */
-            portfolios: string[];
-            password?: string;
-            resetToken?: string;
-            /** Format: date-time */
-            resetTokenExpiry?: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+          };
         };
-        /**
-         * @default viewer
-         * @enum {string}
-         */
-        UserRole: UserRole;
-        Category: {
-            name: string;
-            slug: string;
-            portfolio: string;
-            isDefault?: boolean;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+      };
+      responses: {
+        /** @description Subscription confirmed */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["SubscribeResponse"];
+          };
         };
-        Subscriber: {
-            /** Format: email */
-            email: string;
-            portfolio: string;
-            status?: components["schemas"]["SubscriberStatus"];
-            source?: components["schemas"]["SubscriberSource"];
-            subscribedAt?: string;
-            /** @default [] */
-            downloadHistory: string[];
-            intent?: string | null;
-            metadata?: {
-                [key: string]: unknown;
-            } | null;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/subscribers/unsubscribe": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Newsletter Unsubscribe
+     * @description Public endpoint to unsubscribe from a portfolio newsletter
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["SubscribeRequest"];
         };
-        /**
-         * @default active
-         * @enum {string}
-         */
-        SubscriberStatus: SubscriberStatus;
-        /**
-         * @default newsletter
-         * @enum {string}
-         */
-        SubscriberSource: SubscriberSource;
-        Lead: {
-            firstName: string;
-            lastName: string;
-            /** Format: email */
-            email: string;
-            company?: string | null;
-            jobTitle?: string | null;
-            phone?: string | null;
-            source?: components["schemas"]["LeadSource"];
-            /** @default [] */
-            downloadedItems: string[];
-            status?: components["schemas"]["LeadStatus"];
-            /** @default [] */
-            notes: {
-                content: string;
-                adminName?: string;
-                createdAt?: string;
-            }[];
-            portfolio: string;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+      };
+      responses: {
+        /** @description Successfully unsubscribed */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["UnsubscribeResponse"];
+          };
         };
-        /**
-         * @default case_study
-         * @enum {string}
-         */
-        LeadSource: LeadSource;
-        /**
-         * @default new
-         * @enum {string}
-         */
-        LeadStatus: LeadStatus;
-        Campaign: {
-            title: string;
-            subject: string;
-            content: string;
-            portfolio: string;
-            status?: components["schemas"]["PublishStatus"];
-            /** @default 0 */
-            recipientCount: number;
-            sentAt?: string | null;
-            stats?: {
-                /** @default 0 */
-                opens: number;
-                /** @default 0 */
-                clicks: number;
-            } | null;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+        /** @description Subscriber not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
         };
-        Faq: {
-            question: string;
-            answer: string;
-            portfolio: string;
-            status?: components["schemas"]["PublishStatus"];
-            /** @default 0 */
-            order: number;
-            group?: string | null;
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/analytics/collect": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Collect Analytics Event
+     * @description Submit an analytics event from a portfolio site
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Analytics"];
         };
-        Testimonial: {
-            name: string;
+      };
+      responses: {
+        /** @description Event tracked successfully */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["AnalyticsCollectResponse"];
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/subscribers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Subscriber Directory
+     * @description Retrieve paginated list of subscribers across portfolios
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          source?: components["schemas"]["SubscriberSource"];
+          status?: components["schemas"]["SubscriberStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Paginated subscribers */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Subscriber"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/subscribers/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete Subscriber */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Subscriber */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Subscriber"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/leads": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Leads Directory
+     * @description Retrieve paginated list of B2B Leads
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Paginated leads */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Lead"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/leads/export": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Export Leads
+     * @description Export leads as CSV file
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description CSV file download */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "text/csv": string;
+          };
+        };
+        /** @description No leads found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/leads/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Lead */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The lead document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Lead"];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Lead */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Lead Status/Notes */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Lead"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/campaigns": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Campaigns */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of newsletter campaigns */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Campaign"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Campaign */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Campaign"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/campaigns/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Campaign */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The campaign document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Campaign"];
+          };
+        };
+        /** @description Campaign not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Campaign */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/blogs": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Blogs
+     * @description Retrieve blog posts with multi-portfolio filtering
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          /** @description Filter by Category ID or "default-uncategorized" */
+          category?: string;
+          status?: components["schemas"]["PublishStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Paginated blog posts */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedBlog"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Blog Post */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Blog"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/blogs/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Blog Post */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The blog post document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedBlog"];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Blog Post */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Blog Post */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Blog"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/case-studies": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Case Studies
+     * @description Retrieve project case studies filtered by portfolio
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          /** @description Filter by Category ID or "default-uncategorized" */
+          category?: string;
+          status?: components["schemas"]["PublishStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of case studies */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedCaseStudy"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Case Study */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["CaseStudy"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/case-studies/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Case Study */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The case study document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedCaseStudy"];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Case Study */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Case Study */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["CaseStudy"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/projects": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Projects
+     * @description Retrieve technical projects filtered by portfolio
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          status?: components["schemas"]["PublishStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of projects */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedProject"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Project */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Project"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/projects/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Project */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The project document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedProject"];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Project */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Project */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Project"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/faqs": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List FAQs
+     * @description Retrieve FAQs with multi-portfolio filtering
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          status?: components["schemas"]["PublishStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Paginated FAQs */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Faq"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create FAQ */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Faq"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/faqs/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single FAQ */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The FAQ document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Faq"];
+          };
+        };
+        /** @description FAQ not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete FAQ */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update FAQ */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Faq"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/testimonials": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Testimonials
+     * @description Retrieve testimonials with multi-portfolio filtering
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          status?: components["schemas"]["TestimonialStatus"];
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Paginated testimonials */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedTestimonial"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Testimonial */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Testimonial"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              id: string;
+            };
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/testimonials/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Single Testimonial */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description The testimonial document */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["PopulatedTestimonial"];
+          };
+        };
+        /** @description Testimonial not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    /** Delete Testimonial */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              success: boolean;
+            };
+          };
+        };
+        /** @description Testimonial not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Testimonial */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": {
+            name?: string;
             role?: string | null;
             company?: string | null;
             avatar?: string | null;
-            content: string;
+            content?: string;
             /** @default 5 */
-            rating: number;
+            rating?: number;
             status?: components["schemas"]["TestimonialStatus"];
             /** @default false */
-            featured: boolean;
+            featured?: boolean;
             /** @default 0 */
-            order: number;
+            order?: number;
             sourceUrl?: string | null;
             platform?: string | null;
-            portfolio: string;
+            portfolio?: string;
             _id?: string;
             createdAt?: string;
             updatedAt?: string;
+          };
         };
-        /**
-         * @default published
-         * @enum {string}
-         */
-        TestimonialStatus: TestimonialStatus;
-        PopulatedTestimonial: components["schemas"]["Testimonial"] & {
-            portfolio?: {
-                _id: string;
-                name: string;
-                domain?: string;
-            } | null;
-        };
-        Analytics: {
-            portfolio: string;
-            event: components["schemas"]["AnalyticsEvent"];
-            path: string;
-            visitorId: string;
-            /** @default 0 */
-            duration: number;
-            metadata?: {
-                browser?: string;
-                os?: string;
-                device?: string;
-                country?: string;
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": {
+              success: boolean;
             };
-            _id?: string;
-            createdAt?: string;
-            updatedAt?: string;
+          };
         };
-        /** @enum {string} */
-        AnalyticsEvent: AnalyticsEvent;
-        SystemStats: {
-            blogs: number;
-            blogsTrend: string;
-            projects: number;
-            projectsTrend: string;
-            media: number;
-            mediaTrend: string;
-            portfolios: number;
-            portfoliosTrend: string;
-            categories?: number;
-            users?: number;
-            campaigns?: number;
-            analytics?: number;
-            breakdown?: {
-                _id: string;
-                name: string;
-                blogCount: number;
-                projectCount: number;
-                visitorCount?: number;
-            }[];
-            traffic?: {
-                totalSessions: number;
-                averageDuration: number;
-                bounceRate: number;
-            };
-            leadsMonthly?: {
-                month: string;
-                count: number;
-            }[];
-            totalVisitors?: number;
-            totalLeads?: number;
-            conversionRate?: number;
+        /** @description Testimonial not found */
+        404: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
         };
-        SEOMetadata: {
-            metaTitle?: string | null;
-            metaDescription?: string | null;
-            keywords?: string | null;
-            ogImage?: string | null;
-        };
-        PortfolioConfig: {
-            _id: string;
-            name: string;
-            domain: string;
-            active: boolean;
-            maintenanceMode: boolean;
-            newsletterConfig: components["schemas"]["PortfolioConfig"];
-            customScripts: {
-                head: string;
-                footer: string;
-            };
-            socialLinks: {
-                platform: string;
-                url: string;
-            }[];
-        };
-        Stats: {
-            blogs: number;
-            blogsTrend: string;
-            projects: number;
-            projectsTrend: string;
-            media: number;
-            mediaTrend: string;
-            portfolios: number;
-            portfoliosTrend: string;
-            categories?: number;
-            users?: number;
-            campaigns?: number;
-            analytics?: number;
-            breakdown?: {
-                _id: string;
-                name: string;
-                blogCount: number;
-                projectCount: number;
-                visitorCount?: number;
-            }[];
-            traffic?: {
-                totalSessions: number;
-                averageDuration: number;
-                bounceRate: number;
-            };
-            leadsMonthly?: {
-                month: string;
-                count: number;
-            }[];
-            totalVisitors?: number;
-            totalLeads?: number;
-            conversionRate?: number;
-        };
-        LoginResponse: {
-            _id: string;
-            email: string;
-            role: string;
-        };
-        LoginRequest: {
-            /** Format: email */
-            email: string;
-            password: string;
-        };
-        ForgotPasswordResponse: {
-            success: boolean;
-            message: string;
-        };
-        ForgotPasswordRequest: {
-            /** Format: email */
-            email: string;
-        };
-        ResetPasswordResponse: {
-            success: boolean;
-            message: string;
-        };
-        ResetPasswordRequest: {
-            token: string;
-            password: string;
-        };
-        AuthMeResponse: {
-            _id: string;
-            email: string;
-            role: string;
-            portfolios: string[];
-        } | null;
-        ChangePasswordResponse: {
-            success: boolean;
-            message: string;
-        };
-        ChangePasswordRequest: {
-            currentPassword: string;
-            newPassword: string;
-        };
-        LogoutResponse: {
-            success: boolean;
-        };
-        /**
-         * @description Direct link to the requested case study
-         * @example https://saadqadir.com/case-study/healthline-platform
-         */
-        SubmitLeadResponse: string;
-        SubscribeResponse: {
-            success: boolean;
-        };
-        UnsubscribeResponse: {
-            success: boolean;
-            message: string;
-        };
-        SubscribeRequest: {
-            /** Format: email */
-            email: string;
-            portfolioId: string;
-        };
-        AnalyticsCollectResponse: {
-            tracked: boolean;
-        };
-        MediaAuthResponse: {
-            token: string;
-            expire: number;
-            signature: string;
-        };
-        /** Format: binary */
-        MediaUploadRequest: string;
+      };
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    trace?: never;
+  };
+  "/media/auth": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * ImageKit Auth Params
+     * @description Generate authentication parameters for client-side ImageKit uploads
+     */
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Authentication parameters */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["MediaAuthResponse"];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/media/upload": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Upload & Register Media
+     * @description Industrial proxy for ImageKit uploads with automatic DB registration
+     */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "multipart/form-data": {
+            file?: components["schemas"]["MediaUploadRequest"];
+            portfolio: string;
+            virtualFolder?: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Uploaded */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/media/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete Media Asset */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Media Metadata */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Media"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/categories": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Categories
+     * @description Manage categories and tagging structures
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of categories */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Category"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    /** Create Category */
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Category"];
+        };
+      };
+      responses: {
+        /** @description Created */
+        201: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/categories/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete Category */
+    delete: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description Deleted */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    options?: never;
+    head?: never;
+    /** Update Category */
+    patch: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          id: string;
+        };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          "application/json": components["schemas"]["Category"];
+        };
+      };
+      responses: {
+        /** @description Updated */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
+    };
+    trace?: never;
+  };
+  "/media": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List Media Library
+     * @description Retrieve and filter centralized media assets
+     */
+    get: {
+      parameters: {
+        query?: {
+          /** @description Page number */
+          page?: string;
+          /** @description Items per page */
+          limit?: string;
+          /** @description Filter by Portfolio ID for data isolation */
+          portfolio?: string;
+          /** @description Global text search (Titles, Slugs, Excerpts) */
+          search?: string;
+          mimeType?: string;
+        };
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description List of media files */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            "application/json": components["schemas"]["Media"][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
-export type Blog = components['schemas']['Blog'];
-export type PopulatedBlog = components['schemas']['PopulatedBlog'];
-export type CaseStudy = components['schemas']['CaseStudy'];
-export type PopulatedCaseStudy = components['schemas']['PopulatedCaseStudy'];
-export type Project = components['schemas']['Project'];
-export type PopulatedProject = components['schemas']['PopulatedProject'];
-export type Media = components['schemas']['Media'];
-export type Portfolio = components['schemas']['Portfolio'];
-export type User = components['schemas']['User'];
-export type Category = components['schemas']['Category'];
-export type Subscriber = components['schemas']['Subscriber'];
-export type Lead = components['schemas']['Lead'];
-export type Campaign = components['schemas']['Campaign'];
-export type Faq = components['schemas']['Faq'];
-export type Testimonial = components['schemas']['Testimonial'];
-export type PopulatedTestimonial = components['schemas']['PopulatedTestimonial'];
-export type Analytics = components['schemas']['Analytics'];
-export type SystemStats = components['schemas']['SystemStats'];
-export type SEOMetadata = components['schemas']['SEOMetadata'];
-export type PortfolioConfig = components['schemas']['PortfolioConfig'];
-export type Stats = components['schemas']['Stats'];
-export type LoginResponse = components['schemas']['LoginResponse'];
-export type LoginRequest = components['schemas']['LoginRequest'];
-export type ForgotPasswordResponse = components['schemas']['ForgotPasswordResponse'];
-export type ForgotPasswordRequest = components['schemas']['ForgotPasswordRequest'];
-export type ResetPasswordResponse = components['schemas']['ResetPasswordResponse'];
-export type ResetPasswordRequest = components['schemas']['ResetPasswordRequest'];
-export type AuthMeResponse = components['schemas']['AuthMeResponse'];
-export type ChangePasswordResponse = components['schemas']['ChangePasswordResponse'];
-export type ChangePasswordRequest = components['schemas']['ChangePasswordRequest'];
-export type LogoutResponse = components['schemas']['LogoutResponse'];
-export type SubmitLeadResponse = components['schemas']['SubmitLeadResponse'];
-export type SubscribeResponse = components['schemas']['SubscribeResponse'];
-export type UnsubscribeResponse = components['schemas']['UnsubscribeResponse'];
-export type SubscribeRequest = components['schemas']['SubscribeRequest'];
-export type AnalyticsCollectResponse = components['schemas']['AnalyticsCollectResponse'];
-export type MediaAuthResponse = components['schemas']['MediaAuthResponse'];
-export type MediaUploadRequest = components['schemas']['MediaUploadRequest'];
+export type webhooks = Record<string, never>;
+export interface components {
+  schemas: {
+    Blog: {
+      title: string;
+      slug: string;
+      content?: string | null;
+      excerpt?: string | null;
+      author?: {
+        name: string;
+        image?: string | null;
+      } | null;
+      category?: string | null;
+      tags?:
+        | {
+            tag: string;
+            id?: string | null;
+          }[]
+        | null;
+      status?: components["schemas"]["PublishStatus"];
+      publishedAt?: string | null;
+      /** @default false */
+      featured: boolean;
+      readTime?: string | null;
+      seo?: {
+        metaTitle?: string | null;
+        metaDescription?: string | null;
+        keywords?: string | null;
+        ogImage?: string | null;
+      } | null;
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default draft
+     * @enum {string}
+     */
+    PublishStatus: PublishStatus;
+    PopulatedBlog: components["schemas"]["Blog"] & {
+      category?: {
+        _id: string;
+        name: string;
+        slug: string;
+      } | null;
+      portfolio?: {
+        _id: string;
+        name: string;
+        domain?: string;
+      } | null;
+    };
+    CaseStudy: {
+      projectTitle: string;
+      slug: string;
+      client?: string | null;
+      industry?: string | null;
+      /** @default [] */
+      services: string[];
+      year?: string | null;
+      category?: string | null;
+      content: string;
+      excerpt?: string | null;
+      readTime?: string | null;
+      coverImage?: string | null;
+      tags?:
+        | {
+            tag: string;
+            id?: string | null;
+          }[]
+        | null;
+      status?: components["schemas"]["PublishStatus"];
+      /** @default false */
+      featured: boolean;
+      pdfUrl?: string | null;
+      seo?: {
+        metaTitle?: string | null;
+        metaDescription?: string | null;
+        keywords?: string | null;
+        ogImage?: string | null;
+      } | null;
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    PopulatedCaseStudy: components["schemas"]["CaseStudy"] & {
+      category?: {
+        _id: string;
+        name: string;
+        slug: string;
+      } | null;
+      portfolio?: {
+        _id: string;
+        name: string;
+        domain?: string;
+      } | null;
+    };
+    Project: {
+      title: string;
+      slug: string;
+      excerpt?: string | null;
+      description?: string | null;
+      /** @default [] */
+      techStack: string[];
+      projectType?: string | null;
+      /** Format: uri */
+      liveUrl?: string | null;
+      /** Format: uri */
+      repoUrl?: string | null;
+      thumbnail?: string | null;
+      /** @default [] */
+      gallery: string[];
+      status?: components["schemas"]["PublishStatus"];
+      /** @default false */
+      featured: boolean;
+      category?: string | null;
+      seo?: {
+        metaTitle?: string | null;
+        metaDescription?: string | null;
+        keywords?: string | null;
+        ogImage?: string | null;
+      } | null;
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    PopulatedProject: components["schemas"]["Project"] & {
+      category?: {
+        _id: string;
+        name: string;
+        slug: string;
+      } | null;
+      portfolio?: {
+        _id: string;
+        name: string;
+        domain?: string;
+      } | null;
+    };
+    Media: {
+      filename: string;
+      imageKitUrl: string;
+      imageKitFileId: string;
+      mimeType: string;
+      filesize: number;
+      width?: number;
+      height?: number;
+      altText?: string;
+      folder?: components["schemas"]["MediaFolder"];
+      /** @default [] */
+      tags: string[];
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default unorganized
+     * @enum {string}
+     */
+    MediaFolder: MediaFolder;
+    Portfolio: {
+      name: string;
+      domain: string;
+      /** @default true */
+      active: boolean;
+      newsletterConfig?: {
+        senderName?: string | null;
+        senderEmail?: string | null;
+        replyTo?: string | null;
+        accentColor?: string | null;
+        logoUrl?: string | null;
+        footerText?: string | null;
+      } | null;
+      smtpConfig?: {
+        host?: string | null;
+        port?: number | null;
+        user?: string | null;
+        pass?: string | null;
+        /** @default false */
+        secure: boolean;
+      } | null;
+      customScripts?: {
+        head?: string | null;
+        footer?: string | null;
+      } | null;
+      /** @default [] */
+      socialLinks: {
+        platform: string;
+        url: string;
+      }[];
+      /** @default false */
+      maintenanceMode: boolean;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    User: {
+      /** Format: email */
+      email: string;
+      role?: components["schemas"]["UserRole"];
+      /** @default [] */
+      portfolios: string[];
+      password?: string;
+      resetToken?: string;
+      /** Format: date-time */
+      resetTokenExpiry?: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default viewer
+     * @enum {string}
+     */
+    UserRole: UserRole;
+    Category: {
+      name: string;
+      slug: string;
+      portfolio: string;
+      isDefault?: boolean;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    Subscriber: {
+      /** Format: email */
+      email: string;
+      portfolio: string;
+      status?: components["schemas"]["SubscriberStatus"];
+      source?: components["schemas"]["SubscriberSource"];
+      subscribedAt?: string;
+      /** @default [] */
+      downloadHistory: string[];
+      intent?: string | null;
+      metadata?: {
+        [key: string]: unknown;
+      } | null;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default active
+     * @enum {string}
+     */
+    SubscriberStatus: SubscriberStatus;
+    /**
+     * @default newsletter
+     * @enum {string}
+     */
+    SubscriberSource: SubscriberSource;
+    Lead: {
+      firstName: string;
+      lastName: string;
+      /** Format: email */
+      email: string;
+      company?: string | null;
+      jobTitle?: string | null;
+      phone?: string | null;
+      source?: components["schemas"]["LeadSource"];
+      /** @default [] */
+      downloadedItems: string[];
+      status?: components["schemas"]["LeadStatus"];
+      /** @default [] */
+      notes: {
+        content: string;
+        adminName?: string;
+        createdAt?: string;
+      }[];
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default case_study
+     * @enum {string}
+     */
+    LeadSource: LeadSource;
+    /**
+     * @default new
+     * @enum {string}
+     */
+    LeadStatus: LeadStatus;
+    Campaign: {
+      title: string;
+      subject: string;
+      content: string;
+      portfolio: string;
+      status?: components["schemas"]["PublishStatus"];
+      /** @default 0 */
+      recipientCount: number;
+      sentAt?: string | null;
+      stats?: {
+        /** @default 0 */
+        opens: number;
+        /** @default 0 */
+        clicks: number;
+      } | null;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    Faq: {
+      question: string;
+      answer: string;
+      portfolio: string;
+      status?: components["schemas"]["PublishStatus"];
+      /** @default 0 */
+      order: number;
+      group?: string | null;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    Testimonial: {
+      name: string;
+      role?: string | null;
+      company?: string | null;
+      avatar?: string | null;
+      content: string;
+      /** @default 5 */
+      rating: number;
+      status?: components["schemas"]["TestimonialStatus"];
+      /** @default false */
+      featured: boolean;
+      /** @default 0 */
+      order: number;
+      sourceUrl?: string | null;
+      platform?: string | null;
+      portfolio: string;
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /**
+     * @default published
+     * @enum {string}
+     */
+    TestimonialStatus: TestimonialStatus;
+    PopulatedTestimonial: components["schemas"]["Testimonial"] & {
+      portfolio?: {
+        _id: string;
+        name: string;
+        domain?: string;
+      } | null;
+    };
+    Analytics: {
+      portfolio: string;
+      event: components["schemas"]["AnalyticsEvent"];
+      path: string;
+      visitorId: string;
+      /** @default 0 */
+      duration: number;
+      metadata?: {
+        browser?: string;
+        os?: string;
+        device?: string;
+        country?: string;
+      };
+      _id?: string;
+      createdAt?: string;
+      updatedAt?: string;
+    };
+    /** @enum {string} */
+    AnalyticsEvent: AnalyticsEvent;
+    SystemStats: {
+      blogs: number;
+      blogsTrend: string;
+      projects: number;
+      projectsTrend: string;
+      media: number;
+      mediaTrend: string;
+      portfolios: number;
+      portfoliosTrend: string;
+      categories?: number;
+      users?: number;
+      campaigns?: number;
+      analytics?: number;
+      breakdown?: {
+        _id: string;
+        name: string;
+        blogCount: number;
+        projectCount: number;
+        visitorCount?: number;
+      }[];
+      traffic?: {
+        totalSessions: number;
+        averageDuration: number;
+        bounceRate: number;
+      };
+      leadsMonthly?: {
+        month: string;
+        count: number;
+      }[];
+      totalVisitors?: number;
+      totalLeads?: number;
+      conversionRate?: number;
+    };
+    SEOMetadata: {
+      metaTitle?: string | null;
+      metaDescription?: string | null;
+      keywords?: string | null;
+      ogImage?: string | null;
+    };
+    PortfolioConfig: {
+      _id: string;
+      name: string;
+      domain: string;
+      active: boolean;
+      maintenanceMode: boolean;
+      newsletterConfig: components["schemas"]["PortfolioConfig"];
+      customScripts: {
+        head: string;
+        footer: string;
+      };
+      socialLinks: {
+        platform: string;
+        url: string;
+      }[];
+    };
+    Stats: {
+      blogs: number;
+      blogsTrend: string;
+      projects: number;
+      projectsTrend: string;
+      media: number;
+      mediaTrend: string;
+      portfolios: number;
+      portfoliosTrend: string;
+      categories?: number;
+      users?: number;
+      campaigns?: number;
+      analytics?: number;
+      breakdown?: {
+        _id: string;
+        name: string;
+        blogCount: number;
+        projectCount: number;
+        visitorCount?: number;
+      }[];
+      traffic?: {
+        totalSessions: number;
+        averageDuration: number;
+        bounceRate: number;
+      };
+      leadsMonthly?: {
+        month: string;
+        count: number;
+      }[];
+      totalVisitors?: number;
+      totalLeads?: number;
+      conversionRate?: number;
+    };
+    LoginResponse: {
+      _id: string;
+      email: string;
+      role: string;
+    };
+    LoginRequest: {
+      /** Format: email */
+      email: string;
+      password: string;
+    };
+    ForgotPasswordResponse: {
+      success: boolean;
+      message: string;
+    };
+    ForgotPasswordRequest: {
+      /** Format: email */
+      email: string;
+    };
+    ResetPasswordResponse: {
+      success: boolean;
+      message: string;
+    };
+    ResetPasswordRequest: {
+      token: string;
+      password: string;
+    };
+    AuthMeResponse: {
+      _id: string;
+      email: string;
+      role: string;
+      portfolios: string[];
+    } | null;
+    ChangePasswordResponse: {
+      success: boolean;
+      message: string;
+    };
+    ChangePasswordRequest: {
+      currentPassword: string;
+      newPassword: string;
+    };
+    LogoutResponse: {
+      success: boolean;
+    };
+    /**
+     * @description Direct link to the requested case study
+     * @example https://saadqadir.com/case-study/healthline-platform
+     */
+    SubmitLeadResponse: string;
+    SubscribeResponse: {
+      success: boolean;
+    };
+    UnsubscribeResponse: {
+      success: boolean;
+      message: string;
+    };
+    SubscribeRequest: {
+      /** Format: email */
+      email: string;
+      portfolioId: string;
+    };
+    AnalyticsCollectResponse: {
+      tracked: boolean;
+    };
+    MediaAuthResponse: {
+      token: string;
+      expire: number;
+      signature: string;
+    };
+    /** Format: binary */
+    MediaUploadRequest: string;
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
+}
+export type Blog = components["schemas"]["Blog"];
+export type PopulatedBlog = components["schemas"]["PopulatedBlog"];
+export type CaseStudy = components["schemas"]["CaseStudy"];
+export type PopulatedCaseStudy = components["schemas"]["PopulatedCaseStudy"];
+export type Project = components["schemas"]["Project"];
+export type PopulatedProject = components["schemas"]["PopulatedProject"];
+export type Media = components["schemas"]["Media"];
+export type Portfolio = components["schemas"]["Portfolio"];
+export type User = components["schemas"]["User"];
+export type Category = components["schemas"]["Category"];
+export type Subscriber = components["schemas"]["Subscriber"];
+export type Lead = components["schemas"]["Lead"];
+export type Campaign = components["schemas"]["Campaign"];
+export type Faq = components["schemas"]["Faq"];
+export type Testimonial = components["schemas"]["Testimonial"];
+export type PopulatedTestimonial =
+  components["schemas"]["PopulatedTestimonial"];
+export type Analytics = components["schemas"]["Analytics"];
+export type SystemStats = components["schemas"]["SystemStats"];
+export type SEOMetadata = components["schemas"]["SEOMetadata"];
+export type PortfolioConfig = components["schemas"]["PortfolioConfig"];
+export type Stats = components["schemas"]["Stats"];
+export type LoginResponse = components["schemas"]["LoginResponse"];
+export type LoginRequest = components["schemas"]["LoginRequest"];
+export type ForgotPasswordResponse =
+  components["schemas"]["ForgotPasswordResponse"];
+export type ForgotPasswordRequest =
+  components["schemas"]["ForgotPasswordRequest"];
+export type ResetPasswordResponse =
+  components["schemas"]["ResetPasswordResponse"];
+export type ResetPasswordRequest =
+  components["schemas"]["ResetPasswordRequest"];
+export type AuthMeResponse = components["schemas"]["AuthMeResponse"];
+export type ChangePasswordResponse =
+  components["schemas"]["ChangePasswordResponse"];
+export type ChangePasswordRequest =
+  components["schemas"]["ChangePasswordRequest"];
+export type LogoutResponse = components["schemas"]["LogoutResponse"];
+export type SubmitLeadResponse = components["schemas"]["SubmitLeadResponse"];
+export type SubscribeResponse = components["schemas"]["SubscribeResponse"];
+export type UnsubscribeResponse = components["schemas"]["UnsubscribeResponse"];
+export type SubscribeRequest = components["schemas"]["SubscribeRequest"];
+export type AnalyticsCollectResponse =
+  components["schemas"]["AnalyticsCollectResponse"];
+export type MediaAuthResponse = components["schemas"]["MediaAuthResponse"];
+export type MediaUploadRequest = components["schemas"]["MediaUploadRequest"];
 export type $defs = Record<string, never>;
 export enum PublishStatus {
-    draft = "draft",
-    published = "published",
-    archived = "archived",
-    sent = "sent",
-    failed = "failed"
+  draft = "draft",
+  published = "published",
+  archived = "archived",
+  sent = "sent",
+  failed = "failed",
 }
 export enum MediaFolder {
-    unorganized = "unorganized",
-    branding = "branding",
-    content = "content",
-    portfolios = "portfolios",
-    videos = "videos",
-    documents = "documents"
+  unorganized = "unorganized",
+  branding = "branding",
+  content = "content",
+  portfolios = "portfolios",
+  videos = "videos",
+  documents = "documents",
 }
 export enum UserRole {
-    admin = "admin",
-    editor = "editor",
-    viewer = "viewer"
+  admin = "admin",
+  editor = "editor",
+  viewer = "viewer",
 }
 export enum SubscriberStatus {
-    active = "active",
-    unsubscribed = "unsubscribed"
+  active = "active",
+  unsubscribed = "unsubscribed",
 }
 export enum SubscriberSource {
-    newsletter = "newsletter",
-    case_study_download = "case_study_download",
-    manual = "manual"
+  newsletter = "newsletter",
+  case_study_download = "case_study_download",
+  manual = "manual",
 }
 export enum LeadSource {
-    case_study = "case_study",
-    contact_form = "contact_form",
-    direct = "direct"
+  case_study = "case_study",
+  contact_form = "contact_form",
+  direct = "direct",
 }
 export enum LeadStatus {
-    new = "new",
-    contacted = "contacted",
-    qualified = "qualified",
-    disqualified = "disqualified"
+  new = "new",
+  contacted = "contacted",
+  qualified = "qualified",
+  disqualified = "disqualified",
 }
 export enum TestimonialStatus {
-    published = "published",
-    draft = "draft",
-    archived = "archived"
+  published = "published",
+  draft = "draft",
+  archived = "archived",
 }
 export enum AnalyticsEvent {
-    page_view = "page_view",
-    session_start = "session_start",
-    session_end = "session_end",
-    click = "click"
+  page_view = "page_view",
+  session_start = "session_start",
+  session_end = "session_end",
+  click = "click",
 }
 export type operations = Record<string, never>;

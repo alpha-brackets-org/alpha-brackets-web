@@ -18,7 +18,9 @@ export default function CaseStudiesGrid({
   const categories = useMemo(() => {
     return [
       "All",
-      ...Array.from(new Set(caseStudies.map((p) => p.category).filter(Boolean))),
+      ...Array.from(
+        new Set(caseStudies.map((p) => p.category).filter(Boolean))
+      ),
     ] as string[];
   }, [caseStudies]);
 

@@ -44,9 +44,15 @@ function TeamMemberServices() {
             </div>
             <div className="col-lg-4 md-mb30">
               <ul className="rest dot-list">
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">Modern Strategy</li>
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">UX & Design</li>
-                <li className="fz-20 p-color opacity-70 font-medium">Content Writing</li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  Modern Strategy
+                </li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  UX & Design
+                </li>
+                <li className="fz-20 p-color opacity-70 font-medium">
+                  Content Writing
+                </li>
               </ul>
             </div>
             <div className="col-lg-2 d-flex justify-content-center">
@@ -78,9 +84,15 @@ function TeamMemberServices() {
             </div>
             <div className="col-lg-4 md-mb30">
               <ul className="rest dot-list">
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">Modern Strategy</li>
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">UX & Design</li>
-                <li className="fz-20 p-color opacity-70 font-medium">Content Writing</li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  Modern Strategy
+                </li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  UX & Design
+                </li>
+                <li className="fz-20 p-color opacity-70 font-medium">
+                  Content Writing
+                </li>
               </ul>
             </div>
             <div className="col-lg-2 d-flex justify-content-center">
@@ -112,9 +124,15 @@ function TeamMemberServices() {
             </div>
             <div className="col-lg-4 md-mb30">
               <ul className="rest dot-list">
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">Modern Strategy</li>
-                <li className="fz-20 p-color mb-5 opacity-70 font-medium">UX & Design</li>
-                <li className="fz-20 p-color opacity-70 font-medium">Content Writing</li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  Modern Strategy
+                </li>
+                <li className="fz-20 p-color mb-5 opacity-70 font-medium">
+                  UX & Design
+                </li>
+                <li className="fz-20 p-color opacity-70 font-medium">
+                  Content Writing
+                </li>
               </ul>
             </div>
             <div className="col-lg-2 d-flex justify-content-center">

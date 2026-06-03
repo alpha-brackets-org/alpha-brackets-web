@@ -12,17 +12,18 @@ import { Quote, ChevronLeft, ChevronRight } from "@/declarations/icons";
 import { Button } from "@/components/ui/button";
 import { Testimonial } from "@/types/cms";
 
-
 function Testimonials({ testimonials = [] }: { testimonials?: Testimonial[] }) {
   const isLoopable = testimonials.length > 1;
   const swiperOptions = {
     modules: [Pagination, Navigation, Autoplay],
     spaceBetween: 30,
     loop: isLoopable,
-    autoplay: isLoopable ? {
-      delay: 5000,
-      disableOnInteraction: false,
-    } : false,
+    autoplay: isLoopable
+      ? {
+          delay: 5000,
+          disableOnInteraction: false,
+        }
+      : false,
     pagination: {
       clickable: true,
       bulletClass: "swiper-pagination-bullet bg-white/20",
@@ -73,7 +74,10 @@ function Testimonials({ testimonials = [] }: { testimonials?: Testimonial[] }) {
                     <div className="flex items-center pt-10 border-t border-white/10 mt-10">
                       <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20 relative">
                         <Image
-                          src={item.avatar || "/assets/imgs/testimonials/default.jpg"}
+                          src={
+                            item.avatar ||
+                            "/assets/imgs/testimonials/default.jpg"
+                          }
                           alt={item.name}
                           fill
                           sizes="64px"

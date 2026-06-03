@@ -57,10 +57,11 @@ export default function Pagination({
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`w-12 h-12 rounded-full border border-border flex items-center justify-center transition-all duration-300 ${currentPage === 1
+        className={`w-12 h-12 rounded-full border border-border flex items-center justify-center transition-all duration-300 ${
+          currentPage === 1
             ? "opacity-40 cursor-not-allowed"
             : "hover:border-primary hover:bg-primary/5 active:scale-95"
-          }`}
+        }`}
         aria-label="Previous page"
       >
         <ChevronLeft className="w-5 h-5 text-foreground" />
@@ -86,10 +87,11 @@ export default function Pagination({
             <button
               key={page}
               onClick={() => onPageChange(page as number)}
-              className={`w-12 h-12 rounded-full font-bold text-sm transition-all duration-300 ${isCurrent
+              className={`w-12 h-12 rounded-full font-bold text-sm transition-all duration-300 ${
+                isCurrent
                   ? "bg-primary border border-primary text-white shadow-lg shadow-primary/25 scale-105"
                   : "border border-border hover:border-primary hover:bg-primary/5 active:scale-95 text-foreground"
-                }`}
+              }`}
             >
               {page}
             </button>
@@ -101,10 +103,11 @@ export default function Pagination({
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`w-12 h-12 rounded-full border border-border flex items-center justify-center transition-all duration-300 ${currentPage === totalPages
+        className={`w-12 h-12 rounded-full border border-border flex items-center justify-center transition-all duration-300 ${
+          currentPage === totalPages
             ? "opacity-40 cursor-not-allowed"
             : "hover:border-primary hover:bg-primary/5 active:scale-95"
-          }`}
+        }`}
         aria-label="Next page"
       >
         <ChevronRight className="w-5 h-5 text-foreground" />

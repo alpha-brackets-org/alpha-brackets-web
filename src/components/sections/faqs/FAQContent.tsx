@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import { Plus, Minus, Search, HelpCircle, Filter } from "@/declarations/icons";
 import { cn } from "@/lib/utils";
 
-
 import { Faq } from "@/types/cms";
 
 interface CleanFaqItem {
@@ -17,11 +16,7 @@ interface CleanGroupedFaq {
   questions: CleanFaqItem[];
 }
 
-export default function FAQContent({
-  faqs = [],
-}: {
-  faqs?: Faq[];
-}) {
+export default function FAQContent({ faqs = [] }: { faqs?: Faq[] }) {
   const [activeIndex, setActiveIndex] = useState<string | null>("0-0");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -35,7 +30,10 @@ export default function FAQContent({
       // 2. Group by category/group name
       const groups: Record<
         string,
-        { category: string; questions: { q: string; a: string; order: number }[] }
+        {
+          category: string;
+          questions: { q: string; a: string; order: number }[];
+        }
       > = {};
 
       publishedFaqs.forEach((faq) => {
@@ -123,67 +121,69 @@ export default function FAQContent({
                     </div>
 
                     <div className="space-y-4">
-                      {filteredQuestions.map((item: CleanFaqItem, qIdx: number) => {
-                        const id = `${catIdx}-${qIdx}`;
-                        const isOpen = activeIndex === id;
+                      {filteredQuestions.map(
+                        (item: CleanFaqItem, qIdx: number) => {
+                          const id = `${catIdx}-${qIdx}`;
+                          const isOpen = activeIndex === id;
 
-                        return (
-                          <div
-                            key={qIdx}
-                            className={cn(
-                              "group border rounded-3xl transition-all duration-500 overflow-hidden",
-                              isOpen
-                                ? "bg-accent/5 border-primary/30 shadow-2xl shadow-primary/5"
-                                : "border-border/50 hover:border-primary/20 hover:bg-accent/2"
-                            )}
-                          >
-                            <button
-                              onClick={() => toggleAccordion(id)}
-                              className="w-full flex items-center justify-between p-8 text-left focus:outline-none"
-                            >
-                              <span
-                                className={cn(
-                                  "text-xl font-bold tracking-tight transition-colors",
-                                  isOpen
-                                    ? "text-foreground"
-                                    : "text-foreground/80 group-hover:text-foreground"
-                                )}
-                              >
-                                {item.q}
-                              </span>
-                              <div
-                                className={cn(
-                                  "shrink-0 ml-6 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
-                                  isOpen
-                                    ? "bg-primary border-primary rotate-180"
-                                    : "border-border/50 group-hover:border-primary/50"
-                                )}
-                              >
-                                {isOpen ? (
-                                  <Minus className="w-4 h-4 text-white" />
-                                ) : (
-                                  <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
-                                )}
-                              </div>
-                            </button>
-
+                          return (
                             <div
+                              key={qIdx}
                               className={cn(
-                                "px-8 transition-all duration-500 ease-in-out overflow-hidden",
+                                "group border rounded-3xl transition-all duration-500 overflow-hidden",
                                 isOpen
-                                  ? "max-h-[500px] pb-8 opacity-100"
-                                  : "max-h-0 opacity-0"
+                                  ? "bg-accent/5 border-primary/30 shadow-2xl shadow-primary/5"
+                                  : "border-border/50 hover:border-primary/20 hover:bg-accent/2"
                               )}
                             >
-                              <div className="pt-4 border-t border-primary/10">
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                  {item.a}
-                                </p>
+                              <button
+                                onClick={() => toggleAccordion(id)}
+                                className="w-full flex items-center justify-between p-8 text-left focus:outline-none"
+                              >
+                                <span
+                                  className={cn(
+                                    "text-xl font-bold tracking-tight transition-colors",
+                                    isOpen
+                                      ? "text-foreground"
+                                      : "text-foreground/80 group-hover:text-foreground"
+                                  )}
+                                >
+                                  {item.q}
+                                </span>
+                                <div
+                                  className={cn(
+                                    "shrink-0 ml-6 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
+                                    isOpen
+                                      ? "bg-primary border-primary rotate-180"
+                                      : "border-border/50 group-hover:border-primary/50"
+                                  )}
+                                >
+                                  {isOpen ? (
+                                    <Minus className="w-4 h-4 text-white" />
+                                  ) : (
+                                    <Plus className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
+                                  )}
+                                </div>
+                              </button>
+
+                              <div
+                                className={cn(
+                                  "px-8 transition-all duration-500 ease-in-out overflow-hidden",
+                                  isOpen
+                                    ? "max-h-[500px] pb-8 opacity-100"
+                                    : "max-h-0 opacity-0"
+                                )}
+                              >
+                                <div className="pt-4 border-t border-primary/10">
+                                  <p className="text-lg text-muted-foreground leading-relaxed">
+                                    {item.a}
+                                  </p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        }
+                      )}
                     </div>
                   </div>
                 );
@@ -191,8 +191,12 @@ export default function FAQContent({
             ) : (
               <div className="text-center py-24 rounded-[32px] border border-border/50 bg-muted/10">
                 <Filter className="w-16 h-16 text-muted-foreground mx-auto mb-6 opacity-20" />
-                <h3 className="text-2xl font-bold text-muted-foreground">No FAQs found</h3>
-                <p className="text-muted-foreground mt-2">Try adjusting your search query.</p>
+                <h3 className="text-2xl font-bold text-muted-foreground">
+                  No FAQs found
+                </h3>
+                <p className="text-muted-foreground mt-2">
+                  Try adjusting your search query.
+                </p>
                 <button
                   onClick={() => setSearchQuery("")}
                   className="mt-8 text-primary font-bold uppercase tracking-widest text-sm hover:underline"

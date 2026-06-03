@@ -18,4 +18,3 @@ export function formatDate(
   if (isNaN(d.getTime())) return "";
   return d.toLocaleDateString("en-US", options);
 }
-

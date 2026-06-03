@@ -24,12 +24,15 @@ export default function NewsletterForm() {
     async (prevState: FormState, formData: FormData) => {
       const email = formData.get("email") as string;
       if (!email || !email.includes("@")) {
-        return { success: false, message: "Please enter a valid email address." };
+        return {
+          success: false,
+          message: "Please enter a valid email address.",
+        };
       }
       try {
         const result = await subscribeToNewsletterAction(email);
         return { success: result.success, message: result.message };
-      } catch (err) {
+      } catch {
         return { success: false, message: "An unexpected error occurred." };
       }
     },

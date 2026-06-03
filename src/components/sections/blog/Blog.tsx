@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   Search,
   ArrowRight,
-  Quote,
   Facebook,
   Twitter,
   Youtube,
@@ -35,7 +34,9 @@ export default function Blog({
             <article className="space-y-8">
               <div
                 className="prose prose-invert prose-lg max-w-none space-y-6 text-muted-foreground leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: currentArticle.content || "" }}
+                dangerouslySetInnerHTML={{
+                  __html: currentArticle.content || "",
+                }}
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-12">
@@ -122,7 +123,10 @@ export default function Blog({
 
                 <div className="relative w-32 h-32 shrink-0 rounded-full overflow-hidden border-4 border-background shadow-2xl">
                   <Image
-                    src={currentArticle.author?.image || "/assets/imgs/blog/author.png"}
+                    src={
+                      currentArticle.author?.image ||
+                      "/assets/imgs/blog/author.png"
+                    }
                     alt={currentArticle.author?.name || "Saad Qadir"}
                     fill
                     className="object-cover"
@@ -140,7 +144,8 @@ export default function Blog({
                     </h5>
                   </div>
                   <p className="text-muted-foreground leading-relaxed text-sm max-w-xl">
-                    {(currentArticle as BlogType & { authorRole?: string }).authorRole ||
+                    {(currentArticle as BlogType & { authorRole?: string })
+                      .authorRole ||
                       "Senior Technical Architect specialized in digital transformation and enterprise engineering. Helping founders bridge the gap between vision and execution."}
                   </p>
                   <div className="flex items-center justify-center sm:justify-start gap-4 pt-2">
@@ -228,26 +233,34 @@ export default function Blog({
                 {(() => {
                   const catsMap = new Map<string, number>();
                   recentArticles.forEach((b) => {
-                    const catName = typeof b.category === "string" ? b.category : (b.category as unknown as { name: string })?.name;
-                    if (catName) catsMap.set(catName, (catsMap.get(catName) || 0) + 1);
+                    const catName =
+                      typeof b.category === "string"
+                        ? b.category
+                        : (b.category as unknown as { name: string })?.name;
+                    if (catName)
+                      catsMap.set(catName, (catsMap.get(catName) || 0) + 1);
                   });
                   const cats = Array.from(catsMap.entries());
-                  return cats.length > 0 ? cats.map(([name, count], i) => (
-                    <li key={i}>
-                      <Link
-                        href={`/blogs?category=${name}`}
-                        className="flex items-center justify-between group"
-                      >
-                        <span className="text-sm font-bold text-muted-foreground group-hover:text-primary transition-colors">
-                          {name}
-                        </span>
-                        <span className="text-[10px] font-black text-muted-foreground/40 bg-muted px-2 py-1 rounded-md">
-                          {count}
-                        </span>
-                      </Link>
+                  return cats.length > 0 ? (
+                    cats.map(([name, count], i) => (
+                      <li key={i}>
+                        <Link
+                          href={`/blogs?category=${name}`}
+                          className="flex items-center justify-between group"
+                        >
+                          <span className="text-sm font-bold text-muted-foreground group-hover:text-primary transition-colors">
+                            {name}
+                          </span>
+                          <span className="text-[10px] font-black text-muted-foreground/40 bg-muted px-2 py-1 rounded-md">
+                            {count}
+                          </span>
+                        </Link>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-sm text-muted-foreground">
+                      No categories yet.
                     </li>
-                  )) : (
-                    <li className="text-sm text-muted-foreground">No categories yet.</li>
                   );
                 })()}
               </ul>
@@ -267,7 +280,10 @@ export default function Blog({
                   >
                     <div className="relative w-20 h-20 shrink-0 rounded-2xl overflow-hidden border border-border/50">
                       <Image
-                        src={post.seo?.ogImage || `/assets/imgs/blog/c${(idx % 3) + 1}.jpg`}
+                        src={
+                          post.seo?.ogImage ||
+                          `/assets/imgs/blog/c${(idx % 3) + 1}.jpg`
+                        }
                         alt={post.title}
                         fill
                         className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"

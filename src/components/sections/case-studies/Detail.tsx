@@ -84,7 +84,9 @@ export default function CaseStudyDetail({
       if (response.success) {
         setSubmitStatus({
           type: "success",
-          text: response.message || "Thank you! Your access request has been approved.",
+          text:
+            response.message ||
+            "Thank you! Your access request has been approved.",
           downloadUrl: response.downloadUrl || caseStudy.pdfUrl || undefined,
         });
         form.reset();
@@ -94,7 +96,9 @@ export default function CaseStudyDetail({
     } catch (err: unknown) {
       setSubmitStatus({
         type: "error",
-        text: (err instanceof Error ? err.message : null) || "Failed to submit request. Please try again later.",
+        text:
+          (err instanceof Error ? err.message : null) ||
+          "Failed to submit request. Please try again later.",
       });
     }
   };
@@ -121,7 +125,8 @@ export default function CaseStudyDetail({
           </div>
 
           <h1 className="text-5xl lg:text-8xl font-bold tracking-tight mb-10 max-w-5xl mx-auto leading-[1.05]">
-            {caseStudy.projectTitle}{caseStudy.client ? ` - ${caseStudy.client}` : ""}
+            {caseStudy.projectTitle}
+            {caseStudy.client ? ` - ${caseStudy.client}` : ""}
           </h1>
 
           <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground font-semibold tracking-wide uppercase">
@@ -200,10 +205,11 @@ export default function CaseStudyDetail({
                 </h3>
                 {submitStatus && (
                   <Alert
-                    className={`mb-6 rounded-2xl ${submitStatus.type === "success"
+                    className={`mb-6 rounded-2xl ${
+                      submitStatus.type === "success"
                         ? "border-green-500/20 bg-green-500/5 text-green-500"
                         : "border-destructive/20 bg-destructive/5 text-destructive"
-                      }`}
+                    }`}
                   >
                     <AlertDescription className="font-medium text-xs leading-relaxed">
                       {submitStatus.text}
@@ -342,7 +348,9 @@ export default function CaseStudyDetail({
                       disabled={isSubmitting}
                       className="w-full h-16 bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest text-sm rounded-xl mt-4 disabled:opacity-50"
                     >
-                      {isSubmitting ? "Requesting Access..." : "Download Detailed Report"}
+                      {isSubmitting
+                        ? "Requesting Access..."
+                        : "Download Detailed Report"}
                     </Button>
                   </form>
                 </Form>
@@ -379,40 +387,42 @@ export default function CaseStudyDetail({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {allCaseStudies.filter((p) => p.slug !== slug).map((item) => {
-              const itemTag = item.tags?.[0]?.tag || "Case Study";
-              return (
-                <Link
-                  key={item._id || item.slug}
-                  href={`/case-studies/${item.slug}`}
-                  className="group block"
-                >
-                  <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden mb-8 border border-border/50">
-                    <Image
-                      src={item.coverImage || "/assets/imgs/blog/1.jpg"}
-                      alt={item.projectTitle}
-                      fill
-                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                  <div className="space-y-4">
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-primary bg-primary/10 px-3 py-1 rounded-full">
-                      {itemTag}
-                    </span>
-                    <h4 className="text-2xl font-bold group-hover:text-primary transition-colors leading-tight">
-                      {item.projectTitle}
-                    </h4>
-                    <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground uppercase tracking-widest">
-                      <span>{item.year || "2024"}</span>
-                      <div className="w-1 h-1 rounded-full bg-primary/30" />
-                      <span>{item.readTime || "10 min read"}</span>
+            {allCaseStudies
+              .filter((p) => p.slug !== slug)
+              .map((item) => {
+                const itemTag = item.tags?.[0]?.tag || "Case Study";
+                return (
+                  <Link
+                    key={item._id || item.slug}
+                    href={`/case-studies/${item.slug}`}
+                    className="group block"
+                  >
+                    <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden mb-8 border border-border/50">
+                      <Image
+                        src={item.coverImage || "/assets/imgs/blog/1.jpg"}
+                        alt={item.projectTitle}
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
-                  </div>
-                </Link>
-              );
-            })}
+                    <div className="space-y-4">
+                      <span className="text-[11px] font-black uppercase tracking-[0.2em] text-primary bg-primary/10 px-3 py-1 rounded-full">
+                        {itemTag}
+                      </span>
+                      <h4 className="text-2xl font-bold group-hover:text-primary transition-colors leading-tight">
+                        {item.projectTitle}
+                      </h4>
+                      <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground uppercase tracking-widest">
+                        <span>{item.year || "2024"}</span>
+                        <div className="w-1 h-1 rounded-full bg-primary/30" />
+                        <span>{item.readTime || "10 min read"}</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </section>

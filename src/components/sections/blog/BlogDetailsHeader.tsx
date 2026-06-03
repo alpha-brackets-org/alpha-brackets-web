@@ -76,9 +76,7 @@ function Header({ article }: { article: Blog }) {
                   <span className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-0.5">
                     Author
                   </span>
-                  <h6 className="text-sm font-bold text-white">
-                    {authorName}
-                  </h6>
+                  <h6 className="text-sm font-bold text-white">{authorName}</h6>
                 </div>
               </div>
 
@@ -88,7 +86,9 @@ function Header({ article }: { article: Blog }) {
                 <span className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-0.5">
                   Published
                 </span>
-                <h6 className="text-sm font-bold text-white">{publishedDate}</h6>
+                <h6 className="text-sm font-bold text-white">
+                  {publishedDate}
+                </h6>
               </div>
 
               <div className="ml-auto hidden md:flex items-center gap-2 text-white/60">

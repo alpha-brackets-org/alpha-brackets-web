@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import data from "@/data/team";
-import { ArrowUpRight, Facebook, Instagram, Behance } from "@/declarations/icons";
+import {
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Behance,
+} from "@/declarations/icons";
 import Link from "next/link";
 
 function Team() {

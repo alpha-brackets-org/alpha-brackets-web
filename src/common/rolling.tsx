@@ -10,8 +10,8 @@ const RollingText = ({ text = "home" }) => {
     const textContainer = document.createElement("div");
     textContainer.classList.add("block");
 
-    for (let letter of text) {
-      let span = document.createElement("span");
+    for (const letter of text) {
+      const span = document.createElement("span");
       span.innerText = letter.trim() === "" ? "\xa0" : letter;
       span.classList.add("letter");
       textContainer.appendChild(span);

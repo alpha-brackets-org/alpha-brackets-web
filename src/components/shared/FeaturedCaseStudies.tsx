@@ -17,7 +17,9 @@ export default function FeaturedCaseStudies({
 }: FeaturedCaseStudiesProps) {
   // If highlight is provided, filter them. Otherwise, default to featured ones
   const activeCaseStudies = highlight
-    ? caseStudies.filter((cs) => highlight.includes(cs.projectTitle || cs.slug || ""))
+    ? caseStudies.filter((cs) =>
+        highlight.includes(cs.projectTitle || cs.slug || "")
+      )
     : caseStudies.filter((cs) => cs.featured);
 
   if (activeCaseStudies.length === 0) return null;

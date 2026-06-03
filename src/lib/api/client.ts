@@ -3,10 +3,13 @@ import { getPortfolioId } from "@/lib/cms-client";
 const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL;
 
 /**
- * Base fetcher that automatically resolves the multi-tenant portfolio ID 
+ * Base fetcher that automatically resolves the multi-tenant portfolio ID
  * and handles base CMS URL resolution.
  */
-async function fetchCmsApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+async function fetchCmsApi<T>(
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<T> {
   if (!CMS_URL) {
     throw new Error("CMS_URL environment variable is not defined.");
   }
@@ -20,7 +23,11 @@ async function fetchCmsApi<T>(endpoint: string, options: RequestInit = {}): Prom
   }
 
   const headers = new Headers(options.headers);
-  if (!headers.has("Content-Type") && options.method !== "GET" && options.method !== "DELETE") {
+  if (
+    !headers.has("Content-Type") &&
+    options.method !== "GET" &&
+    options.method !== "DELETE"
+  ) {
     headers.set("Content-Type", "application/json");
   }
 
@@ -37,43 +44,45 @@ async function fetchCmsApi<T>(endpoint: string, options: RequestInit = {}): Prom
       if (errJson && typeof errJson === "object") {
         errMsg = errJson.message || errJson.error || errMsg;
       }
-    } catch (_) {}
+    } catch {
+      /* ignore parsing errors */
+    }
     throw new Error(errMsg);
   }
 
   const json = await res.json();
   // Strip .data wrapping if present, otherwise return raw json
-  return (json.data !== undefined) ? json.data : json;
+  return json.data !== undefined ? json.data : json;
 }
 
 /**
  * DRY HTTP method handlers
  */
 export const api = {
-  get: <T>(endpoint: string, options?: RequestInit) => 
+  get: <T>(endpoint: string, options?: RequestInit) =>
     fetchCmsApi<T>(endpoint, { ...options, method: "GET" }),
 
-  post: <T>(endpoint: string, body?: unknown, options?: RequestInit) => 
-    fetchCmsApi<T>(endpoint, { 
-      ...options, 
-      method: "POST", 
-      body: body ? JSON.stringify(body) : undefined 
+  post: <T>(endpoint: string, body?: unknown, options?: RequestInit) =>
+    fetchCmsApi<T>(endpoint, {
+      ...options,
+      method: "POST",
+      body: body ? JSON.stringify(body) : undefined,
     }),
 
-  patch: <T>(endpoint: string, body?: unknown, options?: RequestInit) => 
-    fetchCmsApi<T>(endpoint, { 
-      ...options, 
-      method: "PATCH", 
-      body: body ? JSON.stringify(body) : undefined 
+  patch: <T>(endpoint: string, body?: unknown, options?: RequestInit) =>
+    fetchCmsApi<T>(endpoint, {
+      ...options,
+      method: "PATCH",
+      body: body ? JSON.stringify(body) : undefined,
     }),
 
-  put: <T>(endpoint: string, body?: unknown, options?: RequestInit) => 
-    fetchCmsApi<T>(endpoint, { 
-      ...options, 
-      method: "PUT", 
-      body: body ? JSON.stringify(body) : undefined 
+  put: <T>(endpoint: string, body?: unknown, options?: RequestInit) =>
+    fetchCmsApi<T>(endpoint, {
+      ...options,
+      method: "PUT",
+      body: body ? JSON.stringify(body) : undefined,
     }),
 
-  delete: <T>(endpoint: string, options?: RequestInit) => 
+  delete: <T>(endpoint: string, options?: RequestInit) =>
     fetchCmsApi<T>(endpoint, { ...options, method: "DELETE" }),
 };

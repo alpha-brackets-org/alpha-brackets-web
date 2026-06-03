@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "@/declarations/icons";
 
-
 import { Blog } from "@/types/cms";
 
 export default function ContentPillars({
@@ -55,7 +54,9 @@ export default function ContentPillars({
               {/* Background Image with sophisticated overlay */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src={activeArticles[0].seo?.ogImage || "/assets/imgs/blog/1.jpg"}
+                  src={
+                    activeArticles[0].seo?.ogImage || "/assets/imgs/blog/1.jpg"
+                  }
                   alt={activeArticles[0].title}
                   fill
                   className="object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
@@ -113,7 +114,7 @@ export default function ContentPillars({
 
           {/* Article Cards */}
           <div className="lg:col-span-5 space-y-4 flex flex-col">
-            {activeArticles.slice(1, 4).map((article, i) => (
+            {activeArticles.slice(1, 4).map((article) => (
               <Link
                 key={article._id || article.slug}
                 href={`/blogs/${article.slug}`}

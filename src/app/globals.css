@@ -86,7 +86,6 @@
 }
 
 @layer components {
-
   /* Legacy SCSS Porter */
   .section-padding {
     @apply py-20 lg:py-32;

@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "@/declarations/animations";
-import { ArrowRight, ChevronDown } from "@/declarations/icons";
+import { ArrowRight } from "@/declarations/icons";
 import { Button } from "@/components/ui/button";
 
 const METRICS = [
@@ -153,7 +153,7 @@ function Header() {
 
         {/* Metrics Bar */}
         <div className="flex flex-col md:flex-row items-stretch gap-0 border-t border-white/10">
-          {METRICS.map((metric, i) => (
+          {METRICS.map((metric) => (
             <div
               key={metric.label}
               className="hero-metric flex-1 flex items-center gap-6 py-8 px-2 md:px-8 border-b md:border-b-0 md:border-r border-white/10 last:border-0"

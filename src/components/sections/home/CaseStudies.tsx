@@ -106,12 +106,18 @@ export default function CaseStudies({
                   <div className="w-full lg:w-[45%] flex flex-col items-start h-full justify-center">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {caseStudy.tags?.slice(0, 3).map((tagItem, idx) => (
-                        <span key={`tag-${idx}`} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[9px] font-bold uppercase tracking-widest text-white/80">
+                        <span
+                          key={`tag-${idx}`}
+                          className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[9px] font-bold uppercase tracking-widest text-white/80"
+                        >
                           {tagItem.tag}
                         </span>
                       ))}
                       {caseStudy.services?.slice(0, 2).map((service, idx) => (
-                        <span key={`service-${idx}`} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[9px] font-bold uppercase tracking-widest text-white/80">
+                        <span
+                          key={`service-${idx}`}
+                          className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[9px] font-bold uppercase tracking-widest text-white/80"
+                        >
                           {service}
                         </span>
                       ))}

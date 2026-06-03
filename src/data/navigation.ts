@@ -11,12 +11,12 @@ import { NavLink } from "@/types/navigation";
 
 export const COMPANY_LINKS: NavLink[] = [
   { name: "About Us", href: "/about", desc: "Mission, vision and our values" },
-//   {
-//     name: "Expert Team",
-//     href: "/team",
-//     desc: "The architects behind your success",
-//   },
-//   { name: "Careers", href: "/careers", desc: "Join our mission-driven team" },
+  //   {
+  //     name: "Expert Team",
+  //     href: "/team",
+  //     desc: "The architects behind your success",
+  //   },
+  //   { name: "Careers", href: "/careers", desc: "Join our mission-driven team" },
   {
     name: "Contact Us",
     href: "/contact",

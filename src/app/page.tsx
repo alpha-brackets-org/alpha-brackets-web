@@ -1,5 +1,4 @@
 import Header from "@/components/sections/home/Header";
-import TechStack from "@/components/sections/home/TechStack";
 import Clients from "@/components/shared/Clients";
 import CaseStudies from "@/components/sections/home/CaseStudies";
 import Services from "@/components/shared/Services";
@@ -24,6 +23,9 @@ export default async function Home() {
       <Clients />
       <Testimonials testimonials={testimonialsData} />
       <ContentPillars articles={blogs} />
+      {/* TODO: Add CTA section */}
+      {/* TODO: Add Trust indicators */}
+      {/* TODO: Add Footer */}
     </>
   );
 }

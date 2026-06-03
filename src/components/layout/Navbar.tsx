@@ -19,7 +19,14 @@ import { NavLink } from "@/types/navigation";
 import { COMPANY_LINKS, RESOURCE_LINKS, MOBILE_LINKS } from "@/data/navigation";
 import { Blog, CaseStudy } from "@/types/cms";
 
-const DEFAULT_BLOG_TAGS = ["SaaS", "Architecture", "AI", "Performance", "Scalability", "DevOps"];
+const DEFAULT_BLOG_TAGS = [
+  "SaaS",
+  "Architecture",
+  "AI",
+  "Performance",
+  "Scalability",
+  "DevOps",
+];
 
 type DropdownId = "services" | "company" | "resources" | null;
 
@@ -142,7 +149,9 @@ export default function Navbar({
             <div className="space-y-6">
               <div className="relative group aspect-video rounded-2xl overflow-hidden border border-border/50">
                 <Image
-                  src={featuredCaseStudy?.coverImage || "/assets/imgs/blog/1.jpg"}
+                  src={
+                    featuredCaseStudy?.coverImage || "/assets/imgs/blog/1.jpg"
+                  }
                   alt={featuredCaseStudy?.projectTitle || ""}
                   fill
                   sizes="(max-width: 768px) 100vw, 320px"
@@ -158,7 +167,11 @@ export default function Navbar({
                   </h4>
                 </div>
                 <Link
-                  href={featuredCaseStudy?.slug ? `/case-studies/${featuredCaseStudy.slug}` : "/case-studies"}
+                  href={
+                    featuredCaseStudy?.slug
+                      ? `/case-studies/${featuredCaseStudy.slug}`
+                      : "/case-studies"
+                  }
                   onClick={() => setOpenDropdown(null)}
                   className="absolute inset-0 z-10"
                 />
@@ -168,7 +181,11 @@ export default function Navbar({
               </p>
             </div>
             <Link
-              href={featuredCaseStudy?.slug ? `/case-studies/${featuredCaseStudy.slug}` : "/case-studies"}
+              href={
+                featuredCaseStudy?.slug
+                  ? `/case-studies/${featuredCaseStudy.slug}`
+                  : "/case-studies"
+              }
               onClick={() => setOpenDropdown(null)}
               className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:gap-3 transition-all"
             >

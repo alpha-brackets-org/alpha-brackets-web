@@ -6,7 +6,14 @@ import React, { useState, useMemo, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Search, ArrowRight, Calendar, User, Filter, X } from "@/declarations/icons";
+import {
+  Search,
+  ArrowRight,
+  Calendar,
+  User,
+  Filter,
+  X,
+} from "@/declarations/icons";
 import { Blog } from "@/types/cms";
 import Pagination from "@/components/shared/Pagination";
 
@@ -37,10 +44,12 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
     });
   });
 
-  const dynamicCategories = Array.from(categoriesMap.entries()).map(([name, count]) => ({
-    name,
-    count,
-  }));
+  const dynamicCategories = Array.from(categoriesMap.entries()).map(
+    ([name, count]) => ({
+      name,
+      count,
+    })
+  );
   const dynamicTags = Array.from(tagsSet);
 
   const filteredBlogs = useMemo(() => {
@@ -54,7 +63,8 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
         selectedCategory === "All" || (catName && catName === selectedCategory);
 
       const matchesTag =
-        !selectedTag || (blog.tags && blog.tags.some((t) => t.tag === selectedTag));
+        !selectedTag ||
+        (blog.tags && blog.tags.some((t) => t.tag === selectedTag));
 
       const title = blog.title || "";
       const excerpt = blog.excerpt || "";
@@ -112,7 +122,10 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                   className="block relative aspect-[16/10] overflow-hidden rounded-[32px] border border-border/50"
                 >
                   <Image
-                    src={post.seo?.ogImage || `/assets/imgs/blog/${(idx % 3) + 1}.jpg`}
+                    src={
+                      post.seo?.ogImage ||
+                      `/assets/imgs/blog/${(idx % 3) + 1}.jpg`
+                    }
                     alt={post.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -125,7 +138,9 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                   <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-3 h-3 text-primary" />
-                      <span>{formatDate(post.publishedAt || post.createdAt)}</span>
+                      <span>
+                        {formatDate(post.publishedAt || post.createdAt)}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <User className="w-3 h-3 text-primary" />
@@ -154,8 +169,12 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
         ) : (
           <div className="text-center py-24 rounded-[32px] border border-border/50 bg-muted/10">
             <Filter className="w-16 h-16 text-muted-foreground mx-auto mb-6 opacity-20" />
-            <h3 className="text-2xl font-bold text-muted-foreground">No blogs found</h3>
-            <p className="text-muted-foreground mt-2">Try adjusting your filters or search query.</p>
+            <h3 className="text-2xl font-bold text-muted-foreground">
+              No blogs found
+            </h3>
+            <p className="text-muted-foreground mt-2">
+              Try adjusting your filters or search query.
+            </p>
             <button
               onClick={handleClearFilters}
               className="mt-8 text-primary font-bold uppercase tracking-widest text-sm hover:underline"
@@ -195,7 +214,9 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                   setSearchVal("");
                   const params = new URLSearchParams(window.location.search);
                   params.delete("search");
-                  router.replace(`/blogs?${params.toString()}`, { scroll: false });
+                  router.replace(`/blogs?${params.toString()}`, {
+                    scroll: false,
+                  });
                 }}
                 className="absolute right-6 top-1/2 -translate-y-1/2"
               >
@@ -216,14 +237,16 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
             <li>
               <Link
                 href="/blogs"
-                className={`flex items-center justify-between group ${selectedCategory === "All" ? "text-primary" : ""
-                  }`}
+                className={`flex items-center justify-between group ${
+                  selectedCategory === "All" ? "text-primary" : ""
+                }`}
               >
                 <span
-                  className={`text-sm font-bold transition-colors ${selectedCategory === "All"
+                  className={`text-sm font-bold transition-colors ${
+                    selectedCategory === "All"
                       ? "text-primary"
                       : "text-muted-foreground group-hover:text-primary"
-                    }`}
+                  }`}
                 >
                   All Categories
                 </span>
@@ -240,10 +263,11 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                     className="flex items-center justify-between group"
                   >
                     <span
-                      className={`text-sm font-bold transition-colors ${selectedCategory === cat.name
+                      className={`text-sm font-bold transition-colors ${
+                        selectedCategory === cat.name
                           ? "text-primary"
                           : "text-muted-foreground group-hover:text-primary"
-                        }`}
+                      }`}
                     >
                       {cat.name}
                     </span>
@@ -254,7 +278,9 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                 </li>
               ))
             ) : (
-              <li className="text-sm text-muted-foreground">No categories yet.</li>
+              <li className="text-sm text-muted-foreground">
+                No categories yet.
+              </li>
             )}
           </ul>
         </div>
@@ -273,7 +299,10 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
               >
                 <div className="relative w-20 h-20 shrink-0 rounded-2xl overflow-hidden border border-border/50">
                   <Image
-                    src={post.seo?.ogImage || `/assets/imgs/blog/c${(idx % 3) + 1}.jpg`}
+                    src={
+                      post.seo?.ogImage ||
+                      `/assets/imgs/blog/c${(idx % 3) + 1}.jpg`
+                    }
                     alt={post.title}
                     fill
                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -304,16 +333,19 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                 <Link
                   key={i}
                   href={`/blogs?tag=${encodeURIComponent(tag)}`}
-                  className={`px-4 py-2 rounded-full border transition-all text-[10px] font-black uppercase tracking-widest bg-background ${selectedTag === tag
+                  className={`px-4 py-2 rounded-full border transition-all text-[10px] font-black uppercase tracking-widest bg-background ${
+                    selectedTag === tag
                       ? "border-primary text-primary"
                       : "border-border hover:border-primary hover:text-primary text-muted-foreground"
-                    }`}
+                  }`}
                 >
                   #{tag}
                 </Link>
               ))
             ) : (
-              <span className="text-sm text-muted-foreground">No trending tags.</span>
+              <span className="text-sm text-muted-foreground">
+                No trending tags.
+              </span>
             )}
           </div>
         </div>
@@ -326,7 +358,9 @@ export default function Blogs({ blogs = [] }: { blogs?: Blog[] }) {
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <Suspense fallback={<div className="text-center py-24">Loading blogs...</div>}>
+        <Suspense
+          fallback={<div className="text-center py-24">Loading blogs...</div>}
+        >
           <BlogsContent blogs={blogs} />
         </Suspense>
       </div>

@@ -56,7 +56,11 @@ function getDeviceMetadata(): {
  * Uses sendBeacon for reliability (fires even on page unload).
  * Falls back to fetch if sendBeacon is unavailable.
  */
-function trackEvent(event: "page_view" | "session_start" | "session_end", path: string, duration?: number) {
+function trackEvent(
+  event: "page_view" | "session_start" | "session_end",
+  path: string,
+  duration?: number
+) {
   if (!CMS_URL) return;
 
   const payload = {
@@ -105,7 +109,9 @@ export default function AnalyticsTracker() {
     trackEvent("session_start", pathname);
 
     const handleBeforeUnload = () => {
-      const duration = Math.round((Date.now() - sessionStartRef.current) / 1000);
+      const duration = Math.round(
+        (Date.now() - sessionStartRef.current) / 1000
+      );
       trackEvent("session_end", lastPathRef.current, duration);
     };
 
@@ -114,7 +120,6 @@ export default function AnalyticsTracker() {
       window.removeEventListener("beforeunload", handleBeforeUnload);
       handleBeforeUnload();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

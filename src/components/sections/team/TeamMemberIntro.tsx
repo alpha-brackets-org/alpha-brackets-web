@@ -35,8 +35,9 @@ function TeamMemberIntro() {
               </h6>
             </div>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Leading the technical vision and strategic execution at Alpha Brackets. 
-              Focused on delivering high-velocity, scalable solutions for modern businesses.
+              Leading the technical vision and strategic execution at Alpha
+              Brackets. Focused on delivering high-velocity, scalable solutions
+              for modern businesses.
             </p>
             <div className="space-y-8 pt-8">
               {skills.map((skill, idx) => (

@@ -30,7 +30,12 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toast = useCallback(
-    ({ title, description, variant = "default", duration = 5000 }: Omit<Toast, "id">) => {
+    ({
+      title,
+      description,
+      variant = "default",
+      duration = 5000,
+    }: Omit<Toast, "id">) => {
       const id = Math.random().toString(36).substring(2, 9);
       const newToast: Toast = { id, title, description, variant, duration };
 
@@ -72,7 +77,9 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   const icons = {
     default: <Info className="w-5 h-5 text-primary shrink-0" />,
     success: <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />,
-    destructive: <AlertTriangle className="w-5 h-5 text-destructive shrink-0" />,
+    destructive: (
+      <AlertTriangle className="w-5 h-5 text-destructive shrink-0" />
+    ),
     warning: <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />,
   };
 
@@ -88,7 +95,11 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
     >
       {icons[variant || "default"]}
       <div className="flex-1 space-y-1">
-        {title && <h5 className="text-sm font-bold leading-none tracking-tight">{title}</h5>}
+        {title && (
+          <h5 className="text-sm font-bold leading-none tracking-tight">
+            {title}
+          </h5>
+        )}
         <p className="text-xs leading-normal opacity-90">{description}</p>
       </div>
       <button

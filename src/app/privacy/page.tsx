@@ -13,7 +13,6 @@ export default function PrivacyPolicy() {
     year: "numeric",
   });
 
-
   return (
     <section className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
