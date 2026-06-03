@@ -63,7 +63,7 @@ function Contact() {
 
       if (res.success) {
         toast({
-          description: res.message || "Message sent successfully.",
+          description: res.message,
           variant: "success",
         });
         form.reset();
@@ -72,12 +72,6 @@ function Contact() {
       }
     } catch (error: unknown) {
       console.error("Failed to submit contact form to CMS:", error);
-      // Fallback: simulate success to ensure the visitor is not blocked if the CMS portfolio is not yet created
-      toast({
-        description:
-          "Thank you! Your message has been sent successfully. Our team will contact you shortly.",
-        variant: "success",
-      });
       form.reset();
     }
   };
