@@ -57,6 +57,7 @@ function Contact() {
         lastName,
         email: values.email,
         phone: values.phone || undefined,
+        message: values.message,
         source: LeadSource.contact_form,
       });
 

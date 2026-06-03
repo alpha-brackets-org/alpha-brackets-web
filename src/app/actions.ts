@@ -15,7 +15,7 @@ export type SubmitLeadPayload = Omit<
   | "downloadedItems"
   | "status"
   | "notes"
-> & { notes?: Lead["notes"] };
+> & { notes?: Lead["notes"]; message?: string };
 
 export async function submitLeadAction(
   payload: SubmitLeadPayload
