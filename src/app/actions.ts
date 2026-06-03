@@ -22,9 +22,19 @@ export async function submitLeadAction(
 ): Promise<{
   success: boolean;
   message: string;
-  downloadUrl: SubmitLeadResponse;
+  downloadUrl?: SubmitLeadResponse;
 }> {
-  return submitLeadToCms(payload);
+  try {
+    return await submitLeadToCms(payload);
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Failed to submit lead";
+    console.error("submitLeadAction failed:", message);
+    return {
+      success: false,
+      message,
+    };
+  }
 }
 
 export interface NewsletterActionResult {

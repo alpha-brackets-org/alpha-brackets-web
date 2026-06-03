@@ -23,10 +23,10 @@ async function getCurrentDomain(): Promise<string | null> {
     const headersList = await headers();
     const host = headersList.get("host"); // e.g. "localhost:3000" or "alphabrackets.com"
     if (host) {
-      const domain = host.split(":")[0]; // Strip port for exact domain matching
-      // In local dev, host is "localhost" which won't match the CMS portfolio.
+      let domain = host.split(":")[0]; // Strip port for exact domain matching
+      domain = domain.replace(/^www\./, ""); // Strip www. if present
       // Fall through to the env variable so the portfolio ID resolves correctly.
-      if (domain !== "localhost") {
+      if (domain !== "localhost" && !domain.endsWith(".vercel.app")) {
         return domain;
       }
     }
@@ -63,7 +63,12 @@ export async function getPortfolioId(): Promise<string | null> {
 }
 
 export async function getBlogs(): Promise<Blog[]> {
-  return api.get<Blog[]>("/blogs");
+  try {
+    return await api.get<Blog[]>("/blogs");
+  } catch (error) {
+    console.error("getBlogs failed:", error);
+    return [];
+  }
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog | null> {
@@ -72,7 +77,12 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
-  return api.get<CaseStudy[]>("/case-studies");
+  try {
+    return await api.get<CaseStudy[]>("/case-studies");
+  } catch (error) {
+    console.error("getCaseStudies failed:", error);
+    return [];
+  }
 }
 
 export async function getCaseStudyById(id: string): Promise<CaseStudy | null> {
@@ -81,11 +91,21 @@ export async function getCaseStudyById(id: string): Promise<CaseStudy | null> {
 }
 
 export async function getFAQs(): Promise<Faq[]> {
-  return api.get<Faq[]>("/faqs");
+  try {
+    return await api.get<Faq[]>("/faqs");
+  } catch (error) {
+    console.error("getFAQs failed:", error);
+    return [];
+  }
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  return api.get<Testimonial[]>("/testimonials");
+  try {
+    return await api.get<Testimonial[]>("/testimonials");
+  } catch (error) {
+    console.error("getTestimonials failed:", error);
+    return [];
+  }
 }
 
 import { SubmitLeadPayload } from "@/app/actions";
@@ -111,7 +131,12 @@ export async function submitLead(
 }
 
 export async function getProjects(): Promise<Project[]> {
-  return api.get<Project[]>("/projects");
+  try {
+    return await api.get<Project[]>("/projects");
+  } catch (error) {
+    console.error("getProjects failed:", error);
+    return [];
+  }
 }
 
 export async function subscribeToNewsletter(
