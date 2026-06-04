@@ -14,6 +14,7 @@ export default async function Home() {
     getTestimonials(),
   ]);
 
+
   return (
     <>
       <Header />
@@ -23,9 +24,6 @@ export default async function Home() {
       <Clients />
       <Testimonials testimonials={testimonialsData} />
       <ContentPillars articles={blogs} />
-      {/* TODO: Add CTA section */}
-      {/* TODO: Add Trust indicators */}
-      {/* TODO: Add Footer */}
     </>
   );
 }

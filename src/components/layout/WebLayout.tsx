@@ -8,16 +8,17 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import PageCTA from "@/components/shared/PageCTA";
 import AnalyticsTracker from "@/components/layout/AnalyticsTracker";
-import { getBlogs, getCaseStudies } from "@/lib/cms-client";
+import { getBlogs, getCaseStudies, getPortfolioId } from "@/lib/cms-client";
 
 export default async function WebLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [blogs, caseStudies] = await Promise.all([
+  const [blogs, caseStudies, portfolioId] = await Promise.all([
     getBlogs(),
     getCaseStudies(),
+    getPortfolioId(),
   ]);
 
   return (
@@ -36,7 +37,7 @@ export default async function WebLayout({
           <Footer />
         </div>
       </div>
-      <AnalyticsTracker />
+      <AnalyticsTracker portfolioId={portfolioId} />
     </>
   );
 }

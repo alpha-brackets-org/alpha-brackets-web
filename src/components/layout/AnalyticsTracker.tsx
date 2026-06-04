@@ -59,13 +59,15 @@ function getDeviceMetadata(): {
 function trackEvent(
   event: "page_view" | "session_start" | "session_end",
   path: string,
+  portfolioId: string | null,
   duration?: number
 ) {
-  if (!CMS_URL) return;
+  if (!CMS_URL || !portfolioId) return;
 
   const payload = {
     event,
     path,
+    portfolio: portfolioId,
     visitorId: getVisitorId(),
     duration: duration ?? 0,
     metadata: getDeviceMetadata(),
@@ -74,45 +76,42 @@ function trackEvent(
   const url = `${CMS_URL}/analytics/collect`;
   const body = JSON.stringify(payload);
 
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
-  } else {
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-      keepalive: true,
-    }).catch(() => {
-      // Silently fail — analytics should never block the user
-    });
-  }
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body,
+    keepalive: true,
+    credentials: "omit",
+  }).catch(() => {
+    // Silently fail — analytics should never block the user
+  });
 }
 
 /**
  * Client component that tracks page views and session duration.
  * Mount once in the root layout — it reacts to pathname changes via Next.js router.
  */
-export default function AnalyticsTracker() {
+export default function AnalyticsTracker({ portfolioId }: { portfolioId: string | null }) {
   const pathname = usePathname();
   const sessionStartRef = useRef<number>(Date.now());
   const lastPathRef = useRef<string>(pathname);
 
   // Track page views on pathname change
   useEffect(() => {
-    trackEvent("page_view", pathname);
+    trackEvent("page_view", pathname, portfolioId);
     lastPathRef.current = pathname;
-  }, [pathname]);
+  }, [pathname, portfolioId]);
 
   // Track session start on mount and session end on unmount / tab close
   useEffect(() => {
     sessionStartRef.current = Date.now();
-    trackEvent("session_start", pathname);
+    trackEvent("session_start", pathname, portfolioId);
 
     const handleBeforeUnload = () => {
       const duration = Math.round(
         (Date.now() - sessionStartRef.current) / 1000
       );
-      trackEvent("session_end", lastPathRef.current, duration);
+      trackEvent("session_end", lastPathRef.current, portfolioId, duration);
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
