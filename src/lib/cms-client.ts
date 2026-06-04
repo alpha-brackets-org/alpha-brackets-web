@@ -62,13 +62,9 @@ export async function getPortfolioId(): Promise<string | null> {
   return config?._id || null;
 }
 
-export async function getBlogs(): Promise<Blog[]> {
-  try {
-    return await api.get<Blog[]>("/blogs");
-  } catch (error) {
-    console.error("getBlogs failed:", error);
-    return [];
-  }
+export async function getBlogs(params: Record<string, any> = { limit: 100 }): Promise<Blog[]> {
+  const query = new URLSearchParams(params).toString();
+  return api.get<Blog[]>(`/blogs?${query}`);
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog | null> {
@@ -76,13 +72,9 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
   return blogs.find((b) => b.slug === slug) || null;
 }
 
-export async function getCaseStudies(): Promise<CaseStudy[]> {
-  try {
-    return await api.get<CaseStudy[]>("/case-studies");
-  } catch (error) {
-    console.error("getCaseStudies failed:", error);
-    return [];
-  }
+export async function getCaseStudies(params: Record<string, any> = { limit: 100 }): Promise<CaseStudy[]> {
+  const query = new URLSearchParams(params).toString();
+  return api.get<CaseStudy[]>(`/case-studies?${query}`);
 }
 
 export async function getCaseStudyById(id: string): Promise<CaseStudy | null> {
@@ -90,22 +82,14 @@ export async function getCaseStudyById(id: string): Promise<CaseStudy | null> {
   return caseStudies.find((cs) => cs.slug === id || cs._id === id) || null;
 }
 
-export async function getFAQs(): Promise<Faq[]> {
-  try {
-    return await api.get<Faq[]>("/faqs");
-  } catch (error) {
-    console.error("getFAQs failed:", error);
-    return [];
-  }
+export async function getFAQs(params: Record<string, any> = { limit: 100 }): Promise<Faq[]> {
+  const query = new URLSearchParams(params).toString();
+  return api.get<Faq[]>(`/faqs?${query}`);
 }
 
-export async function getTestimonials(): Promise<Testimonial[]> {
-  try {
-    return await api.get<Testimonial[]>("/testimonials");
-  } catch (error) {
-    console.error("getTestimonials failed:", error);
-    return [];
-  }
+export async function getTestimonials(params: Record<string, any> = { limit: 100 }): Promise<Testimonial[]> {
+  const query = new URLSearchParams(params).toString();
+  return api.get<Testimonial[]>(`/testimonials?${query}`);
 }
 
 import { SubmitLeadPayload } from "@/app/actions";
@@ -130,13 +114,9 @@ export async function submitLead(
   });
 }
 
-export async function getProjects(): Promise<Project[]> {
-  try {
-    return await api.get<Project[]>("/projects");
-  } catch (error) {
-    console.error("getProjects failed:", error);
-    return [];
-  }
+export async function getProjects(params: Record<string, any> = { limit: 100 }): Promise<Project[]> {
+  const query = new URLSearchParams(params).toString();
+  return api.get<Project[]>(`/projects?${query}`);
 }
 
 export async function subscribeToNewsletter(
