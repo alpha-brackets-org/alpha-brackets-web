@@ -26,11 +26,15 @@ export default function TeamAbout() {
                   Digital Alchemists.
                 </span>
               </h3>
+              {/* Was: "more than just a development team... strategic partners in
+                  transformation... scalable, high-impact business outcomes", with an
+                  em dash mid-sentence. Jargon throughout, and the dash broke the
+                  DESIGN.md punctuation rule. Route is disabled, but it would have
+                  shipped on re-enable. */}
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We are more than just a development team; we are your strategic
-                partners in transformation. Our architects don&apos;t just write
-                code—they build the foundations for scalable, high-impact
-                business outcomes.
+                We are a small team, and the people who design your product are
+                the same people who build it. That means fewer handovers, and
+                nobody explaining a decision they were not part of.
               </p>
             </div>
 
@@ -72,7 +76,7 @@ export default function TeamAbout() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <div className="col-span-6 relative aspect-square rounded-[32px] overflow-hidden border border-border/50 -mt-32 mr-10 shadow-2xl">
+              <div className="col-span-6 relative aspect-square rounded-[32px] overflow-hidden border border-border/50 -mt-32 mr-10">
                 <Image
                   src="/assets/imgs/intro/04.jpg"
                   alt="Engineering Excellence"
@@ -83,7 +87,6 @@ export default function TeamAbout() {
               </div>
             </div>
             {/* Decorative background glow */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
           </div>
         </div>
       </div>

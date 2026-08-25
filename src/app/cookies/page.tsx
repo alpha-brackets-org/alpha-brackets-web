@@ -1,18 +1,37 @@
 import { SITE_CONFIG } from "@/data/site-config";
-import { formatDate } from "@/lib/utils";
 
 export const metadata = {
-  title: "Cookie Policy | Alpha Brackets",
-  description: "How we use cookies to improve your experience.",
+  alternates: { canonical: "/cookies" },
+  title: "Cookie Policy",
+  description:
+    "This site sets no cookies and stores nothing in your browser. What that means, and what happens when you book a call.",
 };
 
-export default function CookiePolicy() {
-  const lastUpdated = formatDate(new Date(), {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+/**
+ * Hardcoded, not `new Date()`.
+ *
+ * This previously used `formatDate(new Date(), ...)`, which stamped the build
+ * date. Every deploy silently re-dated the policy, so it always looked freshly
+ * reviewed even when the text had not changed in months. Update this by hand
+ * when the wording below actually changes.
+ */
+const LAST_UPDATED = "August 20, 2026";
 
+/**
+ * Every claim on this page is checkable against the code.
+ *
+ * The previous version was inherited boilerplate and was wrong in six places: it
+ * described essential, analytics and preference cookies, and claimed
+ * third-party cookies were used to "deliver advertisements on and through the
+ * Service". None of that was ever true. The site sets no cookies at all (there
+ * is no `document.cookie` and no `cookies()` call anywhere in `src/`), runs no
+ * analytics, and loads no third-party scripts. It also directly contradicted
+ * `/privacy`, which correctly said the opposite.
+ *
+ * If a cookie, an analytics script or a form is ever added, this page changes in
+ * the same commit. Not afterwards.
+ */
+export default function CookiePolicy() {
   return (
     <section className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -26,79 +45,78 @@ export default function CookiePolicy() {
               Policy
             </span>
           </h1>
-          <p className="text-muted-foreground">Last Updated: {lastUpdated}</p>
+          <p className="text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
         </div>
 
         <div className="prose prose-invert prose-primary max-w-none space-y-12 text-muted-foreground leading-relaxed">
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">
-              1. What Are Cookies
+              1. This Site Sets No Cookies
             </h2>
             <p>
-              Cookies are small pieces of text sent by your web browser by a
-              website you visit. A cookie file is stored in your web browser and
-              allows the Service or a third-party to recognize you and make your
-              next visit easier and the Service more useful to you.
+              We do not set cookies on this website. Not for analytics, not for
+              advertising, and not to remember settings. There is nothing to
+              accept and nothing to opt out of, which is why you will not see a
+              cookie banner here.
+            </p>
+            <p>
+              We also do not store anything in your browser through any other
+              method, so nothing is kept on your device after you close the tab.
             </p>
           </div>
 
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">
-              2. How Alpha Brackets Uses Cookies
+              2. No Analytics And No Trackers
             </h2>
             <p>
-              When you use and access the Service, we may place a number of
-              cookies files in your web browser. We use cookies for the
-              following purposes:
+              This site runs no analytics. We do not know who visits, which
+              pages they read, or where they came from. We do not load tracking
+              scripts, advertising pixels, session recorders, or heatmaps.
             </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>
-                <strong>Essential Cookies:</strong> To enable certain functions
-                of the Service.
-              </li>
-              <li>
-                <strong>Analytics Cookies:</strong> To track information how the
-                Service is used so that we can make improvements.
-              </li>
-              <li>
-                <strong>Preference Cookies:</strong> To remember your
-                information that changes the way the Service behaves or looks.
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              3. Third-Party Cookies
-            </h2>
             <p>
-              In addition to our own cookies, we may also use various
-              third-parties cookies to report usage statistics of the Service,
-              deliver advertisements on and through the Service, and so on.
+              The practical trade off is that we get no data about how the site
+              is used. We decided that was worth it, and if that ever changes we
+              will say so on this page before we turn anything on.
             </p>
           </div>
 
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">
-              4. What Are Your Choices Regarding Cookies
+              3. Booking A Call Happens On Cal.com
             </h2>
             <p>
-              If you'd like to delete cookies or instruct your web browser to
-              delete or refuse cookies, please visit the help pages of your web
-              browser. Please note, however, that if you delete cookies or
-              refuse to accept them, you might not be able to use all of the
-              features we offer, you may not be able to store your preferences,
-              and some of our pages might not display properly.
+              When you book a call, the booking link takes you to Cal.com. That
+              is a separate company and a separate website. Anything you enter
+              there, like your name and email, is handled by Cal.com under their
+              own privacy and cookie policies, not ours.
+            </p>
+            <p>
+              Until you click through to Cal.com, nothing about your visit
+              leaves this site, because there is nothing collecting it.
             </p>
           </div>
 
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">
-              5. More Information
+              4. Fonts Are Served From This Site
             </h2>
             <p>
-              If you have any questions about our Cookie Policy, please contact
-              us at {SITE_CONFIG.email}.
+              The fonts used here are downloaded and served from our own domain
+              when the site is built. Your browser does not request them from
+              Google or any other font provider, so no third party sees your
+              visit.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-foreground">
+              5. Questions
+            </h2>
+            <p>
+              If you have a question about this policy, or you want to check any
+              of the above, email us at {SITE_CONFIG.email} and we will answer
+              plainly.
             </p>
           </div>
         </div>

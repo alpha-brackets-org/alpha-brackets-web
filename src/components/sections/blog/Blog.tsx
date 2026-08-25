@@ -119,9 +119,8 @@ export default function Blog({
 
               {/* Author Card */}
               <div className="p-10 rounded-[40px] bg-muted/20 border border-border/50 flex flex-col sm:flex-row items-center gap-10 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors" />
 
-                <div className="relative w-32 h-32 shrink-0 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                <div className="relative w-32 h-32 shrink-0 rounded-full overflow-hidden border-4 border-background">
                   <Image
                     src={
                       currentArticle.author?.image ||
@@ -197,7 +196,7 @@ export default function Blog({
                   <div className="md:col-span-2 pt-4">
                     <Button
                       size="lg"
-                      className="rounded-full px-12 py-8 bg-primary hover:bg-primary/90 text-white font-black text-xs uppercase tracking-widest shadow-xl shadow-primary/20"
+                      className="rounded-full px-12 py-8 bg-primary hover:bg-primary/90 text-primary-foreground font-black text-xs uppercase tracking-widest"
                     >
                       Post Comment <ArrowRight className="ml-3 w-4 h-4" />
                     </Button>
@@ -251,7 +250,7 @@ export default function Blog({
                           <span className="text-sm font-bold text-muted-foreground group-hover:text-primary transition-colors">
                             {name}
                           </span>
-                          <span className="text-[10px] font-black text-muted-foreground/40 bg-muted px-2 py-1 rounded-md">
+                          <span className="text-[10px] font-black text-muted-foreground bg-muted px-2 py-1 rounded-md">
                             {count}
                           </span>
                         </Link>

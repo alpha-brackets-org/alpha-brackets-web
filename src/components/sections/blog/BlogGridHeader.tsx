@@ -19,7 +19,7 @@ function BlogGridHeader() {
   return (
     <div
       className="relative h-[60vh] min-h-[500px] flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/imgs/background/bg1.jpg')" }}
+      style={{ backgroundImage: "url('/images/backgrounds/bg1.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/80 z-0"></div>
 

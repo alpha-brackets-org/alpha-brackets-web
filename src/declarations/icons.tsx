@@ -64,6 +64,8 @@ import {
   Building2,
   Lightbulb,
   Globe,
+  PhoneCall,
+  Repeat,
   // Types
   type LucideIcon,
 } from "lucide-react";
@@ -127,6 +129,8 @@ export {
   Building2,
   Lightbulb,
   Globe,
+  PhoneCall,
+  Repeat,
   type LucideIcon,
 };
 
@@ -175,6 +179,12 @@ export const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+/**
+ * Legacy Twitter bird. Kept only because src/components/sections/blog/Blog.tsx
+ * still imports it and /blogs is disabled. For the company's own social links use
+ * `XLogo` below, since the account lives on x.com and a bird icon now reads as out
+ * of date.
+ */
 export const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
@@ -183,6 +193,30 @@ export const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+  </svg>
+);
+
+// Named XLogo, not X, because lucide's X (the close/cross icon) is already
+// exported above and used as the mobile menu close button.
+export const XLogo = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
+
+export const Bluesky = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M5.769 3.913C8.332 5.836 11.089 9.735 12 11.828c.911-2.093 3.668-5.992 6.231-7.915C20.07 2.53 23 1.472 23 4.815c0 .667-.383 5.604-.607 6.404-.783 2.79-3.635 3.503-6.171 3.071 4.43.755 5.555 3.252 3.122 5.749-4.62 4.744-6.643-1.19-7.16-2.71-.095-.28-.14-.41-.14-.298 0-.113-.045.018-.14.297-.518 1.522-2.54 7.455-7.16 2.711-2.433-2.497-1.308-4.994 3.122-5.75-2.536.433-5.388-.28-6.171-3.07C.383 10.418 0 5.483 0 4.815 0 1.472 2.93 2.53 4.769 3.913Z" />
   </svg>
 );
 
@@ -250,12 +284,18 @@ export const ScrollProgress = React.forwardRef<
       cx="50"
       cy="50"
       r="48"
-      className="fill-none stroke-white/5 stroke-[2]"
+      className="fill-none stroke-white/5 stroke-2"
     />
+    {/* No `transition-all` on this path. `stroke-dashoffset` is not a
+        compositable property, so transitioning it made the browser do main-thread
+        work on every scroll frame, and Lighthouse flagged it as a non-composited
+        animation. ProgressScroll now writes the offset directly inside
+        requestAnimationFrame, which is already frame-aligned, so the transition
+        was both redundant and expensive. */}
     <path
       ref={ref}
       d="M50,2 a48,48 0 0,1 0,96 a48,48 0 0,1 0,-96"
-      className="fill-none stroke-primary stroke-[3] transition-all duration-200 ease-out"
+      className="fill-none stroke-primary stroke-3"
       strokeLinecap="round"
     />
   </svg>

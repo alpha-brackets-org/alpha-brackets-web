@@ -69,7 +69,7 @@ function Intro() {
           </div>
 
           <div className="lg:col-span-4 h-full min-h-[400px]">
-            <div className="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative h-full w-full rounded-3xl overflow-hidden">
               <Image
                 src="/assets/imgs/intro/04.jpg"
                 alt="intro image"

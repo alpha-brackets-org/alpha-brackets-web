@@ -11,11 +11,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "Careers | Alpha Brackets",
-  description:
-    "Join Alpha Brackets and help us bridge the gap between complex engineering and strategic business impact.",
-};
+// Route intentionally disabled: hiring reads as premature with no clients yet, and
+// there is no monitored careers inbox, so it 404s.
+// No `metadata` export on purpose. Next discards metadata for a route that calls
+// notFound(). The description this used to carry ("bridge the gap between complex
+// engineering and strategic business impact") is also the exact register DESIGN.md
+// rules out, so it should not be restored as-is when the route comes back.
 
 const BENEFITS = [
   {
@@ -67,8 +68,6 @@ export default function CareersPage() {
     <div className="relative pt-32 overflow-clip bg-background">
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
 
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent)] bg-[grid-white_1px_bg-transparent_20px_20px]" />
@@ -86,15 +85,22 @@ export default function CareersPage() {
           Build the <span className="text-primary italic">Future</span> <br />
           of Alpha Brackets.
         </h1>
+        {/* Was: "strategic thinkers, zero-waste engineers, and visionaries to help us
+            redefine technical execution." Every noun in that sentence is on the
+            banned list in DESIGN.md, and "zero-waste engineers" is the doc's own
+            named example of what not to write. This route is disabled, so it was
+            never user-facing, but it would have shipped the moment it was switched
+            back on. */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-          We’re looking for strategic thinkers, zero-waste engineers, and
-          visionaries to help us redefine technical execution.
+          We are looking for engineers who like owning a problem end to end, and
+          who would rather ship something small that works than something big
+          that nearly does.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button
             asChild
             size="lg"
-            className="rounded-full px-8 bg-primary hover:bg-primary/90 text-white font-bold"
+            className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
           >
             <Link href="#positions">View Openings</Link>
           </Button>
@@ -140,15 +146,23 @@ export default function CareersPage() {
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase italic mb-4">
               Open Positions
             </h2>
-            <p className="text-muted-foreground">
-              Don't see a role that fits? Send us an open application at
-              <span className="text-primary ml-1">
-                careers@alphabrackets.com
-              </span>
-            </p>
+            {/* The careers address moved to SITE_CONFIG.careersEmail, where it is
+                commented out along with this block. It was hardcoded here, so it
+                would not have followed a change to the main site email. When
+                /careers is re-enabled, uncomment the field in site-config and
+                restore this as {SITE_CONFIG.careersEmail} rather than typing the
+                address again:
+
+                <p className="text-muted-foreground">
+                  Don&apos;t see a role that fits? Send us an open application at
+                  <span className="text-primary ml-1">
+                    {SITE_CONFIG.careersEmail}
+                  </span>
+                </p>
+            */}
           </div>
           <div className="hidden md:block">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
               Scroll to explore
             </span>
           </div>
@@ -182,7 +196,7 @@ export default function CareersPage() {
                     {job.type}
                   </span>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </div>

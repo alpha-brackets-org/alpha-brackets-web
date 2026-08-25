@@ -42,7 +42,7 @@ export default function ProcessSegments({
     <section
       className="services section-padding relative overflow-hidden flex items-center min-h-[60vh]"
       style={{
-        backgroundImage: `url(${bgImage ?? "/assets/imgs/background/b2.jpg"})`,
+        backgroundImage: `url(${bgImage ?? "/images/backgrounds/b2.jpg"})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

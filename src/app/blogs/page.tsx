@@ -1,18 +1,11 @@
-import Header from "@/components/sections/blog/BlogGridHeader";
-import Blogs from "@/components/sections/blog/Blogs";
-import { getBlogs } from "@/lib/cms-client";
+import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "Alpha Brackets - Blogs",
-};
+// Route intentionally disabled: no blog content is live yet, so it 404s.
+// No `metadata` export on purpose. Next discards metadata for a route that calls
+// notFound(), so exporting a real title here only makes the route look live to the
+// next person reading it. Every disabled route in this app follows this pattern.
+// Add metadata back at the same time as the content.
 
-export default async function Home() {
-  const blogs = await getBlogs();
-
-  return (
-    <>
-      <Header />
-      <Blogs blogs={blogs} />
-    </>
-  );
+export default function Home() {
+  notFound();
 }

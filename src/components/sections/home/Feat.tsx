@@ -66,7 +66,7 @@ function Feat() {
       </div>
       <div className="circle-blur">
         <Image
-          src="/assets/imgs/patterns/blur1.png"
+          src="/images/patterns/blur1.png"
           alt=""
           width={100}
           height={100}

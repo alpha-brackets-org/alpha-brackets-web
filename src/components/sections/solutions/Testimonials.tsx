@@ -38,7 +38,7 @@ function Testimonials({ testimonials = [] }: { testimonials?: Testimonial[] }) {
   return (
     <section
       className="relative py-24 bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url('/assets/imgs/background/b1.jpg')" }}
+      style={{ backgroundImage: "url('/images/backgrounds/b1.jpg')" }}
     >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/90 z-0"></div>

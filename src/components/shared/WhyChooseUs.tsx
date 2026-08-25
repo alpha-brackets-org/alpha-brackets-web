@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Plus, Minus } from "@/declarations/icons";
 import { cn } from "@/lib/utils";
-import { STATS } from "@/data/stats";
 import { WhyChooseUsProps } from "@/types";
 
 export default function WhyChooseUs({
   title = "",
   diffrentials = [],
+  stats,
 }: WhyChooseUsProps) {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
@@ -16,49 +16,86 @@ export default function WhyChooseUs({
     setOpenIndex(openIndex === i ? -1 : i);
   };
 
-  const displayStats = STATS.slice(0, 4);
+  // Render exactly what the caller passes, and nothing when it passes nothing.
+  //
+  // This used to top the caller's stats up from the global STATS list, which is
+  // what put the same two numbers on all ten service pages: only two services
+  // defined a stat, so the other eight received the shared pair wholesale, and the
+  // two that did got topped up to match. Do not reintroduce a fallback here. A
+  // service with no honest number should show none, see the note in
+  // src/data/services.ts.
+  const displayStats = stats ?? [];
+  const hasStats = displayStats.length > 0;
+
+  // Service titles are written to end with "Alpha Brackets" (see src/data/services.ts),
+  // so the last two words are the emphasis. Guard short titles so a two-word
+  // heading doesn't end up entirely italic with nothing in front of it.
+  const words = title.split(" ");
+  const emphasisCount = words.length > 3 ? 2 : 1;
+  const lead = words.slice(0, -emphasisCount).join(" ");
+  const emphasis = words.slice(-emphasisCount).join(" ");
 
   return (
     <section className="py-24 bg-background border-t border-border/50 overflow-hidden relative">
       {/* Background glow */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left — heading + visual */}
-          <div className="space-y-8">
+        {/* Two columns when there are stats to sit beside the accordion. Without
+            them the left column would be a heading and a decorative line next to a
+            tall accordion, which reads as broken rather than deliberate, so the
+            layout drops to one column and the accordion takes the width. Half the
+            services have no honest number, so both states are common. */}
+        <div
+          className={cn(
+            hasStats
+              ? "grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start"
+              : "space-y-12"
+          )}
+        >
+          {/* Heading, plus the stats when this service has any */}
+          <div className={cn("space-y-8", !hasStats && "max-w-2xl")}>
             <div>
               <span className="sub-title">Why Choose Us</span>
               <h2 className="mt-4">
-                {title.split(" ").slice(0, -2).join(" ")}{" "}
+                {lead}{" "}
                 <span className="font-extralight text-muted-foreground">
-                  {title.split(" ").slice(-2).join(" ")}.
+                  {emphasis}.
                 </span>
               </h2>
             </div>
 
-            {/* Stat pills */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              {displayStats.map((stat) => (
+            {hasStats && (
+              <>
+                {/* Column count follows the number of stats, so a lone pill fills
+                    its row instead of sitting half width. */}
                 <div
-                  key={stat.label}
-                  className="p-4 rounded-2xl border border-border/50 bg-card space-y-1"
+                  className={cn(
+                    "grid gap-4 pt-4",
+                    displayStats.length > 1 ? "grid-cols-2" : "grid-cols-1"
+                  )}
                 >
-                  <div className="text-2xl font-extrabold text-primary">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {stat.label}
-                  </div>
+                  {displayStats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="p-4 rounded-2xl border border-border/50 bg-card space-y-1"
+                    >
+                      <div className="text-2xl font-extrabold text-primary">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
 
-            {/* Decorative line accent */}
-            <div className="h-px w-full bg-gradient-to-r from-primary/40 via-primary/20 to-transparent" />
+                {/* Decorative line accent */}
+                <div className="h-px w-full bg-gradient-to-r from-primary/40 via-primary/20 to-transparent" />
+              </>
+            )}
           </div>
 
-          {/* Right — accordion */}
+          {/* Right: accordion */}
           <div className="space-y-3">
             {diffrentials.map((item, i) => {
               const isOpen = openIndex === i;
@@ -68,7 +105,7 @@ export default function WhyChooseUs({
                   className={cn(
                     "rounded-2xl border transition-all duration-300",
                     isOpen
-                      ? "border-primary/40 bg-primary/5 shadow-lg shadow-primary/5"
+                      ?"border-primary/40 bg-primary/5"
                       : "border-border/50 bg-card hover:border-border"
                   )}
                 >
@@ -101,7 +138,7 @@ export default function WhyChooseUs({
                       className={cn(
                         "shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300",
                         isOpen
-                          ? "bg-primary border-primary text-white rotate-0"
+                          ? "bg-primary border-primary text-primary-foreground rotate-0"
                           : "border-border text-muted-foreground group-hover:border-primary group-hover:text-primary"
                       )}
                     >

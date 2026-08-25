@@ -89,7 +89,7 @@ export default function Pagination({
               onClick={() => onPageChange(page as number)}
               className={`w-12 h-12 rounded-full font-bold text-sm transition-all duration-300 ${
                 isCurrent
-                  ? "bg-primary border border-primary text-white shadow-lg shadow-primary/25 scale-105"
+                  ?"bg-primary border border-primary text-primary-foreground scale-105"
                   : "border border-border hover:border-primary hover:bg-primary/5 active:scale-95 text-foreground"
               }`}
             >

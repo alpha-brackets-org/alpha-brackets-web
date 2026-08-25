@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 36 36" width="36" height="36">
+  <title>Alpha Brackets</title>
+  <!--
+    Favicon. The two paths are the hexagon mark lifted verbatim from
+    public/brand/logo.svg, which is a wide wordmark (244x30) and unreadable
+    at 16px. The mark alone occupies exactly 0 0 30 30 there, so it crops to a
+    square with no distortion. The viewBox is inset by 3 on each side for a little
+    breathing room in the browser tab.
+
+    This file uses the Next.js app-directory icon convention, so Next serves it and
+    injects the <link rel="icon"> itself. There is no manual `icons` entry in
+    layout.tsx, and no favicon.ico, on purpose.
+  -->
+  <path
+    fill="#FD5B38"
+    d="M0 7.69285V14.3337L14.8548 6.70659L29.9281 14.3337V7.69285L14.8548 0L0 7.69285Z"
+  />
+  <path
+    fill="#FD5B38"
+    d="M0 16.128L6.95122 12.6436V19.2837L15.1463 23.2941L30 15.7335V22.2422L14.8537 30L0 22.2422V16.128Z"
+  />
+</svg>

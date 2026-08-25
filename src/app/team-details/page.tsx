@@ -4,6 +4,10 @@ import Intro from "@/components/sections/team/TeamMemberIntro";
 import Services from "@/components/sections/team/TeamMemberServices";
 import { notFound } from "next/navigation";
 
+// Route intentionally disabled, like /team: it 404s.
+// No metadata export on purpose, since Next discards metadata for a route that
+// calls notFound().
+
 export default function Home() {
   notFound();
   return (

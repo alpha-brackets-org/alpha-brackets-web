@@ -1,7 +1,7 @@
 import Error from "@/components/sections/page-404/Error";
 
 export const metadata = {
-  title: "404 - Page Not Found | Alpha Brackets",
+  title: "404 - Page Not Found",
 };
 
 export default function NotFound() {

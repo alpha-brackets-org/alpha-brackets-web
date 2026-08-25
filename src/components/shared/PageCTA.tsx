@@ -24,15 +24,19 @@ const CTA_DATA: Record<
     color: string;
   }
 > = {
+  // "Got an idea worth building?" was the old wording. It only speaks to someone
+  // starting from nothing, and as the closing CTA it is the last thing a homepage
+  // visitor reads, so it undid the work the hero does to include people with an
+  // existing product or a business that needs a system.
   general: {
     title: (
       <>
-        Ready to compress your{" "}
-        <span className="text-primary italic">time-to-market?</span>
+        Building something,{" "}
+        <span className="text-primary italic">or stuck with something?</span>
       </>
     ),
-    desc: "From technical debt cleanup to full-scale AI integration, we help you ship faster and scale smarter.",
-    buttonText: "Start Your Project",
+    desc: "Tell us where you are. We will tell you honestly what it takes, what we would leave out of the first version, and whether we are the right people for it.",
+    buttonText: "Start a Conversation",
     buttonHref: "/contact",
     icon: Zap,
     color: "from-primary/10 via-primary/5 to-transparent",
@@ -40,14 +44,14 @@ const CTA_DATA: Record<
   services: {
     title: (
       <>
-        Ready to build{" "}
+        Tell us what you{" "}
         <span className="font-extralight text-muted-foreground italic">
-          what's next?
+          want to build.
         </span>
       </>
     ),
-    desc: "Whether you're a startup with a vision or a growing business needing a technical partner — we'd love to hear from you.",
-    buttonText: "Let's Build Together",
+    desc: "A free 30 minute call, no pitch. We will talk through your idea, what it would take, and whether we are the right team for it.",
+    buttonText: "Book A Call",
     buttonHref: "/contact",
     icon: Code,
     color: "from-primary/10 via-primary/5 to-transparent",
@@ -55,11 +59,11 @@ const CTA_DATA: Record<
   "case-study": {
     title: (
       <>
-        Want <span className="text-primary italic">similar results</span> for
-        your business?
+        Want something{" "}
+        <span className="text-primary italic">like this</span> built?
       </>
     ),
-    desc: "We don't just build features; we solve revenue leakage, operational friction, and scalability bottlenecks. Let's see what we can do for you.",
+    desc: "Tell us what you are trying to build and we will tell you what it takes. No hard sell, just a straight answer.",
     buttonText: "Book Discovery Call",
     buttonHref: "/contact",
     icon: Rocket,
@@ -68,14 +72,14 @@ const CTA_DATA: Record<
   about: {
     title: (
       <>
-        Let's build the{" "}
+        Now tell us about{" "}
         <span className="font-extralight text-muted-foreground italic">
-          future together.
+          your product.
         </span>
       </>
     ),
-    desc: "You've seen our philosophy and our team. Now let's see how our zero-waste engineering can accelerate your product roadmap.",
-    buttonText: "Partner With Us",
+    desc: "You know how we work. The next step is a call about what you are building and where you want it to go.",
+    buttonText: "Talk To Us",
     buttonHref: "/contact",
     icon: Users,
     color: "from-primary/10 via-primary/5 to-transparent",
@@ -84,10 +88,10 @@ const CTA_DATA: Record<
     title: (
       <>
         Want to build{" "}
-        <span className="text-primary italic">engineering-first</span> products?
+        <span className="text-primary italic">real products?</span>
       </>
     ),
-    desc: "We're always looking for senior talent who values clean architecture and business outcomes. Join our remote-first team.",
+    desc: "We look for engineers who care about how a product is put together, not just whether it runs. The team is remote.",
     buttonText: "View Openings",
     buttonHref: "/careers#positions",
     icon: Code,
@@ -137,8 +141,6 @@ const PageCTA = ({ variant, className }: PageCTAProps) => {
           )}
         >
           {/* Animated Background Accents */}
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/10 blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-700" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary/5 blur-[80px] translate-y-1/2 -translate-x-1/2" />
 
           <div className="relative z-10 max-w-3xl mx-auto">
             {/* Icon Badge */}
@@ -156,7 +158,7 @@ const PageCTA = ({ variant, className }: PageCTAProps) => {
 
             <Link
               href={data.buttonHref}
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-primary text-white font-bold uppercase tracking-widest text-xs hover:bg-primary/90 transition-all shadow-2xl shadow-primary/30 group/btn active:scale-95"
+              className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs hover:bg-primary/90 transition-all group/btn active:scale-95"
             >
               {data.buttonText}
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

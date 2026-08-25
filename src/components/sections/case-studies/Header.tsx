@@ -24,7 +24,7 @@ export default function CaseStudiesHeader() {
   return (
     <header
       id="case-studies-header"
-      className="relative pt-40 pb-24 overflow-hidden bg-background"
+      className="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl">
@@ -55,8 +55,6 @@ export default function CaseStudiesHeader() {
       </div>
 
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] -z-10" />
     </header>
   );
 }

@@ -46,7 +46,7 @@ export default function FeaturedCaseStudies({
             className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-primary hover:gap-5 transition-all group"
           >
             All Case Studies
-            <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+            <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
               <ArrowRight className="w-5 h-5" />
             </div>
           </Link>
@@ -84,7 +84,7 @@ export default function FeaturedCaseStudies({
                   {/* Featured Badge */}
                   {project.featured && (
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white bg-primary px-3 py-1.5 rounded-full">
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-primary-foreground bg-primary px-3 py-1.5 rounded-full">
                         Featured
                       </span>
                     </div>

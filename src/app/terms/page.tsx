@@ -1,18 +1,20 @@
 import { SITE_CONFIG } from "@/data/site-config";
-import { formatDate } from "@/lib/utils";
 
 export const metadata = {
-  title: "Terms of Service | Alpha Brackets",
+  alternates: { canonical: "/terms" },
+  title: "Terms of Service",
   description: "The rules and regulations for using Alpha Brackets services.",
 };
 
-export default function TermsOfService() {
-  const lastUpdated = formatDate(new Date(), {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+/**
+ * Hardcoded, not `new Date()`.
+ *
+ * This previously stamped the build date, so every deploy silently re-dated the
+ * terms. Update by hand when the wording below actually changes.
+ */
+const LAST_UPDATED = "August 20, 2026";
 
+export default function TermsOfService() {
   return (
     <section className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -26,7 +28,7 @@ export default function TermsOfService() {
               Service
             </span>
           </h1>
-          <p className="text-muted-foreground">Last Updated: {lastUpdated}</p>
+          <p className="text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
         </div>
 
         <div className="prose prose-invert prose-primary max-w-none space-y-12 text-muted-foreground leading-relaxed">
@@ -103,11 +105,15 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold text-foreground">
               5. Governing Law
             </h2>
+            {/* Was "the courts in that State or location", which is unresolved
+                template residue. Pakistan is not a state, and no court was actually
+                named. If a specific venue (for example the courts of Multan or
+                Lahore) should be named instead, that is a decision for a lawyer,
+                not a copy edit. */}
             <p>
               These terms and conditions are governed by and construed in
-              accordance with the laws of Pakistan and you irrevocably submit to
-              the exclusive jurisdiction of the courts in that State or
-              location.
+              accordance with the laws of Pakistan, and you irrevocably submit to
+              the exclusive jurisdiction of the courts of Pakistan.
             </p>
           </div>
         </div>

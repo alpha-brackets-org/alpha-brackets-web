@@ -21,9 +21,11 @@ export default function Header() {
   }, []);
 
   return (
+    // Bottom padding is deliberately small. The section below is short now that
+    // the contact form is gone, so a big gap here reads as a hole in the page.
     <section
       ref={containerRef}
-      className="relative pt-40 pb-24 overflow-hidden bg-background"
+      className="relative pt-40 pb-8 lg:pt-48 lg:pb-12 overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="animate-item">
@@ -41,9 +43,9 @@ export default function Header() {
         </div>
         <div className="animate-item">
           <p className="max-w-2xl text-xl text-muted-foreground leading-relaxed">
-            Ready to build something extraordinary? Our team of architects and
-            engineers is standing by to turn your vision into a technical
-            reality.
+            Tell us about the product you want to build. We will tell you
+            honestly what it takes, what we would leave out of the first
+            version, and whether we are the right team for it.
           </p>
         </div>
       </div>

@@ -2,96 +2,42 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { gsap } from "@/declarations/animations";
-import { contactSchema } from "@/lib/models/Contact";
-import { submitLeadAction } from "@/app/actions";
-import { useToast } from "@/components/ui/toast";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-} from "@/declarations/icons";
-import { CONTACT_LIST } from "@/data/navigation";
+import { ArrowRight, Calendar, Mail } from "@/declarations/icons";
+import { SOCIAL_LINKS } from "@/data/navigation/social-links";
+import { SITE_CONFIG } from "@/data/site-config";
+import { EXPECT_ITEMS } from "@/data/discovery";
 
-import { LeadSource } from "@/types/cms";
-
-type ContactFormValues = z.infer<typeof contactSchema>;
-
+/**
+ * The contact form was removed on purpose.
+ *
+ * It posted leads to the shared multi-tenant CMS (POST /portfolios/{id}/leads),
+ * and the CMS is not being set up for now. A form with no destination is the
+ * silent-failure bug this page already had once: the visitor types a message, it
+ * goes nowhere, and they walk away believing they made contact. Better to have no
+ * form than a decorative one.
+ *
+ * The two paths that ship instead both work with no backend at all: book a time
+ * on Cal.com, or email us.
+ *
+ * If a form is ever wanted back, give it a real destination first (a form service
+ * that emails the submission, or our own send via Resend), then restore the JSX
+ * from git history. `contactSchema` in src/lib/models/Contact.ts and the
+ * ui/form, ui/input and ui/textarea primitives are all still in the repo.
+ */
 function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { toast } = useToast();
-
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    },
-  });
-
-  const onSubmit = async (values: ContactFormValues) => {
-    try {
-      const nameParts = values.name.trim().split(/\s+/);
-      const firstName = nameParts[0] || "Contact";
-      const lastName = nameParts.slice(1).join(" ") || "Form";
-
-      const res = await submitLeadAction({
-        firstName,
-        lastName,
-        email: values.email,
-        phone: values.phone || undefined,
-        message: values.message,
-        source: LeadSource.contact_form,
-      });
-
-      if (res.success) {
-        toast({
-          description: res.message,
-          variant: "success",
-        });
-        form.reset();
-      } else {
-        throw new Error(res.message);
-      }
-    } catch (error: unknown) {
-      console.error("Failed to submit contact form to CMS:", error);
-      form.reset();
-    }
-  };
+  const socials = SOCIAL_LINKS.filter((social) => social.href);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".info-card", {
-        x: -40,
+      gsap.from(".contact-card", {
+        y: 40,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.1,
+        stagger: 0.12,
         ease: "power3.out",
-        delay: 0.8,
-      });
-      gsap.from(".form-card", {
-        x: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 1,
+        delay: 0.6,
       });
     }, containerRef);
 
@@ -101,168 +47,113 @@ function Contact() {
   return (
     <section
       ref={containerRef}
-      className="relative z-10 -mt-16 py-24 bg-background"
+      className="relative z-10 pt-4 pb-28 bg-background"
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Info Sidebar */}
-          <div className="lg:col-span-4 space-y-8">
-            {CONTACT_LIST.map((item, idx) => (
-              <div
-                key={idx}
-                className="info-card p-8 rounded-3xl bg-muted/30 border border-border/50 hover:border-primary/30 transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <h6 className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-2">
-                  {item.label}
-                </h6>
-                <Link
-                  href={item.href}
-                  className="text-lg font-bold hover:text-primary transition-colors leading-tight block"
-                >
-                  {item.value}
-                </Link>
-              </div>
-            ))}
+        <div className="max-w-5xl mx-auto space-y-8">
+          {/* Primary action: book a call. Hidden entirely until
+              SITE_CONFIG.bookingUrl is set, so a "Book a call" button that goes
+              nowhere never ships. */}
+          {SITE_CONFIG.bookingUrl && (
+            <Link
+              href={SITE_CONFIG.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card group block p-10 lg:p-14 rounded-[40px] bg-primary text-primary-foreground relative overflow-hidden"
+            >
 
-            <div className="info-card p-8 rounded-3xl bg-primary text-white space-y-6">
-              <h4 className="text-2xl font-bold tracking-tight">
-                Follow our journey
-              </h4>
-              <div className="flex gap-4">
-                {[Linkedin, Twitter, Facebook, Instagram].map((Icon, i) => (
-                  <Link
-                    key={i}
-                    href="#"
-                    className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 hover:bg-white hover:text-primary transition-all duration-500"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Form Section */}
-          <div className="lg:col-span-8 form-card">
-            <div className="rounded-[40px] border border-border/50 bg-card p-8 lg:p-16 shadow-2xl shadow-primary/5 relative overflow-hidden">
-              {/* Subtle background glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
-
-              <div className="mb-12 relative z-10">
-                <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
-                  Let&apos;s build <br />
-                  <span className="font-extralight text-muted-foreground italic">
-                    the future together.
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="space-y-5">
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center">
+                    <Calendar className="w-7 h-7" />
+                  </div>
+                  <h2 className="text-3xl lg:text-5xl font-bold tracking-tight">
+                    Book a call
+                  </h2>
+                  <p className="text-white/80 leading-relaxed text-lg">
+                    Pick a time that suits you. Thirty minutes, no pitch, and you
+                    will get a straight answer on what your idea takes to build.
+                  </p>
+                  <span className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-xs pt-2">
+                    See available times
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </h2>
-                <p className="text-muted-foreground text-lg">
-                  Fill out the form below and we&apos;ll get back to you within
-                  24 hours.
-                </p>
+                </div>
+
+                {/* What to expect. Same source as the homepage funnel, so the
+                    site describes one process in one voice. */}
+                <ul className="space-y-4 md:border-l md:border-white/20 md:pl-10">
+                  {EXPECT_ITEMS.map(({ icon: Icon, text }) => (
+                    <li key={text} className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <p className="text-sm text-white/90 leading-relaxed">
+                        {text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            </Link>
+          )}
 
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-10 relative z-10"
-                >
-                  <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Full Name"
-                              {...field}
-                              disabled={form.formState.isSubmitting}
-                              className="h-14 rounded-2xl border-border/50 bg-muted/20 px-6 text-lg transition-all focus-visible:bg-background focus-visible:border-primary focus-visible:ring-primary/20"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input
-                              placeholder="Email Address"
-                              {...field}
-                              disabled={form.formState.isSubmitting}
-                              className="h-14 rounded-2xl border-border/50 bg-muted/20 px-6 text-lg transition-all focus-visible:bg-background focus-visible:border-primary focus-visible:ring-primary/20"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+          {/* Secondary: email. Prominent on purpose, it is the obvious choice for
+              anyone not ready to book a slot, and it is the only channel here
+              while bookingUrl is empty. */}
+          <div className="contact-card grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Link
+              href={`mailto:${SITE_CONFIG.email}`}
+              className="group p-10 rounded-3xl border border-border/50 bg-card hover:border-primary/40 transition-colors flex flex-col gap-4"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+                <Mail className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold tracking-tight">
+                Rather write it down?
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Tell us what you want to build and where you are up to. We read
+                everything and reply within 48 hours.
+              </p>
+              <span className="mt-auto inline-flex items-center gap-2 font-bold text-primary text-sm break-all">
+                {SITE_CONFIG.email}
+                <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+            <div className="p-10 rounded-3xl border border-border/50 bg-muted/20 flex flex-col gap-4">
+              <h3 className="text-2xl font-bold tracking-tight">
+                What happens next
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                We talk through your idea and what it would take. If it looks like
+                a fit, you get a fixed price proposal within 48 hours, agreed
+                before any work starts. If it is not a fit, we will say so.
+              </p>
+
+              {/* Only renders once a real profile URL exists in data/navigation/social-links.ts. */}
+              {socials.length > 0 && (
+                <div className="mt-auto pt-4 space-y-3">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+                    Find us elsewhere
+                  </h4>
+                  <div className="flex gap-3">
+                    {socials.map((social) => (
+                      <Link
+                        key={social.name}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.name}
+                        className="w-11 h-11 rounded-2xl bg-background flex items-center justify-center border border-border/50 text-muted-foreground hover:border-primary/40 hover:text-primary transition-all duration-300"
+                      >
+                        <social.icon className="w-5 h-5" />
+                      </Link>
+                    ))}
                   </div>
-
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Phone Number (Optional)"
-                            {...field}
-                            disabled={form.formState.isSubmitting}
-                            className="h-14 rounded-2xl border-border/50 bg-muted/20 px-6 text-lg transition-all focus-visible:bg-background focus-visible:border-primary focus-visible:ring-primary/20"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Tell us about your project"
-                            {...field}
-                            disabled={form.formState.isSubmitting}
-                            rows={5}
-                            className="resize-none rounded-3xl border-border/50 bg-muted/20 p-6 text-lg transition-all focus-visible:bg-background focus-visible:border-primary focus-visible:ring-primary/20"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <div className="pt-4">
-                    <Button
-                      type="submit"
-                      disabled={form.formState.isSubmitting}
-                      className="group relative w-full h-16 rounded-2xl bg-primary text-white text-lg font-bold shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        {form.formState.isSubmitting ? (
-                          "Processing..."
-                        ) : (
-                          <>
-                            Send Message{" "}
-                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                          </>
-                        )}
-                      </span>
-                    </Button>
-                  </div>
-                </form>
-              </Form>
+                </div>
+              )}
             </div>
           </div>
         </div>

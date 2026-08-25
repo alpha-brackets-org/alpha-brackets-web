@@ -53,8 +53,14 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   return (
     <ToastContext.Provider value={{ toasts, toast, dismiss }}>
       {children}
-      {/* Toast Viewport Wrapper */}
-      <div className="fixed bottom-5 right-5 z-[9999] flex flex-col gap-3 w-full max-w-sm pointer-events-none">
+      {/* Toast Viewport Wrapper. The live region means a screen reader announces
+          a toast when it appears, which matters most for form errors. */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="false"
+        className="fixed bottom-5 right-5 z-[9999] flex flex-col gap-3 w-full max-w-sm pointer-events-none"
+      >
         {toasts.map((t) => (
           <ToastItem key={t.id} toast={t} onClose={() => dismiss(t.id)} />
         ))}
@@ -86,7 +92,7 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   return (
     <div
       className={cn(
-        "pointer-events-auto flex items-start gap-3 p-4 rounded-2xl border backdrop-blur-xl shadow-2xl transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in w-full bg-black/90",
+        "pointer-events-auto flex items-start gap-3 p-4 rounded-2xl border backdrop-blur-xl transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in w-full bg-black/90",
         variant === "success" && "border-green-500/20 text-green-200",
         variant === "destructive" && "border-destructive/20 text-red-200",
         variant === "warning" && "border-amber-500/20 text-amber-200",

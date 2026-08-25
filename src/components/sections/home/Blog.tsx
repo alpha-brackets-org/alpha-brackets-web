@@ -24,7 +24,7 @@ function Blog() {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full px-8 py-6 text-base hover:bg-primary hover:text-white transition-all duration-300"
+                className="rounded-full px-8 py-6 text-base hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Link href="/blog-classic">View All</Link>
               </Button>
@@ -62,7 +62,7 @@ function Blog() {
                 href="/blog-details"
                 className="inline-flex items-center group/link"
               >
-                <span className="w-12 h-12 rounded-full border border-border flex items-center justify-center mr-4 transition-all duration-300 group-hover/link:bg-primary group-hover/link:border-primary group-hover/link:text-white">
+                <span className="w-12 h-12 rounded-full border border-border flex items-center justify-center mr-4 transition-all duration-300 group-hover/link:bg-primary group-hover/link:border-primary group-hover/link:text-primary-foreground">
                   <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
                 </span>
                 <span className="text-sm font-bold uppercase tracking-widest">
@@ -102,7 +102,7 @@ function Blog() {
                 href="/blog-details"
                 className="inline-flex items-center group/link"
               >
-                <span className="w-12 h-12 rounded-full border border-border flex items-center justify-center mr-4 transition-all duration-300 group-hover/link:bg-primary group-hover/link:border-primary group-hover/link:text-white">
+                <span className="w-12 h-12 rounded-full border border-border flex items-center justify-center mr-4 transition-all duration-300 group-hover/link:bg-primary group-hover/link:border-primary group-hover/link:text-primary-foreground">
                   <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
                 </span>
                 <span className="text-sm font-bold uppercase tracking-widest">

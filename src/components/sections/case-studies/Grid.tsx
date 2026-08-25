@@ -53,7 +53,7 @@ export default function CaseStudiesGrid({
                 onClick={() => setActiveCategory(cat)}
                 className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                   activeCategory === cat
-                    ? "bg-primary text-white shadow-lg shadow-primary/20"
+                    ?"bg-primary text-primary-foreground"
                     : "hover:bg-primary/10 text-muted-foreground hover:text-primary"
                 }`}
               >
@@ -106,7 +106,7 @@ export default function CaseStudiesGrid({
                     {/* Featured Badge */}
                     {caseStudy.featured && (
                       <div className="absolute top-4 left-4 z-10">
-                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white bg-primary px-3 py-1.5 rounded-full shadow-lg">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-primary-foreground bg-primary px-3 py-1.5 rounded-full">
                           Featured
                         </span>
                       </div>

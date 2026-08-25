@@ -64,7 +64,7 @@ function Header({ article }: { article: Blog }) {
 
             <div className="mt-12 flex flex-wrap items-center gap-8 p-6 rounded-[32px] bg-white/5 border border-white/10 backdrop-blur-xl">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 shrink-0 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl relative">
+                <div className="w-14 h-14 shrink-0 rounded-full overflow-hidden border-2 border-primary/30 relative">
                   <Image
                     src={authorImg}
                     alt={`${authorName} - Author of ${article.title}`}

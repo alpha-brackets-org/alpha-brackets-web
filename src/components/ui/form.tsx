@@ -160,6 +160,9 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
+      // A validation error needs announcing, not just showing. Without this a
+      // screen reader user gets no indication the submit failed.
+      role={error ? "alert" : undefined}
       className={cn("text-[0.8rem] font-medium text-destructive", className)}
       {...props}
     >

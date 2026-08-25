@@ -250,7 +250,7 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                 >
                   All Categories
                 </span>
-                <span className="text-[10px] font-black text-muted-foreground/40 bg-muted px-2 py-1 rounded-md">
+                <span className="text-[10px] font-black text-muted-foreground bg-muted px-2 py-1 rounded-md">
                   {blogs.length}
                 </span>
               </Link>
@@ -271,7 +271,7 @@ function BlogsContent({ blogs = [] }: { blogs?: Blog[] }) {
                     >
                       {cat.name}
                     </span>
-                    <span className="text-[10px] font-black text-muted-foreground/40 bg-muted px-2 py-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-all">
+                    <span className="text-[10px] font-black text-muted-foreground bg-muted px-2 py-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-all">
                       {cat.count}
                     </span>
                   </Link>

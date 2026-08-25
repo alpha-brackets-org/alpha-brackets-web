@@ -78,7 +78,7 @@ export default function CaseStudies({
             </div>
             <Link
               href="/case-studies"
-              className="inline-flex items-center gap-3 px-6 h-10 rounded-full border border-border/50 hover:bg-primary hover:border-primary hover:text-white transition-all font-bold uppercase tracking-widest text-[10px] shrink-0"
+              className="inline-flex items-center gap-3 px-6 h-10 rounded-full border border-border/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all font-bold uppercase tracking-widest text-[10px] shrink-0"
             >
               All Case Studies
               <ArrowRight className="w-3 h-3" />
@@ -96,7 +96,7 @@ export default function CaseStudies({
                     cardsRef.current[i] = el;
                   }}
                   className={cn(
-                    "absolute top-0 left-0 w-full h-full flex flex-col lg:flex-row items-center gap-6 lg:gap-12 p-6 lg:p-10 rounded-[32px] bg-[#0f0f0f] border border-white/5 shadow-2xl shadow-black/50 group origin-top will-change-transform",
+                    "absolute top-0 left-0 w-full h-full flex flex-col lg:flex-row items-center gap-6 lg:gap-12 p-6 lg:p-10 rounded-[32px] bg-[#0f0f0f] border border-white/5 group origin-top will-change-transform",
                     !isEven && "lg:flex-row-reverse"
                   )}
                   style={{ zIndex: i + 10 }}
@@ -141,7 +141,7 @@ export default function CaseStudies({
                   </div>
 
                   {/* Right Side: Visual */}
-                  <div className="w-full lg:w-[55%] relative h-[30vh] lg:h-[80%] xl:h-[90%] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+                  <div className="w-full lg:w-[55%] relative h-[30vh] lg:h-[80%] xl:h-[90%] rounded-2xl overflow-hidden border border-white/10 bg-black">
                     <Image
                       src={caseStudy.coverImage || "/assets/imgs/blog/1.jpg"}
                       alt={caseStudy.projectTitle}

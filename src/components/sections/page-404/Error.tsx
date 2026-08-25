@@ -4,37 +4,33 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Home, ArrowRight } from "@/declarations/icons";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
+/**
+ * No GSAP here, deliberately.
+ *
+ * This component had a single decorative float tween (`y: -15, repeat: -1,
+ * yoyo: true`). It is rendered by `src/app/not-found.tsx`, and in the App Router
+ * the not-found boundary is part of EVERY route's tree, so that one animation put
+ * 68.5 KB of GSAP core into the shared first-load chunk of every page on the
+ * site, `/terms` and `/privacy` included.
+ *
+ * It is now the `.animate-float-y` class in globals.css: same motion, no library,
+ * runs on the compositor instead of the main thread, and honours
+ * prefers-reduced-motion. Do not reintroduce a JS animation library here.
+ */
 function Error() {
   const marqueeText = "Page Not Found";
   const items = Array(12).fill(marqueeText);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      gsap.to(contentRef.current, {
-        y: -15,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
-    }
-  }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center py-24 bg-background overflow-hidden">
       {/* Subtle Background Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10 text-center mb-20">
         <h1 className="text-[12rem] md:text-[20rem] font-black leading-none text-white/[0.03] select-none tracking-tighter">
           404
         </h1>
-        <div ref={contentRef} className="-mt-12 md:-mt-24">
+        <div className="-mt-12 md:-mt-24 animate-float-y">
           <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase italic tracking-tighter">
             Lost in Space?
           </h2>

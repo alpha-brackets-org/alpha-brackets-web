@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write . --ignore-unknown",
-    "sync-cms": "node scripts/sync-cms.js"
+    "sync-cms": "node scripts/sync-cms.js",
+    "//perf": "Production Lighthouse. Always use this rather than pointing Lighthouse at `next dev`: a dev build ships a ~213 KB devtools chunk, the HMR client and unminified JS, which inflates simulated LCP by seconds. See scripts/perf.mjs.",
+    "perf": "node scripts/perf.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
@@ -33,6 +35,13 @@
     "swiper": "^12.2.0",
     "zod": "^4.4.3"
   },
+  "//browserslist": "Matches Tailwind v4's own floor (Chrome 111, Safari 16.4, Firefox 128), which this project already depends on for @property, color-mix and cascade layers, so the CSS could not render on anything older anyway. Added in response to a Lighthouse 'Legacy JavaScript, 8 KiB' finding, but it saved nothing: production builds with and without this key are byte-identical. Two corrections to an earlier version of this note, both found by measuring. (1) A polyfill chunk IS emitted, about 110 KB; an earlier check missed it because the chunk is hash-named and the grep looked for 'poly' in filenames. (2) It does not matter, because the built HTML loads it as `<script noModule>`, so no browser that supports ES modules ever downloads it. The Lighthouse finding itself came from a dev-only chunk. Keep this key because it pins the target and documents the floor, not because it saved bytes.",
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 128",
+    "safari >= 16.4"
+  ],
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
@@ -44,6 +53,7 @@
     "@typescript-eslint/parser": "^8.60.1",
     "autoprefixer": "^10.5.0",
     "clsx": "^2.1.1",
+    "lighthouse": "^12.8.2",
     "lucide-react": "^1.17.0",
     "openapi-typescript": "^7.13.0",
     "postcss": "^8.5.15",

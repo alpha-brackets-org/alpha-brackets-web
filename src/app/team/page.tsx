@@ -5,9 +5,10 @@ import Team from "@/components/sections/team/TeamGrid";
 import Marq2 from "@/components/shared/Marq2";
 import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "Alpha Brackets - Team",
-};
+// Route intentionally disabled: it 404s.
+// No `metadata` export on purpose. Next discards metadata for a route that calls
+// notFound(), so a real title here only makes the route look live to the next
+// person reading it.
 
 export default function Home() {
   notFound();

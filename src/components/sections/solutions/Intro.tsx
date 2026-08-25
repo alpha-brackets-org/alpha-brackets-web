@@ -52,7 +52,7 @@ function Intro() {
           </div>
           <div className="col-lg-6">
             <div className="imgs relative h-[500px]">
-              <div className="img1 absolute top-0 left-0 w-3/4 aspect-[4/5] z-10 rounded-[32px] overflow-hidden shadow-2xl border border-white/10">
+              <div className="img1 absolute top-0 left-0 w-3/4 aspect-[4/5] z-10 rounded-[32px] overflow-hidden border border-white/10">
                 <Image
                   src="/assets/imgs/intro/2.jpg"
                   alt="Creative Digital Agency Team"
@@ -60,7 +60,7 @@ function Intro() {
                   className="object-cover"
                 />
               </div>
-              <div className="img2 absolute bottom-0 right-0 w-3/5 aspect-square z-20 rounded-[32px] overflow-hidden shadow-2xl border border-white/10">
+              <div className="img2 absolute bottom-0 right-0 w-3/5 aspect-square z-20 rounded-[32px] overflow-hidden border border-white/10">
                 <Image
                   src="/assets/imgs/intro/03.jpg"
                   alt="Modern Design Workspace"
@@ -68,7 +68,7 @@ function Intro() {
                   className="object-cover"
                 />
               </div>
-              <div className="img3 absolute top-1/4 -right-10 w-1/3 aspect-square z-30 rounded-[32px] overflow-hidden shadow-2xl border border-white/10 hidden lg:block">
+              <div className="img3 absolute top-1/4 -right-10 w-1/3 aspect-square z-30 rounded-[32px] overflow-hidden border border-white/10 hidden lg:block">
                 <Image
                   src="/assets/imgs/intro/04.jpg"
                   alt="Innovative Solutions"

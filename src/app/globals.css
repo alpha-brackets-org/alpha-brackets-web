@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+/* Do not scan documentation for class names.
+   Tailwind v4 auto-detects sources, and it scans markdown too, so a doc that
+   merely *mentions* a utility in prose generates that utility's CSS. Writing
+   "we removed the shadow-lg" in project-notes.md was enough to keep .shadow-lg
+   and .shadow-2xl alive in the production stylesheet after every shadow class
+   had been deleted from the components. DESIGN.md documenting the no-shadow rule
+   would have done the same thing. Documentation should not be able to emit CSS. */
+@source not "../../docs";
+@source not "../../*.md";
+
 @layer base {
   :root {
     --background: 0 0% 6%;
@@ -13,6 +23,30 @@
     --popover-foreground: 0 0% 100%;
 
     --primary: 12 98% 61%;
+    /* White, and this is a deliberate brand decision that overrides a contrast
+       finding. Read this before "fixing" it.
+
+       Measured, not estimated. On the brand orange #FD613A:
+         white       3.02:1
+         near-black  6.09:1
+       WCAG AA wants 4.5:1 for normal text and 3.0:1 for large or bold text. So
+       white passes for large/bold and fails for normal text, and Lighthouse
+       flagged every primary button and the PageCTA link when white was set.
+
+       This was switched to near-black during the accessibility pass, which took
+       the Lighthouse Accessibility score to 100. It has been switched back on
+       purpose: white on orange is the brand, and the buttons it affects are
+       bold. The score cost is accepted, knowingly.
+
+       If you ever want white *and* a clean pass, do not change this token. The
+       fix is a separate darker token for button fills only: white clears 4.5:1
+       at about 44% lightness (#DE2E02). That was not done here because it is a
+       visibly different orange, and applying it to `--primary` wholesale would
+       also drag `text-primary` on the dark background down toward the 4.5 line.
+
+       Every `bg-primary` surface in the codebase reads this token rather than a
+       hardcoded `text-white`, which is why this is a one-line change. Keep it
+       that way: do not hardcode colours back into components. */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 75 100% 60%;
@@ -128,6 +162,65 @@
   .logo {
     font-family: var(--font-zain), "Zain", sans-serif;
   }
+
+  /* Background images set at runtime by src/common/loadBackgroudImages.ts, which
+     writes an inline background-image from the element's data-background.
+     Without these two rules the image tiled at its natural size at full
+     brightness, so patterns like lines.png washed out the text on top of them. */
+  .bg-img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Darkens a background image so foreground text stays readable. The number in
+     data-overlay-dark is the strength, 1 (barely dark) to 9 (almost solid). Put
+     page content in a stacking context above it, the sections that use this
+     already wrap their content in `relative z-10`. */
+  [data-overlay-dark] {
+    position: relative;
+  }
+
+  [data-overlay-dark]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: hsl(var(--background));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  [data-overlay-dark=""]::before {
+    display: none;
+  }
+
+  [data-overlay-dark="1"]::before {
+    opacity: 0.2;
+  }
+  [data-overlay-dark="2"]::before {
+    opacity: 0.3;
+  }
+  [data-overlay-dark="3"]::before {
+    opacity: 0.4;
+  }
+  [data-overlay-dark="4"]::before {
+    opacity: 0.5;
+  }
+  [data-overlay-dark="5"]::before {
+    opacity: 0.6;
+  }
+  [data-overlay-dark="6"]::before {
+    opacity: 0.7;
+  }
+  [data-overlay-dark="7"]::before {
+    opacity: 0.8;
+  }
+  [data-overlay-dark="8"]::before {
+    opacity: 0.88;
+  }
+  [data-overlay-dark="9"]::before {
+    opacity: 0.94;
+  }
 }
 
 @layer utilities {
@@ -165,10 +258,55 @@
   animation: marquee-reverse 80s linear infinite;
 }
 
-/* Remove all shadows globally */
-*,
-*::before,
-*::after {
-  box-shadow: none !important;
-  filter: none !important;
+/* Replaces a GSAP tween on the 404 page.
+   `alternate` is the CSS equivalent of GSAP's `yoyo: true`, and ease-in-out of
+   its `power1.inOut`, so this is the same animation with no library behind it.
+
+   It is not a style preference. `not-found.tsx` sits in every route's tree in the
+   App Router, so its one decorative float was pulling 68.5 KB of GSAP core into
+   the shared chunk of EVERY page on the site, including /terms and /privacy. */
+@keyframes float-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15px);
+  }
 }
+
+.animate-float-y {
+  animation: float-y 3s ease-in-out infinite alternate;
+}
+
+/* Anyone who has asked their OS for less motion should not get an infinite
+   looping animation. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-y {
+    animation: none;
+  }
+}
+
+/* The design uses no shadows. That used to be enforced here by a global reset:
+
+     *, *::before, *::after {
+       box-shadow: none !important;
+       filter: none !important;
+     }
+
+   It is gone, and nothing replaces it, because there is no longer anything to
+   suppress. Every `shadow-*` class was removed from the components instead, so the
+   markup now says what it renders.
+
+   Two things worth knowing before adding anything back:
+
+   1. `filter: none` was never doing anything about shadows. There is not a single
+      `drop-shadow-*` utility in this codebase, so that line removed no shadow at
+      all. What it actually did was null 31 decorative `blur-[120px]` glow divs,
+      which the browser still laid out and composited while painting nothing. Those
+      elements have been deleted rather than hidden.
+   2. `backdrop-blur-*` compiles to `backdrop-filter`, not `filter`, so it was never
+      affected by that rule and is real, visible design: the navbar, the scroll to
+      top button, the toast, and the service page sidebar card. Leave it alone.
+
+   The rule for new work is in DESIGN.md: depth comes from borders and background
+   contrast, not shadows. */

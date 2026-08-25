@@ -36,9 +36,8 @@ function Team() {
           {data.slice(0, 4).map((item, i) => (
             <div key={i} className="group relative">
               {/* Card Container */}
-              <div className="relative rounded-2xl bg-card border border-border/50 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 flex flex-col items-center justify-center p-6 pt-10">
+              <div className="relative rounded-2xl bg-card border border-border/50 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center p-6 pt-10">
                 {/* Background Blur blob */}
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl" />
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center text-center">
@@ -62,19 +61,19 @@ function Team() {
                   <div className="flex items-center gap-3 mt-6">
                     <Link
                       href="#0"
-                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all"
+                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                     >
                       <Facebook className="w-4 h-4" />
                     </Link>
                     <Link
                       href="#0"
-                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all"
+                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                     >
                       <Behance className="w-4 h-4" />
                     </Link>
                     <Link
                       href="#0"
-                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all"
+                      className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                     >
                       <Instagram className="w-4 h-4" />
                     </Link>

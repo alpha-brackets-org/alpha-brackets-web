@@ -1,4 +1,11 @@
 /.next
 /node_modules
-/.env.local
+# No env file is needed to build or run this site: the only variable it reads,
+# NEXT_PUBLIC_SITE_URL, has the production URL as its default in site-config.ts.
+# Ignore the whole family anyway, so a future secret cannot be committed by
+# accident. Set real values in the deploy platform environment settings instead.
+.env
+.env.*
 sample
+# Lighthouse output from `npm run perf`
+reports/

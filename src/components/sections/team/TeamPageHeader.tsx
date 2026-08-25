@@ -24,12 +24,10 @@ export default function Header() {
   return (
     <section
       ref={containerRef}
-      className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden bg-background flex items-center"
+      className="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-background flex items-center"
     >
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
 
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent)] bg-[grid-white_1px_bg-transparent_20px_20px]" />
@@ -52,7 +50,7 @@ export default function Header() {
           </h1>
 
           <div className="animate-item flex justify-center">
-            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full shadow-lg shadow-primary/20" />
+            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"/>
           </div>
         </div>
       </div>

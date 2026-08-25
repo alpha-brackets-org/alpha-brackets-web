@@ -17,9 +17,17 @@ export interface ProcessTimelineProps {
 export interface ServiceHeaderProps {
   title: string;
   description: string;
-  videoLink?: string;
   bgImage?: string;
   overlayDark?: string;
+  /**
+   * Service-specific hero CTA, from `cta` in services.ts.
+   *
+   * Every service already defined one ("Get Your Code Reviewed", "Build Your
+   * SaaS Product", "Build Your CRM") and no component read it, so all 12 pages
+   * showed the same generic "Discuss Your Project" instead of the wording written
+   * for them. Falls back to the generic label when absent.
+   */
+  cta?: { caption: string; link: string };
 }
 
 export interface SubServicesProps {
@@ -31,6 +39,12 @@ export interface SubServicesProps {
 export interface WhyChooseUsProps {
   title?: string;
   diffrentials?: { title: string; desc: string }[];
+  /**
+   * Numbers for this specific page. **No fallback**: omit it and no stats render,
+   * and the section drops to a single column. Do not add a default, that is what
+   * previously put the same two figures on all ten service pages.
+   */
+  stats?: { value: string; label: string }[];
   [key: string]: unknown;
 }
 

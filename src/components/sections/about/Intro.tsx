@@ -1,67 +1,67 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { MVP_TIMELINE } from "@/data/stats";
 
+/**
+ * The stock photo that used to fill the left half of this section is gone. It was
+ * a generic "two people at a laptop" image of nobody who works here, so it made
+ * the page look templated and told the reader nothing.
+ *
+ * Rather than swap in another placeholder, the section is now an editorial split:
+ * heading and the one real number on the left, the actual story on the right. Put
+ * an image back only when there is a real one, a photo of the team or of work we
+ * have shipped.
+ */
 export default function AboutIntro() {
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="relative pt-12 lg:pt-0">
-            <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden border border-border/50 shadow-2xl">
-              <Image
-                src="/assets/imgs/intro/i1.jpg"
-                alt="Engineering Excellence"
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            {/* Floating Metric */}
-            <div className="absolute -bottom-6 -right-6 lg:-bottom-10 lg:-right-10 p-8 lg:p-10 rounded-[32px] bg-primary text-white shadow-2xl z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="lg:col-span-5 space-y-10">
+            <h2 className="text-4xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
+              A small team that{" "}
+              <span className="font-extralight text-muted-foreground italic">
+                builds and ships.
+              </span>
+            </h2>
+
+            {/* The one timeline figure we control and can stand behind. Read from
+                src/data/stats.ts so it cannot drift from the homepage wording.
+                Previously a "40% Faster Time-to-Market" stat with nothing behind
+                it. */}
+            <div className="inline-flex flex-col p-8 lg:p-10 rounded-4xl bg-primary text-primary-foreground">
               <div className="text-3xl lg:text-4xl font-black mb-2 tracking-tighter">
-                40%
+                {MVP_TIMELINE.value}
               </div>
-              <p className="text-[10px] uppercase font-bold tracking-widest opacity-80 leading-tight">
-                Faster <br /> Time-to-Market
+              <p className="max-w-28 text-[10px] uppercase font-bold tracking-widest opacity-80 leading-tight">
+                {MVP_TIMELINE.label}
               </p>
             </div>
           </div>
 
-          <div className="space-y-10 lg:pl-12">
+          <div className="lg:col-span-7 space-y-10">
             <div className="space-y-6">
-              <h2 className="text-4xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                Bridging intelligence <br />
-                <span className="font-extralight text-muted-foreground italic">
-                  & technical execution.
-                </span>
-              </h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                At Alpha Brackets, we don't just build software. We engineer
-                strategic outcomes. Born from the need for technical execution
-                that understands business intelligence, we help scaling
-                operators and domain experts turn vision into high-performance
-                reality.
+                Alpha Brackets is an engineering team that builds SaaS products
+                for founders. We started it because too much agency work stops
+                at a handover, leaving the founder with a codebase nobody wants
+                to touch and no idea what to build next.
               </p>
               <p className="text-lg text-muted-foreground/80 leading-relaxed">
-                Our methodology centers on "Zero-Waste Engineering" — a
-                systematic approach that eliminates architectural bloat and
-                focuses exclusively on features that drive revenue and
-                operational efficiency.
+                So we work the other way round. We agree what the first version
+                is, build only that, put it in front of real users, and then
+                help you decide what comes after. You get a working product and
+                a team that is still there once it is live.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-6">
-              <Link
-                href="/case-studies"
-                className="inline-flex h-14 items-center px-10 rounded-full bg-primary text-white font-bold uppercase tracking-widest text-xs hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20"
-              >
-                Our Case Studies
-              </Link>
+            {/* Only one button now. The other pointed at /case-studies, which
+                returns notFound() while there is nothing to show. */}
+            <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex h-14 items-center px-10 rounded-full border border-border bg-accent/5 text-foreground font-bold uppercase tracking-widest text-xs hover:bg-accent transition-all"
+                className="inline-flex h-14 items-center px-10 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs hover:scale-105 active:scale-95 transition-all"
               >
                 Work With Us
               </Link>

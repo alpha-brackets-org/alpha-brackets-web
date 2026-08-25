@@ -1,25 +1,28 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { ArrowRight } from "@/declarations/icons";
+import { ArrowRight, Cloud, Brain, Server } from "@/declarations/icons";
 import Link from "next/link";
 
+// These were image cards backed by screenshots of GMS, Hexadesk and Healthline,
+// presented as proof of each capability. None of the three is a live product
+// (see docs/business-strategy.md), so using them as proof was a false claim.
+// Icons instead, and the copy describes what we build rather than what we have
+// supposedly shipped.
 const PILLARS = [
   {
-    title: "SaaS Architecture",
-    desc: "Multi-tenant, high-concurrency engines built for global scale.",
-    image: "/assets/imgs/portfolio/gms.png",
+    icon: Cloud,
+    title: "SaaS platforms",
+    desc: "Separate customer accounts, billing, and permissions, set up properly at the start so more customers later does not mean rebuilding.",
   },
   {
-    title: "AI Integration",
-    desc: "Augmenting human workflows with RAG and custom LLM layers.",
-    image: "/assets/imgs/portfolio/hexadesk.png",
+    icon: Brain,
+    title: "AI features",
+    desc: "Chatbots, document processing, and search built into the product as a real feature. We pick the approach per job and tell you what it costs to run.",
   },
   {
-    title: "Cloud Modernization",
-    desc: "Migrating legacy monoliths to resilient, serverless ecosystems.",
-    image: "/assets/imgs/portfolio/healthline.png",
+    icon: Server,
+    title: "Launch and after",
+    desc: "Deployment, monitoring, and the feature work that follows once real people are using it and you know what needs to change.",
   },
 ];
 
@@ -30,50 +33,41 @@ export default function TechnicalPillars() {
         <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-sm font-black uppercase tracking-[0.4em] text-primary mb-6">
-              Our Specializations
+              What We Build
             </h2>
             <h3 className="text-4xl lg:text-6xl font-bold tracking-tight">
-              Technical depth, <br />{" "}
+              Three things, <br />{" "}
               <span className="font-extralight text-muted-foreground italic">
-                unmatched execution.
+                done properly.
               </span>
             </h3>
           </div>
           <Link
-            href="/contact"
+            href="/services"
             className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
           >
-            Start a Project{" "}
+            All Services{" "}
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PILLARS.map((pillar, idx) => (
+          {PILLARS.map((pillar) => (
             <div
-              key={idx}
-              className="group relative min-h-[500px] rounded-[40px] overflow-hidden border border-border/50"
+              key={pillar.title}
+              className="group p-10 rounded-[40px] border border-border/50 bg-card hover:border-primary/40 transition-colors duration-500 flex flex-col gap-6"
             >
-              <Image
-                src={pillar.image}
-                alt={pillar.title}
-                fill
-                className="object-cover brightness-[0.3] group-hover:scale-105 transition-all duration-1000"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-              <div className="absolute inset-0 p-10 flex flex-col justify-end">
-                <h4 className="text-3xl font-bold mb-4 tracking-tight text-white">
-                  {pillar.title}
-                </h4>
-                <p className="text-white/70 text-lg leading-relaxed mb-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  {pillar.desc}
-                </p>
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-xl shadow-primary/20">
-                  <ArrowRight className="w-6 h-6" />
-                </div>
+              <div className="w-14 h-14 rounded-2xl border border-primary/30 bg-primary/5 text-primary flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110">
+                <pillar.icon className="w-6 h-6" />
               </div>
+              <h4 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                {pillar.title}
+              </h4>
+              {/* Always visible. This copy used to be opacity-0 until hover,
+                  so it was unreadable on any touch device. */}
+              <p className="text-muted-foreground leading-relaxed">
+                {pillar.desc}
+              </p>
             </div>
           ))}
         </div>

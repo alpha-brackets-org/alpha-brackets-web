@@ -16,7 +16,7 @@ export default function ContentPillars({
   return (
     <section className="py-24 lg:py-32 border-t border-border/50 relative overflow-hidden">
       {/* Background text */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[15vw] font-black text-foreground/[0.02] select-none pointer-events-none whitespace-nowrap leading-none uppercase">
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[15vw] font-black text-foreground/2 select-none pointer-events-none whitespace-nowrap leading-none uppercase">
         Insights
       </div>
 
@@ -37,7 +37,7 @@ export default function ContentPillars({
             className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-primary hover:gap-5 transition-all group shrink-0"
           >
             All Articles
-            <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+            <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
               <ArrowRight className="w-5 h-5" />
             </div>
           </Link>
@@ -50,7 +50,7 @@ export default function ContentPillars({
             href={`/blogs/${activeArticles[0].slug}`}
             className="lg:col-span-7 group block relative h-full"
           >
-            <div className="h-full min-h-[580px] p-10 lg:p-14 rounded-[2.5rem] border border-border/50 bg-[#080808] hover:border-primary/30 transition-all duration-700 flex flex-col justify-between relative overflow-hidden shadow-2xl">
+            <div className="h-full min-h-145 p-10 lg:p-14 rounded-[2.5rem] border border-border/50 bg-[#080808] hover:border-primary/30 transition-all duration-700 flex flex-col justify-between relative overflow-hidden">
               {/* Background Image with sophisticated overlay */}
               <div className="absolute inset-0 z-0">
                 <Image
@@ -62,12 +62,12 @@ export default function ContentPillars({
                   className="object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#050505]/40 to-transparent" />
               </div>
 
               {/* Ghost number/Label */}
-              <div className="absolute top-10 right-10 text-[180px] font-black text-white/[0.03] leading-none select-none italic tracking-tighter group-hover:text-primary/[0.05] transition-colors duration-700">
+              <div className="absolute top-10 right-10 text-[180px] font-black text-white/3 leading-none select-none italic tracking-tighter group-hover:text-primary/5 transition-colors duration-700">
                 01
               </div>
 
@@ -105,7 +105,7 @@ export default function ContentPillars({
 
               <div className="relative z-10 flex items-center gap-4 text-xs font-black uppercase tracking-[0.3em] text-primary mt-12 group-hover:gap-6 transition-all duration-500">
                 Read Full Insight
-                <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </div>
@@ -120,9 +120,8 @@ export default function ContentPillars({
                 href={`/blogs/${article.slug}`}
                 className="block group flex-1"
               >
-                <div className="h-full p-8 rounded-[2rem] border border-border/50 bg-[#0a0a0a] hover:border-primary/20 hover:bg-primary/5 transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
+                <div className="h-full p-8 rounded-4xl border border-border/50 bg-[#0a0a0a] hover:border-primary/20 hover:bg-primary/5 transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
                   {/* Subtle hover glow */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-primary">

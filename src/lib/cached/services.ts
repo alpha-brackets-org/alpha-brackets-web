@@ -22,18 +22,3 @@ export async function getServiceByPragmaLinkCached(
   );
   return getter(pragmaLink);
 }
-
-// Cached sub services by parent id. Key includes the parentServiceId.
-export async function getSubServicesByParentIdCached(
-  parentServiceId: string
-): Promise<Service[]> {
-  const getter = cache(
-    async (id: string) => servicesRepo.getSubServicesByParentId(id),
-    ["sub-services-by-parent", parentServiceId],
-    {
-      tags: ["sub-services-by-parent", `service:${parentServiceId}`],
-      revalidate: 300,
-    }
-  );
-  return getter(parentServiceId);
-}
