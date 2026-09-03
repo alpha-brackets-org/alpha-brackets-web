@@ -1,6 +1,6 @@
 import React from "react";
 import "../../app/globals.css";
-import Lines from "@/components/layout/Lines";
+// import Lines from "@/components/layout/Lines";
 import ProgressScroll from "@/components/layout/ProgressScroll";
 import CursorMount from "@/components/layout/CursorMount";
 import Footer from "@/components/layout/Footer";
@@ -42,7 +42,7 @@ export default async function WebLayout({
           68.5 KB of GSAP core into every route's first load. */}
       <CursorMount />
       <ProgressScroll />
-      <Lines />
+      {/* <Lines /> */}
       <div className="navbar-container">
         <Navbar />
       </div>
