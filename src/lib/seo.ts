@@ -61,10 +61,11 @@ interface PageMetadataInput {
   ogDescription?: string;
   /**
    * Path to the route's own generated card, relative to the site root. Defaults to
-   * the site-wide one from src/app/opengraph-image.tsx. Only /services/[slug] needs
-   * to override it, because it has its own opengraph-image file.
+   * the route's own opengraph-image (e.g. "/services/opengraph-image" or "/opengraph-image" for root).
    */
   ogImagePath?: string;
+  /** Optional custom alt text for the OG image. */
+  ogImageAlt?: string;
 }
 
 export function buildPageMetadata({
@@ -75,18 +76,23 @@ export function buildPageMetadata({
   absoluteTitle,
   ogTitle,
   ogDescription,
-  ogImagePath = "/opengraph-image",
+  ogImagePath,
+  ogImageAlt,
 }: PageMetadataInput): Metadata {
   const shareTitle = ogTitle ?? `${title} | ${SITE_CONFIG.name}`;
   const shareDescription = ogDescription ?? description;
+  const imagePath = ogImagePath ?? (path === "/" ? "/opengraph-image" : `${path}/opengraph-image`);
+  const imageAlt = ogImageAlt ?? `${title} - ${SITE_CONFIG.name}, ${SITE_CONFIG.tagline}`;
+
   // Relative, so metadataBase in src/app/layout.tsx resolves it to an absolute URL.
   // Crawlers reject a relative og:image, so this must not be hand-built here.
   const images = [
     {
-      url: ogImagePath,
+      url: imagePath,
       width: 1200,
       height: 630,
-      alt: `${SITE_CONFIG.name}, ${SITE_CONFIG.tagline}`,
+      alt: imageAlt,
+      type: "image/png",
     },
   ];
 

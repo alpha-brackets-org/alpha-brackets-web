@@ -1,11 +1,12 @@
 import { SITE_CONFIG } from "@/data/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  alternates: { canonical: "/cookies" },
+export const metadata = buildPageMetadata({
+  path: "/cookies",
   title: "Cookie Policy",
   description:
     "This site sets no cookies and stores nothing in your browser. What that means, and what happens when you book a call.",
-};
+});
 
 /**
  * Hardcoded, not `new Date()`.

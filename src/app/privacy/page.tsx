@@ -1,11 +1,12 @@
 import { SITE_CONFIG } from "@/data/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  alternates: { canonical: "/privacy" },
+export const metadata = buildPageMetadata({
+  path: "/privacy",
   title: "Privacy Policy",
   description:
     "What we collect, which is almost nothing. No contact form, no analytics, no trackers. What happens to an email you send us.",
-};
+});
 
 /**
  * Hardcoded, not `new Date()`.

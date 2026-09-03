@@ -34,14 +34,19 @@ export default async function ServiceOpengraphImage({
   // generic headline rather than throwing, because an image route that throws
   // fails the build for a URL that is not supposed to exist anyway.
   const isLive = service && service.active !== false;
+  const description =
+    service?.meta_description ??
+    service?.description ??
+    "Fixed price, working software weekly, and you own all of it.";
 
   return new ImageResponse(
     (
       <OgCard
+        badge="Service"
         headline={
           isLive ? service.title : "Software built, finished, or fixed."
         }
-        subhead="Fixed price, working software weekly, and you own all of it."
+        subhead={description}
       />
     ),
     size

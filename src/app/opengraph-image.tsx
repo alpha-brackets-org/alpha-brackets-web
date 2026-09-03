@@ -26,6 +26,7 @@ export default function OpengraphImage() {
   return new ImageResponse(
     (
       <OgCard
+        badge="Software Studio"
         headline="Software built, finished, or fixed."
         subhead="Fixed price, working software weekly, and you own all of it."
       />

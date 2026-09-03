@@ -1,10 +1,11 @@
 import { SITE_CONFIG } from "@/data/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  alternates: { canonical: "/terms" },
+export const metadata = buildPageMetadata({
+  path: "/terms",
   title: "Terms of Service",
   description: "The rules and regulations for using Alpha Brackets services.",
-};
+});
 
 /**
  * Hardcoded, not `new Date()`.

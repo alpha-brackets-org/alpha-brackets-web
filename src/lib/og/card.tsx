@@ -27,12 +27,21 @@ export const OG_CONTENT_TYPE = "image/png";
 const PRIMARY = "#fd5b38";
 const BACKGROUND = "#0f0f0f";
 
-interface OgCardProps {
+export interface OgCardProps {
   headline: string;
   subhead: string;
+  badge?: string;
 }
 
-export function OgCard({ headline, subhead }: OgCardProps) {
+export function OgCard({ headline, subhead, badge }: OgCardProps) {
+  // Determine dynamic font sizing for headline
+  let headlineFontSize = 74;
+  if (headline.length > 50) {
+    headlineFontSize = 54;
+  } else if (headline.length > 30) {
+    headlineFontSize = 62;
+  }
+
   return (
     <div
       style={{
@@ -42,71 +51,131 @@ export function OgCard({ headline, subhead }: OgCardProps) {
         flexDirection: "column",
         justifyContent: "space-between",
         background: BACKGROUND,
-        padding: "80px",
+        padding: "72px 80px",
+        position: "relative",
       }}
     >
-      {/* Brand mark plus wordmark */}
-      <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-        <svg width="64" height="64" viewBox="-3 -3 36 36">
-          <path
-            fill={PRIMARY}
-            d="M0 7.69285V14.3337L14.8548 6.70659L29.9281 14.3337V7.69285L14.8548 0L0 7.69285Z"
-          />
-          <path
-            fill={PRIMARY}
-            d="M0 16.128L6.95122 12.6436V19.2837L15.1463 23.2941L30 15.7335V22.2422L14.8537 30L0 22.2422V16.128Z"
-          />
-        </svg>
-        <div style={{ display: "flex", fontSize: 44, letterSpacing: "-0.02em" }}>
-          <span style={{ color: "#ffffff", fontWeight: 700 }}>alpha</span>
-          <span style={{ color: "#ffffff", opacity: 0.65 }}>brackets</span>
+      {/* Top Header: Brand mark plus wordmark, and optional badge */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <svg width="56" height="56" viewBox="-3 -3 36 36">
+            <path
+              fill={PRIMARY}
+              d="M0 7.69285V14.3337L14.8548 6.70659L29.9281 14.3337V7.69285L14.8548 0L0 7.69285Z"
+            />
+            <path
+              fill={PRIMARY}
+              d="M0 16.128L6.95122 12.6436V19.2837L15.1463 23.2941L30 15.7335V22.2422L14.8537 30L0 22.2422V16.128Z"
+            />
+          </svg>
+          <div style={{ display: "flex", fontSize: 40, letterSpacing: "-0.02em" }}>
+            <span style={{ color: "#ffffff", fontWeight: 700 }}>alpha</span>
+            <span style={{ color: "#ffffff", opacity: 0.65 }}>brackets</span>
+          </div>
         </div>
+
+        {badge && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              background: "rgba(253, 91, 56, 0.12)",
+              border: "1px solid rgba(253, 91, 56, 0.35)",
+              borderRadius: "9999px",
+              padding: "8px 22px",
+              fontSize: 20,
+              fontWeight: 600,
+              color: PRIMARY,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+            }}
+          >
+            {badge}
+          </div>
+        )}
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+      {/* Main Body: Headline and Subhead */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
         <div
           style={{
             display: "flex",
-            // Service titles run longer than the homepage headline, so the type
-            // steps down once past roughly two lines at the larger size rather
-            // than overflowing the card.
-            fontSize: headline.length > 34 ? 62 : 76,
-            lineHeight: 1.1,
+            fontSize: headlineFontSize,
+            lineHeight: 1.12,
             color: "#ffffff",
             fontWeight: 700,
             letterSpacing: "-0.03em",
-            maxWidth: "900px",
+            maxWidth: "960px",
           }}
         >
           {headline}
         </div>
-        <div style={{ display: "flex", fontSize: 30, color: "#9a9a9a" }}>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 28,
+            lineHeight: 1.35,
+            color: "#a0a0a0",
+            maxWidth: "920px",
+          }}
+        >
           {subhead}
         </div>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+      {/* Footer Bar */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          borderTop: "1px solid #222222",
+          paddingTop: "24px",
+          width: "100%",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "48px",
+              height: "4px",
+              background: PRIMARY,
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              fontSize: 22,
+              color: PRIMARY,
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              fontWeight: 700,
+            }}
+          >
+            {SITE_CONFIG.tagline}
+          </div>
+        </div>
+
         <div
           style={{
             display: "flex",
-            width: "72px",
-            height: "5px",
-            background: PRIMARY,
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            fontSize: 24,
-            color: PRIMARY,
-            textTransform: "uppercase",
-            letterSpacing: "0.2em",
-            fontWeight: 700,
+            fontSize: 22,
+            color: "#666666",
+            letterSpacing: "-0.01em",
           }}
         >
-          {SITE_CONFIG.tagline}
+          alphabrackets.com
         </div>
       </div>
     </div>
   );
 }
+
