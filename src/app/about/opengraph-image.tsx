@@ -13,6 +13,7 @@ export default function AboutOpengraphImage() {
         badge="About Us"
         headline="A small engineering team that builds software straight."
         subhead="How we work, what we believe, and what we will tell you straight. Fixed price agreed up front, working software every week."
+        cta="Learn More →"
       />
     ),
     size

@@ -13,6 +13,7 @@ export default function FaqsOpengraphImage() {
         badge="FAQs"
         headline="Straight answers before you book a call."
         subhead="How much a build costs, how long it takes, who owns the code, and what happens after launch."
+        cta="Read FAQs →"
       />
     ),
     size

@@ -29,6 +29,7 @@ export default function OpengraphImage() {
         badge="Software Studio"
         headline="Software built, finished, or fixed."
         subhead="Fixed price, working software weekly, and you own all of it."
+        cta="Book a Call →"
       />
     ),
     size

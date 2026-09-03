@@ -47,6 +47,7 @@ export default async function ServiceOpengraphImage({
           isLive ? service.title : "Software built, finished, or fixed."
         }
         subhead={description}
+        cta="Explore Service →"
       />
     ),
     size
