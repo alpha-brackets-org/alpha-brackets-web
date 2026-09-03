@@ -17,6 +17,8 @@ export const metadata = buildPageMetadata({
   path: "/services",
   title: "Services",
   description,
+  ogDescription:
+    "From your idea to a working SaaS product people pay for. Fixed price, one team, with AI planned in from the start.",
   keywords: [
     "SaaS development",
     "MVP development",

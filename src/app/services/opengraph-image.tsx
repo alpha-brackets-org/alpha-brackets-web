@@ -13,6 +13,7 @@ export default function ServicesOpengraphImage() {
         badge="Services"
         headline="Software built, finished, or fixed."
         subhead="From your first idea to a working SaaS product people pay for. One team, a fixed price, and AI planned in from the start."
+        cta="Explore Services →"
       />
     ),
     size

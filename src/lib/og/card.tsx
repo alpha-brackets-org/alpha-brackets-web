@@ -31,15 +31,16 @@ export interface OgCardProps {
   headline: string;
   subhead: string;
   badge?: string;
+  cta?: string;
 }
 
-export function OgCard({ headline, subhead, badge }: OgCardProps) {
+export function OgCard({ headline, subhead, badge, cta = "Book a Call →" }: OgCardProps) {
   // Determine dynamic font sizing for headline
-  let headlineFontSize = 74;
+  let headlineFontSize = 72;
   if (headline.length > 50) {
-    headlineFontSize = 54;
+    headlineFontSize = 52;
   } else if (headline.length > 30) {
-    headlineFontSize = 62;
+    headlineFontSize = 60;
   }
 
   return (
@@ -51,7 +52,7 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
         flexDirection: "column",
         justifyContent: "space-between",
         background: BACKGROUND,
-        padding: "72px 80px",
+        padding: "68px 80px",
         position: "relative",
       }}
     >
@@ -103,7 +104,7 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
       </div>
 
       {/* Main Body: Headline and Subhead */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div
           style={{
             display: "flex",
@@ -112,7 +113,7 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
             color: "#ffffff",
             fontWeight: 700,
             letterSpacing: "-0.03em",
-            maxWidth: "960px",
+            maxWidth: "980px",
           }}
         >
           {headline}
@@ -120,17 +121,17 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
         <div
           style={{
             display: "flex",
-            fontSize: 28,
+            fontSize: 26,
             lineHeight: 1.35,
             color: "#a0a0a0",
-            maxWidth: "920px",
+            maxWidth: "940px",
           }}
         >
           {subhead}
         </div>
       </div>
 
-      {/* Footer Bar */}
+      {/* Footer Bar with Conversion CTA */}
       <div
         style={{
           display: "flex",
@@ -153,7 +154,7 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
           <div
             style={{
               display: "flex",
-              fontSize: 22,
+              fontSize: 20,
               color: PRIMARY,
               textTransform: "uppercase",
               letterSpacing: "0.15em",
@@ -164,15 +165,41 @@ export function OgCard({ headline, subhead, badge }: OgCardProps) {
           </div>
         </div>
 
+        {/* Call to Action Badge (Conversion Text) */}
         <div
           style={{
             display: "flex",
-            fontSize: 22,
-            color: "#666666",
-            letterSpacing: "-0.01em",
+            alignItems: "center",
+            gap: "24px",
           }}
         >
-          alphabrackets.com
+          {cta && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                background: PRIMARY,
+                color: "#ffffff",
+                fontSize: 19,
+                fontWeight: 700,
+                padding: "10px 24px",
+                borderRadius: "9999px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {cta}
+            </div>
+          )}
+          <div
+            style={{
+              display: "flex",
+              fontSize: 20,
+              color: "#666666",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            alphabrackets.com
+          </div>
         </div>
       </div>
     </div>

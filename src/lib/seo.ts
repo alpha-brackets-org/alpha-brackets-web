@@ -80,7 +80,14 @@ export function buildPageMetadata({
   ogImageAlt,
 }: PageMetadataInput): Metadata {
   const shareTitle = ogTitle ?? `${title} | ${SITE_CONFIG.name}`;
-  const shareDescription = ogDescription ?? description;
+  // Social previews on mobile platforms (LinkedIn, X, Slack, iMessage) typically display up to ~125 characters.
+  // If no specific ogDescription is provided and the meta description exceeds 125 chars, trim cleanly.
+  let shareDescription = ogDescription ?? description;
+  if (!ogDescription && shareDescription.length > 125) {
+    const trimmed = shareDescription.slice(0, 122);
+    const lastSpace = trimmed.lastIndexOf(" ");
+    shareDescription = `${(lastSpace > 80 ? trimmed.slice(0, lastSpace) : trimmed).trim()}...`;
+  }
   const imagePath = ogImagePath ?? (path === "/" ? "/opengraph-image" : `${path}/opengraph-image`);
   const imageAlt = ogImageAlt ?? `${title} - ${SITE_CONFIG.name}, ${SITE_CONFIG.tagline}`;
 
